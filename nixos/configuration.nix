@@ -14,9 +14,15 @@
     };
   };
 
-  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
+	boot.loader.grub = {
+		enable = true;
+		version = 2;
+		devices = [ "nodev" ];
+		efiSupport = true;
+		useOSProber = true;
+	};
 
   networking.hostName = "kirin";
   networking.networkmanager.enable = true;
