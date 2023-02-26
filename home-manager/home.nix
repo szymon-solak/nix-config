@@ -10,6 +10,8 @@
   nixpkgs.config.allowUnfreePredicate = (_: true);
 
   programs.home-manager.enable = true;
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
 
   xdg.enable = true;
   xdg.mime.enable = true;
@@ -39,5 +41,7 @@
     pkgs.nerdfonts
     pkgs.neovim
     pkgs.vimPlugins.packer-nvim
+    pkgs.direnv
+    pkgs.nix-direnv
   ];
 }

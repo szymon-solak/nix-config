@@ -12,6 +12,7 @@
       experimental-features = "nix-command flakes";
       auto-optimise-store = true;
     };
+    extraOptions = "	keep-outputs = true\n	keep-derivations = true\n";
   };
 
   boot.loader.efi.canTouchEfiVariables = true;
