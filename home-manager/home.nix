@@ -1,5 +1,10 @@
 { inputs, lib, config, pkgs, ... }: {
-  imports = [ ./modules/zsh.nix ./modules/kitty.nix ./modules/fzf.nix ];
+  imports = [
+    ./modules/zsh.nix
+    ./modules/kitty.nix
+    ./modules/fzf.nix
+    ./modules/gnome.nix
+  ];
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = (_: true);
@@ -9,6 +14,7 @@
   xdg.enable = true;
   xdg.mime.enable = true;
   targets.genericLinux.enable = true;
+  fonts.fontconfig.enable = true;
 
   home.username = "szymon";
   home.homeDirectory = "/home/szymon";
@@ -29,9 +35,8 @@
     pkgs.editorconfig-core-c
     pkgs.ffmpeg
     pkgs.obsidian
+    pkgs.lato
     pkgs.nerdfonts
-    pkgs.gnomeExtensions.pop-shell
-    pkgs.gnomeExtensions.pop-launcher-super-key
     pkgs.neovim
     pkgs.vimPlugins.packer-nvim
   ];
