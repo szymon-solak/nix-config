@@ -14,6 +14,10 @@
       # Git
       gst = "git status";
       gc = "git commit -v";
+
+      # Workaround to make fnm work in js shell - https://github.com/NixOS/nixpkgs/issues/202401
+      node = "steam-run node";
+      npm = "steam-run npm";
     };
 
     initExtra = ''

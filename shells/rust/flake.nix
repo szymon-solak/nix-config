@@ -14,6 +14,8 @@
         pkgs = import nixpkgs { inherit system overlays; };
       in {
         devShells.default = pkgs.mkShell {
+          name = "rust-env";
+
           buildInputs = [
             pkgs.openssl
             pkgs.pkg-config
