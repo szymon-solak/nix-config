@@ -43,5 +43,8 @@
     pkgs.vimPlugins.packer-nvim
     pkgs.direnv
     pkgs.nix-direnv
+    pkgs.unzip
+    pkgs.temurin-jre-bin
+    pkgs.kicad
   ];
 }
