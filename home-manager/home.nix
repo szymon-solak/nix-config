@@ -4,6 +4,7 @@
     ./modules/kitty.nix
     ./modules/fzf.nix
     ./modules/gnome.nix
+    ./modules/steam.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -46,5 +47,12 @@
     pkgs.unzip
     pkgs.temurin-jre-bin
     pkgs.kicad
+    pkgs.lm_sensors
+    pkgs.rpi-imager
+    pkgs.usbutils
+
+    # emulators
+    pkgs.flycast
+    pkgs.mame
   ];
 }

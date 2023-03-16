@@ -20,8 +20,16 @@
 
           buildInputs = [ pkgs.fnm pkgs.steam-run pkgs.nodePackages.jsonlint ];
 
-          shellHook =
-            "	if [[ ! -e ./.nvmrc ]]; then\n		echo \"18\" >> .nvmrc\n	fi\n\n	alias node=\"steam-run node\"\n	alias npm=\"steam-run npm\"\n\n	eval \"$(fnm env --use-on-cd)\"\n	fnm use\n";
+          shellHook = ''
+						if [[ ! -e ./.nvmrc ]]; then
+							echo \"18\" >> .nvmrc
+						fi
+						alias node="steam-run node"
+						alias npm="steam-run npm"
+
+						eval "$(fnm env --use-on-cd)"
+						fnm use
+					'';
         };
       });
 }
