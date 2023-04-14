@@ -1,5 +1,5 @@
 {
-  description = "Node 18.x JS devShell";
+  description = "Arduino devShell";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -12,14 +12,9 @@
 
       in {
         devShells.default = pkgs.mkShell {
-          name = "node-env";
+          name = "arduino-env";
 
-          buildInputs = [
-            pkgs.nodejs-18_x
-            pkgs.nodePackages.jsonlint
-            pkgs.nodePackages.typescript
-            pkgs.nodePackages.eslint
-          ];
+          buildInputs = [ pkgs.python3 pkgs.arduino-cli pkgs.avrdude ];
 
           shellHook = "";
         };

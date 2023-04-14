@@ -29,27 +29,27 @@
   };
   home.packages = [
     pkgs.firefox
-    pkgs.kitty
     pkgs.bat
     pkgs.exa
     pkgs.ripgrep
-    pkgs.fzf
     pkgs.fd
     pkgs.editorconfig-core-c
     pkgs.ffmpeg
     pkgs.obsidian
     pkgs.lato
-    pkgs.nerdfonts
+    pkgs.nerdfonts # TODO: Replace only with used fonts
     pkgs.neovim
     pkgs.vimPlugins.packer-nvim
     pkgs.direnv
     pkgs.nix-direnv
     pkgs.unzip
+    pkgs.usbutils
+
+    # microcontrollers/electronics
     pkgs.temurin-jre-bin
     pkgs.kicad
     pkgs.lm_sensors
     pkgs.rpi-imager
-    pkgs.usbutils
 
     # emulators
     pkgs.flycast

@@ -77,7 +77,7 @@
   users.users.szymon = {
     isNormalUser = true;
     description = "szymon";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" ];
     shell = pkgs.zsh;
     packages = with pkgs; [ zsh git gcc ];
   };
