@@ -5,6 +5,7 @@
     ./modules/fzf.nix
     ./modules/gnome.nix
     ./modules/steam.nix
+    ./modules/nvim
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -38,8 +39,6 @@
     pkgs.obsidian
     pkgs.lato
     pkgs.nerdfonts # TODO: Replace only with used fonts
-    pkgs.neovim
-    pkgs.vimPlugins.packer-nvim
     pkgs.direnv
     pkgs.nix-direnv
     pkgs.unzip
