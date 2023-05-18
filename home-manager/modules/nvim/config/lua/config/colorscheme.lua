@@ -1,41 +1,20 @@
-local status_ok, catppuccin = pcall(require, "catppuccin")
+local status_ok, nightfox = pcall(require, "nightfox")
 if not status_ok then
 	return
 end
 
 local theme = {}
 
--- TODO: Change automatically
-theme.should_use_light_mode = false -- tonumber(os.date("%H")) < 16
+theme.should_use_light_mode = tonumber(os.date("%H")) < 16
 
 if theme.should_use_light_mode then
-	vim.cmd [[set background=light]]
-	vim.g.catppuccin_flavour = 'latte'
+	vim.cmd("set background=light")
 else
-	vim.cmd [[set background=dark]]
-	vim.g.catppuccin_flavour = 'frappe'
+	vim.cmd("set background=dark")
 end
 
-catppuccin.setup {
-	highlight = {
-		enable = true,
-		additional_vim_regex_highlighting = false,
-	},
-	integration = {
-		dap = {
-			enabled = true,
-		},
-		native_lsp = {
-			enabled = true,
-		},
-	},
-	dim_inactive = {
-		enabled = true,
-		shade = "dark",
-		percentage = 0.3,
-	}
-}
+nightfox.setup {}
 
-vim.cmd("colorscheme catppuccin")
+vim.cmd("colorscheme nightfox")
 
 return theme
