@@ -37,8 +37,6 @@
     pkgs.editorconfig-core-c
     pkgs.ffmpeg
     pkgs.obsidian
-    pkgs.lato
-    pkgs.nerdfonts # TODO: Replace only with used fonts
     pkgs.direnv
     pkgs.nix-direnv
     pkgs.unzip

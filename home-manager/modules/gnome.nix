@@ -3,6 +3,7 @@
     pkgs.gnomeExtensions.pop-shell
     pkgs.gnomeExtensions.pop-launcher-super-key
     pkgs.gnome.gnome-tweaks
+    pkgs.lato
   ];
 
   gtk = {

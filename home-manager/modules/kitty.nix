@@ -1,5 +1,6 @@
 { pkgs, ... }: {
-  home.packages = [ pkgs.kitty-themes ];
+  home.packages =
+    [ pkgs.kitty-themes pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; } ];
 
   programs.kitty = {
     enable = true;
