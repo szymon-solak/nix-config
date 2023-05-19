@@ -17,8 +17,10 @@
           buildInputs = [
             pkgs.nodejs-18_x
             pkgs.nodePackages.jsonlint
-            pkgs.nodePackages.typescript
             pkgs.nodePackages.eslint
+            pkgs.nodePackages.typescript
+            pkgs.nodePackages.typescript-language-server
+            pkgs.nodePackages.vscode-langservers-extracted
           ];
 
           shellHook = "";

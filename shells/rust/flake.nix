@@ -20,6 +20,7 @@
             pkgs.openssl
             pkgs.pkg-config
             pkgs.rust-bin.stable.latest.default
+            pkgs.rust-analyzer
           ];
 
           shellHook = "";
