@@ -1,6 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, ... }: 
+let
+	fonts = pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; };
+in {
   home.packages =
-    [ pkgs.kitty-themes pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; } ];
+    [ pkgs.kitty-themes fonts ];
 
   programs.kitty = {
     enable = true;
