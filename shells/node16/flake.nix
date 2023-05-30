@@ -1,5 +1,5 @@
 {
-  description = "Node 18.x JS devShell";
+  description = "Node 16.x JS devShell";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -9,35 +9,22 @@
   outputs = { self, nixpkgs, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = import nixpkgs { inherit system; };
-
-        # jsDebug = pkgs.stdenv.mkDerivation {
-        # 	name = "vscode-js-debug";
-        # 	version = "1.78.0";
-        # 	src = ./js-nix;
-        #
-        # 	postBuild = ''
-        # 		mkdir -p $out/out
-        # 		ls
-        # 	'';
-        # };
+        pkgs = import nixpkgs {
+          inherit system;
+          config = { permittedInsecurePackages = [ "nodejs-16.20.0" ]; };
+        };
       in {
         devShells.default = pkgs.mkShell {
           name = "node-env";
 
           buildInputs = [
-            pkgs.nodejs-18_x
+            pkgs.nodejs-16_x
             pkgs.nodePackages.jsonlint
             pkgs.nodePackages.eslint
             pkgs.nodePackages.typescript
             pkgs.nodePackages.typescript-language-server
             pkgs.nodePackages.vscode-langservers-extracted
           ];
-
-          # shellHook = "
-          # 	export NODE_PATH=${pkgs.nodejs-18_x}/bin/node
-          # 	export VSCODE_JS_DEBUG_PATH=${jsDebug}
-          # ";
         };
       });
 }

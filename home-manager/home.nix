@@ -6,7 +6,7 @@
     ./modules/gnome.nix
     ./modules/steam.nix
     ./modules/nvim
-		./modules/git.nix
+    ./modules/git.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

@@ -73,20 +73,19 @@ local mappings = {
 		name = "Open",
 		p = { "<cmd>NvimTreeToggle<cr>", "Browse Files" },
 		f = { "<cmd>NvimTreeFindFile<cr>", "Find current file" }
-		-- p = { "<cmd>Telescope file_browser path=%:p:h<CR>", "Browse Files" },
 	},
 
 	p = {
 		name = "Project",
-		p = { "<cmd>Telescope project<cr>", "Projects" },
 		f = { "<cmd>Telescope find_files<cr>", "Find File" },
 	},
 
 	t = {
-		name = "Terminal",
-		f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-		h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
-		v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
+		name = "Tabs",
+		t = { "<cmd>$tabnew<cr>", "New tab"  },
+		c = { "<cmd>tabclose<cr>", "Close current tab" },
+		["["] = { "<cmd>-tabmove<cr>", "Move current tab left" },
+		["]"] = { "<cmd>+tabmove<cr>", "Move current tab right" },
 	},
 }
 

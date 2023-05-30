@@ -1,9 +1,7 @@
-{ pkgs, ... }: 
-let
-	fonts = pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; };
+{ pkgs, ... }:
+let fonts = pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; };
 in {
-  home.packages =
-    [ pkgs.kitty-themes fonts ];
+  home.packages = [ pkgs.kitty-themes fonts ];
 
   programs.kitty = {
     enable = true;
@@ -11,6 +9,7 @@ in {
       font_family = "Iosevka Term";
       font_size = 16;
       cursor_shape = "underline";
+      enabled_layouts = "tall";
     };
 
     extraConfig = "include ${pkgs.kitty-themes}/themes/rose-pine-moon.conf";
