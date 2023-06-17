@@ -4,13 +4,13 @@ if not status_ok then
 end
 
 local theme = {
-  fill = 'TabLineFill',
-  -- Also you can do this: fill = { fg='#f2e9de', bg='#907aa9', style='italic' }
-  head = 'TabLine',
-  current_tab = 'TabLineSel',
-  tab = 'TabLine',
-  win = 'TabLine',
-  tail = 'TabLine',
+	fill = 'TabLineFill',
+	-- Also you can do this: fill = { fg='#f2e9de', bg='#907aa9', style='italic' }
+	head = 'TabLine',
+	current_tab = 'TabLineSel',
+	tab = 'TabLine',
+	win = 'TabLine',
+	tail = 'TabLine',
 }
 
 tabby.set(function(line)
@@ -50,3 +50,7 @@ tabby.set(function(line)
     hl = theme.fill,
   }
 end)
+
+tabby.use_preset('active_wins_at_tail', {
+	theme,
+})
