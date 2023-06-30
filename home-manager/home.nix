@@ -1,8 +1,8 @@
 { inputs, lib, config, pkgs, ... }: {
   imports = [
+		./modules/base-utils.nix
     ./modules/zsh.nix
     ./modules/kitty.nix
-    ./modules/fzf.nix
     ./modules/gnome.nix
     ./modules/steam.nix
     ./modules/nvim
@@ -20,7 +20,6 @@
   xdg.enable = true;
   xdg.mime.enable = true;
   targets.genericLinux.enable = true;
-  fonts.fontconfig.enable = true;
 
   home.username = "szymon";
   home.homeDirectory = "/home/szymon";
@@ -32,16 +31,7 @@
   };
   home.packages = [
     pkgs.firefox
-    pkgs.bat
-    pkgs.exa
-    pkgs.ripgrep
-    pkgs.fd
-    pkgs.editorconfig-core-c
-    pkgs.ffmpeg
     pkgs.obsidian
-    pkgs.direnv
-    pkgs.nix-direnv
-    pkgs.unzip
     pkgs.usbutils
 		pkgs.appimage-run
 

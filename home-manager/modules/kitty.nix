@@ -12,6 +12,12 @@ in {
       enabled_layouts = "tall";
     };
 
-    extraConfig = "include ${pkgs.kitty-themes}/themes/rose-pine-moon.conf";
+    extraConfig = ''
+			map kitty_mod+enter launch --cwd=current
+			map kitty_mod+t     new_tab_with_cwd
+
+			# TODO: Doesn't work on 23.05
+			include ${pkgs.kitty-themes}/themes/rose-pine-moon.conf
+		'';
   };
 }

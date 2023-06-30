@@ -18,10 +18,28 @@
         devShells.default = pkgs.mkShell {
           name = "node-env";
 
-          buildInputs = [ pkgs.fnm pkgs.steam-run pkgs.nodePackages.jsonlint ];
+          buildInputs = [ 
+						pkgs.gnupg
+						pkgs.asdf-vm
+						pkgs.nodePackages.jsonlint
+						pkgs.nodePackages.eslint
+						pkgs.nodePackages.typescript
+						pkgs.nodePackages.typescript-language-server
+						pkgs.nodePackages.vscode-langservers-extracted
+					];
 
-          shellHook =
-            "	if [[ ! -e ./.nvmrc ]]; then\n		echo \\\"18\\\" >> .nvmrc\n	fi\n	alias node=\"steam-run node\"\n	alias npm=\"steam-run npm\"\n\n	eval \"$(fnm env --use-on-cd)\"\n	fnm use\n";
+          shellHook = ''
+						export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_available
+						export PATH=$HOME/.asdf/shims:$PATH
+
+						if [[ ! -e $HOME/.asdfrc ]]; then
+							echo "legacy_version_file = yes" > $HOME/.asdfrc
+						fi
+
+						if [[ ! -e ./.nvmrc ]]; then
+							echo "20" >> .nvmrc
+						fi
+					'';
         };
       });
 }
