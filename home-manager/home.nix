@@ -7,6 +7,7 @@
     ./modules/steam.nix
     ./modules/nvim
     ./modules/git.nix
+		./modules/3dp.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -42,6 +43,7 @@
     pkgs.nix-direnv
     pkgs.unzip
     pkgs.usbutils
+		pkgs.appimage-run
 
     # microcontrollers/electronics
     pkgs.temurin-jre-bin
