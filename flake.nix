@@ -18,20 +18,16 @@
 
     homeConfigurations = {
       "szymon@kirin" = home-manager.lib.homeManagerConfiguration {
-				pkgs = import nixpkgs {
-					system = "x86_64-linux";
-				};
+        pkgs = import nixpkgs { system = "x86_64-linux"; };
         extraSpecialArgs = { inherit inputs; };
         modules = [ ./home-manager/home.nix ];
       };
 
-			"szymonsolak@mercury.local" = home-manager.lib.homeManagerConfiguration {
-				pkgs = import nixpkgs {
-					system = "aarch64-darwin";
-				};
+      "szymonsolak@mercury.local" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs { system = "aarch64-darwin"; };
         extraSpecialArgs = { inherit inputs; };
-				modules = [ ./home-manager/darwin.nix ];
-			};
+        modules = [ ./home-manager/darwin.nix ];
+      };
     };
 
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;

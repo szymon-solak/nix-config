@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-	home.packages = [
+  home.packages = [
     pkgs.exa
     pkgs.bat
     pkgs.ripgrep
@@ -7,8 +7,8 @@
     pkgs.editorconfig-core-c
     pkgs.ffmpeg
     pkgs.unzip
-		pkgs.fzf
-	];
+    pkgs.fzf
+  ];
 
   fonts.fontconfig.enable = true;
 }

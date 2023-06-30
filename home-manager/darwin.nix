@@ -1,15 +1,15 @@
 { config, pkgs, ... }: {
-	imports = [
-		./modules/base-utils.nix
-		./modules/git.nix
-		./modules/zsh.nix
-		./modules/kitty.nix
+  imports = [
+    ./modules/base-utils.nix
+    ./modules/git.nix
+    ./modules/zsh.nix
+    ./modules/kitty.nix
     ./modules/nvim
-		./modules/darwin-application-activation.nix
-	];
+    ./modules/darwin-application-activation.nix
+  ];
 
   programs.home-manager.enable = true;
-	disabledModules = [ "targets/darwin/linkapps.nix" ];
+  disabledModules = [ "targets/darwin/linkapps.nix" ];
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 
@@ -24,7 +24,7 @@
     pkgs.gcc
     pkgs.python3
 
-		pkgs.obsidian
+    pkgs.obsidian
     pkgs.lazydocker
     pkgs.awscli2
   ];

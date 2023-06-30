@@ -2,14 +2,14 @@
   programs.git = {
     enable = true;
 
-		difftastic = {
-			enable = true;
-			color = "always";
-			display = "inline";
-		};
+    difftastic = {
+      enable = true;
+      color = "always";
+      display = "inline";
+    };
 
-		userName = "Szymon Solak";
-		userEmail = "16944591+szymon-solak@users.noreply.github.com";
+    userName = "Szymon Solak";
+    userEmail = "16944591+szymon-solak@users.noreply.github.com";
 
     aliases = {
       unstage = "reset HEAD --";
@@ -19,7 +19,7 @@
     extraConfig = {
       rerere = { enabled = 1; };
       commit = { template = "${./.gitmessage}"; };
-			init = { defaultBranch = "main"; };
+      init = { defaultBranch = "main"; };
     };
   };
 }

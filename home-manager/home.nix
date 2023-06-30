@@ -1,13 +1,13 @@
 { inputs, lib, config, pkgs, ... }: {
   imports = [
-		./modules/base-utils.nix
+    ./modules/base-utils.nix
     ./modules/zsh.nix
     ./modules/kitty.nix
     ./modules/gnome.nix
     ./modules/steam.nix
     ./modules/nvim
     ./modules/git.nix
-		./modules/3dp.nix
+    ./modules/3dp.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -33,7 +33,7 @@
     pkgs.firefox
     pkgs.obsidian
     pkgs.usbutils
-		pkgs.appimage-run
+    pkgs.appimage-run
 
     # microcontrollers/electronics
     pkgs.temurin-jre-bin
