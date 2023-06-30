@@ -14,11 +14,20 @@
       # Git
       gst = "git status";
       gc = "git commit -v";
+			gwl = "git worktree list";
+			gwa = "git worktree add";
+			gwc = "git worktree add -b";
+			gwd = "git worktree remove";
     };
 
     initExtra = ''
       export PATH=$HOME/bin:/usr/local/bin:$PATH
       export PATH=$HOME/.local/bin:$PATH
+			export PATH=$HOME/.asdf/shims:$PATH
+
+			export USER_ID=$(id -u)
+			export GROUP_ID=$(id -g)
+
       source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
     '';
 
@@ -65,4 +74,6 @@
       }
     ];
   };
+
+  programs.fzf.enableZshIntegration = true;
 }
