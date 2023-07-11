@@ -23,7 +23,7 @@
 
   home.username = "szymon";
   home.homeDirectory = "/home/szymon";
-  home.stateVersion = "22.11";
+  home.stateVersion = "23.05";
   home.sessionVariables = {
     EDITOR = "nvim";
     BROWSER = "firefox";

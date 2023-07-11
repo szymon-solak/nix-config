@@ -19,7 +19,6 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.loader.grub = {
     enable = true;
-    version = 2;
     devices = [ "nodev" ];
     efiSupport = true;
     useOSProber = true;
@@ -74,6 +73,7 @@
     pulse.enable = true;
   };
 
+	programs.zsh.enable = true;
   users.users.szymon = {
     isNormalUser = true;
     description = "szymon";

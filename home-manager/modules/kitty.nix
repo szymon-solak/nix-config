@@ -6,13 +6,15 @@ in {
   programs.kitty = {
     enable = true;
     settings = {
-      font_family = "Iosevka Term";
+      # font_family = "Iosevka Term";
       font_size = 16;
       cursor_shape = "underline";
       enabled_layouts = "tall";
     };
 
+		theme = "Nightfox";
+
     extraConfig =
-      "	map kitty_mod+enter launch --cwd=current\n	map kitty_mod+t     new_tab_with_cwd\n\n	# TODO: Doesn't work on 23.05\n	include ${pkgs.kitty-themes}/themes/rose-pine-moon.conf\n";
+      "	map kitty_mod+enter launch --cwd=current\n	map kitty_mod+t     new_tab_with_cwd";
   };
 }

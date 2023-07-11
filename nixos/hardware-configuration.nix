@@ -36,8 +36,6 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
-  # high-resolution display
-  hardware.video.hidpi.enable = lib.mkDefault true;
   # enable vulkan
   hardware.opengl.driSupport = true;
   hardware.opengl.driSupport32Bit = true;
