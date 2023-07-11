@@ -13,4 +13,6 @@ let
     in "${extracted}/OrcaSlicer_ubu64.AppImage";
     extraPkgs = pkgs: with pkgs; [ webkitgtk ];
   };
-in { home.packages = [ pkgs.prusa-slicer orcaslicer ]; }
+  orcaslicer-desktop = pkgs.writeTextDir "share/applications/OrcaSlicer.desktop"
+    "	[Desktop Entry]\n	Version=1.6.3\n	Type=Application\n	Name=OrcaSlicer\n	Exec=OrcaSlicer\n";
+in { home.packages = [ pkgs.prusa-slicer orcaslicer orcaslicer-desktop ]; }
