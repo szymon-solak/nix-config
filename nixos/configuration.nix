@@ -73,7 +73,7 @@
     pulse.enable = true;
   };
 
-	programs.zsh.enable = true;
+  programs.zsh.enable = true;
   users.users.szymon = {
     isNormalUser = true;
     description = "szymon";

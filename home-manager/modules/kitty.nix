@@ -12,7 +12,7 @@ in {
       enabled_layouts = "tall";
     };
 
-		theme = "Nightfox";
+    theme = "Nightfox";
 
     extraConfig =
       "	map kitty_mod+enter launch --cwd=current\n	map kitty_mod+t     new_tab_with_cwd";
