@@ -10,11 +10,15 @@ in {
       font_size = 16;
       cursor_shape = "underline";
       enabled_layouts = "tall";
+			macos_option_as_alt = "yes";
     };
 
-    theme = "Nightfox";
+    theme = "Catppuccin-Latte";
 
     extraConfig =
-      "	map kitty_mod+enter launch --cwd=current\n	map kitty_mod+t     new_tab_with_cwd";
+      ''
+				map kitty_mod+enter launch --cwd=current
+				map kitty_mod+t     new_tab_with_cwd
+			'';
   };
 }

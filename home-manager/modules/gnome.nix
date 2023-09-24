@@ -13,7 +13,7 @@
       package = pkgs.catppuccin-gtk.override {
         size = "compact";
         tweaks = [ "rimless" ];
-        # accents and variants are on nixpkgs/master
+        # TODO: Revisit after update
         # accents = [ "pink" ];
         # variant = "frappe";
       };

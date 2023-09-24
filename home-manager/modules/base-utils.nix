@@ -8,6 +8,8 @@
     pkgs.ffmpeg
     pkgs.unzip
     pkgs.fzf
+    pkgs.fx
+		pkgs.jq
   ];
 
   fonts.fontconfig.enable = true;

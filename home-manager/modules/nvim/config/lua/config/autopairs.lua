@@ -8,11 +8,10 @@ npairs.setup {
 	ts_config = {
 		lua = { "string", "source" },
 		javascript = { "string", "template_string" },
-		java = false,
 	},
-	disable_filetype = { "TelescopePrompt", "spectre_panel" },
+	disable_filetype = { "TelescopePrompt" },
 	fast_wrap = {
-		map = "<M-e>",
+		map = "<C-e>",
 		chars = { "{", "[", "(", '"', "'" },
 		pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
 		offset = 0, -- Offset from pattern match
@@ -30,3 +29,4 @@ if not cmp_status_ok then
 	return
 end
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
+

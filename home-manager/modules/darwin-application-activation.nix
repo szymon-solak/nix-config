@@ -1,4 +1,6 @@
 { lib, pkgs, config, ... }: {
+  disabledModules = [ "targets/darwin/linkapps.nix" ];
+
   # Copy GUI apps to "~/Applications/Home Manager Apps"
   # Based on this comment: https://github.com/nix-community/home-manager/issues/1341#issuecomment-778820334
   home.activation.darwinApps = if pkgs.stdenv.isDarwin then

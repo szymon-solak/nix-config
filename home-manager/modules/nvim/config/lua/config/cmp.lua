@@ -22,6 +22,8 @@ cmp.setup({
 		-- documentation = cmp.config.window.bordered(),
 	},
 	mapping = cmp.mapping.preset.insert({
+		['<C-k>'] = cmp.mapping.select_prev_item(),
+		['<C-j>'] = cmp.mapping.select_next_item(),
 		['<C-b>'] = cmp.mapping.scroll_docs(-1),
 		['<C-f>'] = cmp.mapping.scroll_docs(1),
 		['<C-Space>'] = cmp.mapping.complete(),
@@ -30,13 +32,9 @@ cmp.setup({
 	}),
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
-		-- { name = 'nvim_lsp_signature_help' },
-		{ name = 'vsnip' }, -- For vsnip users.
-		-- { name = 'luasnip' }, -- For luasnip users.
-		-- { name = 'ultisnips' }, -- For ultisnips users.
-		-- { name = 'snippy' }, -- For snippy users.
-	}, {
+		{ name = 'vsnip' },
 		{ name = 'buffer' },
+		{ name = 'path' },
 	}),
 	formatting = {
 		format = lspkind.cmp_format({
@@ -47,32 +45,5 @@ cmp.setup({
 	experimental = {
 		ghost_text = true
 	}
-})
-
--- Set configuration for specific filetype.
-cmp.setup.filetype('gitcommit', {
-	sources = cmp.config.sources({
-		{ name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-	}, {
-		{ name = 'buffer' },
-	})
-})
-
--- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline('/', {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = {
-		{ name = 'buffer' }
-	}
-})
-
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = cmp.config.sources({
-		{ name = 'path' }
-	}, {
-		{ name = 'cmdline' }
-	})
 })
 

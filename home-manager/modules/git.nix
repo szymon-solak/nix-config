@@ -2,11 +2,11 @@
   programs.git = {
     enable = true;
 
-    difftastic = {
-      enable = true;
-      color = "always";
-      display = "inline";
-    };
+    # difftastic = {
+    #   enable = true;
+    #   color = "always";
+    #   display = "inline";
+    # };
 
     userName = "Szymon Solak";
     userEmail = "16944591+szymon-solak@users.noreply.github.com";

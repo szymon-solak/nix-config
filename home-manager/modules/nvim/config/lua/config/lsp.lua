@@ -13,7 +13,7 @@ lsp.setup_servers({
 	'rnix',
 })
 
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+require('lspconfig').lua_ls.setup({})
 
 lsp.setup()
 
@@ -39,42 +39,3 @@ null_ls.setup({
 		diagnostics.shellcheck,
 	},
 })
-
--- Dap
-local status_ok, dap = pcall(require, "dap")
-if not status_ok then
-	return
-end
-
-local status_ok, dap_vscode_js = pcall(require, "dap-vscode-js")
-if not status_ok then
-	return
-end
-
-dap_vscode_js.setup({
-	debugger_path = os.getenv("VSCODE_JS_DEBUG_PATH"),
-  adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' }, -- which adapters to register in nvim-dap
-})
-
-for _, language in ipairs({ "typescript", "javascript", "typescriptreact" }) do
-  require("dap").configurations[language] = {
-		{
-			type = "pwa-node",
-			request = "launch",
-			name = "Launch file",
-			program = "${file}",
-			cwd = "${workspaceFolder}",
-		},
-		{
-			type = "pwa-node",
-			request = "attach",
-			name = "Attach",
-			processId = require'dap.utils'.pick_process,
-			cwd = "${workspaceFolder}",
-		}
-  }
-end
-
-vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
-vim.fn.sign_define("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
-vim.fn.sign_define("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })

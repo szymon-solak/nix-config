@@ -23,7 +23,6 @@
     initExtra = ''
             export PATH=$HOME/bin:/usr/local/bin:$PATH
             export PATH=$HOME/.local/bin:$PATH
-      			export PATH=$HOME/.asdf/shims:$PATH
 
       			export USER_ID=$(id -u)
       			export GROUP_ID=$(id -g)
@@ -37,8 +36,8 @@
         src = fetchFromGitHub {
           owner = "wfxr";
           repo = "forgit";
-          rev = "f6040b21a0db895d0e0ec110fecdc72274a20417";
-          sha256 = "sha256-zyDp8tswi+6WuHgJkSIz1OE6s314qycK1975vk8FbMM=";
+          rev = "f1ac9e3f7f1cfb5eb7cea02bfcaa56eb25ddbcbc";
+					sha256 = "sha256-/hnofpzfhgSrJyzMWgk0DLIhIWEl9juVBuxwztwF8Yo=";
         };
         file = "forgit.plugin.zsh";
       }
@@ -47,8 +46,8 @@
         src = fetchFromGitHub {
           owner = "agkozak";
           repo = "zsh-z";
-          rev = "aaafebcd97424c570ee247e2aeb3da30444299cd";
-          sha256 = "sha256-9Wr4uZLk2CvINJilg4o72x0NEAl043lP30D3YnHk+ZA=";
+          rev = "dc9e2bc0cdbaa0a507371c248d3dcc9f58db8726";
+					sha256 = "sha256-T0iZK9Tb7ExJaZ6e2UmwecnKHMQilwAPkyAa/uhqrw0=";
         };
         file = "zsh-z.plugin.zsh";
       }
@@ -57,8 +56,8 @@
         src = fetchFromGitHub {
           owner = "sindresorhus";
           repo = "pure";
-          rev = "2d89ef1d06f76997790b45df5ac447f0c3ffd34c";
-          sha256 = "sha256-KO1z5/9vRh4JNNawbUhy9Zgr3ywGfpSEMx/4N0V+vmw=";
+          rev = "87e6f5dd4c793f6d980532205aaefe196780606f";
+					sha256 = "sha256-TR4CyBZ+KoZRs9XDmWE5lJuUXXU1J8E2Z63nt+FS+5w=";
         };
         file = "pure.plugin.zsh";
       }
@@ -67,8 +66,8 @@
         src = fetchFromGitHub {
           owner = "zsh-users";
           repo = "zsh-syntax-highlighting";
-          rev = "caa749d030d22168445c4cb97befd406d2828db0";
-          sha256 = "sha256-YV9lpJ0X2vN9uIdroDWEize+cp9HoKegS3sZiSpNk50=";
+          rev = "1386f1213eb0b0589d73cd3cf7c56e6a972a9bfd";
+					sha256 = "sha256-iKx7lsQCoSAbpANYFkNVCZlTFdwOEI34rx/h1rnraSg=";
         };
         file = "zsh-syntax-highlighting.plugin.zsh";
       }

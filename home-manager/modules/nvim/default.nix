@@ -11,7 +11,8 @@ let
         rev = rev;
       };
     };
-in {
+in
+{
   programs.neovim = {
     enable = true;
     viAlias = true;
@@ -25,7 +26,6 @@ in {
       # general use
       nvim-autopairs
       comment-nvim
-      zen-mode-nvim
       lualine-nvim
       nvim-web-devicons
       which-key-nvim
@@ -34,38 +34,33 @@ in {
       vim-sandwich
       leap-nvim
       vim-repeat
-      (fromGitHub "nanozuki/tabby.nvim" "main"
-        "8bbd8b15c15b69057260170355b8e7adcca1c11a")
+      tabby-nvim
 
       # telescope
       telescope-nvim
       telescope-ui-select-nvim
-      (fromGitHub "debugloop/telescope-undo.nvim" "main"
-        "231b5ebb4328d2768c830c9a8d1b9c696116848d")
+      telescope-undo-nvim
+			telescope-fzf-native-nvim
 
       # theme
-      nightfox-nvim
+      # nightfox-nvim
+			catppuccin-nvim
 
       # completion
+      nvim-cmp
       cmp-nvim-lsp
       cmp-buffer
       cmp-path
       cmp-cmdline
-      nvim-cmp
       cmp-vsnip
       vim-vsnip
 
       # lsp
-      (fromGitHub "VonHeikemen/lsp-zero.nvim" "v2.x"
-        "12bcd4a43e46ac64c30644dc86142a21a84d357a")
-      (fromGitHub "neovim/nvim-lspconfig" "master"
-        "6f1d124bbcf03c4c410c093143a86415f46d16a0")
+      lsp-zero-nvim
+      nvim-lspconfig
       lspkind-nvim
       null-ls-nvim
       trouble-nvim
-      nvim-dap
-      (fromGitHub "mxsdev/nvim-dap-vscode-js" "main"
-        "03bd29672d7fab5e515fc8469b7d07cc5994bbf6")
 
       # treesitter
       nvim-treesitter.withAllGrammars
@@ -74,10 +69,6 @@ in {
       # git
       gitsigns-nvim
       vim-fugitive
-    ];
-
-    extraPackages = [
-      pkgs.delta # better diffs for telescope-undo
     ];
   };
 

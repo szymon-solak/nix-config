@@ -53,20 +53,6 @@ local mappings = {
 		w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
 		s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
 		S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
-
-		i = { "<cmd>Mason<cr>", "LSP Info" },
-	},
-
-	d = {
-		name = "Debug",
-		b = { "<cmd>lua require('dap').toggle_breakpoint()<cr>", "Toggle breakpoint" },
-		h = { "<cmd>lua require('dap').continue()<cr>", "Continue" },
-		j = { "<cmd>lua require('dap').step_over()<cr>", "Step over" },
-		k = { "<cmd>lua require('dap').step_into()<cr>", "Step into" },
-		l = { "<cmd>lua require('dap').step_out()<cr>", "Step out" },
-		i = { "<cmd>lua require('dap.ui.widgets').hover()<cr>" },
-		p = { "<cmd>lua require('dap.ui.widgets').preview()<cr>" },
-		r = { "<cmd>lua require('dap').repl.open({}, 'vsplit')<cr>", "Repl" },
 	},
 
 	o = {
