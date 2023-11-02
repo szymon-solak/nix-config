@@ -12,11 +12,6 @@
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowUnfreePredicate = (_: true);
-
-  home.username = "szymonsolak";
-  home.homeDirectory = "/Users/szymonsolak";
   home.stateVersion = "23.05";
   home.packages = [
     pkgs.coreutils
@@ -27,5 +22,6 @@
     pkgs.awscli2
     pkgs.terraform
     pkgs.terragrunt
+		pkgs.ngrok
   ];
 }

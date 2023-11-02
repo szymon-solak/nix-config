@@ -6,29 +6,42 @@
 
     home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+		nix-darwin.url = "github:LnL7/nix-darwin/master";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs: {
+  outputs = { nixpkgs, home-manager, nix-darwin, ... }@inputs: {
     nixosConfigurations = {
       kirin = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
-        modules = [ ./nixos/configuration.nix ];
+        modules = [ 
+					./hosts/kirin
+					home-manager.nixosModules.home-manager {
+						home-manager.useGlobalPkgs = true;
+						home-manager.useUserPkgs = true;
+						home-manager.users.szymon = import ./home-manager/home.nix;
+						home-manager.extraSpecialArgs = { inherit inputs; };
+					}
+				];
       };
     };
 
-    homeConfigurations = {
-      "szymon@kirin" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { system = "x86_64-linux"; };
-        extraSpecialArgs = { inherit inputs; };
-        modules = [ ./home-manager/home.nix ];
-      };
-
-      "szymonsolak@mercury.local" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { system = "aarch64-darwin"; };
-        extraSpecialArgs = { inherit inputs; };
-        modules = [ ./home-manager/darwin.nix ];
-      };
-    };
+		darwinConfigurations = {
+			mercury = nix-darwin.lib.darwinSystem {
+				system = "aarch64-darwin";
+				specialArgs = { inherit inputs; };
+				modules = [
+					./hosts/mercury
+					home-manager.darwinModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.szymonsolak = import ./home-manager/darwin.nix;
+						home-manager.extraSpecialArgs = { inherit inputs; };
+          }
+				];
+			};
+		};
 
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
   };
