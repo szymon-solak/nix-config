@@ -6,7 +6,7 @@ in {
   programs.kitty = {
     enable = true;
     settings = {
-      # font_family = "Iosevka Term";
+      font_family = "Iosevka NFM";
       font_size = 14;
       cursor_shape = "underline";
       enabled_layouts = "tall";
