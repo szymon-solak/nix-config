@@ -40,6 +40,7 @@
     pkgs.kicad
     pkgs.lm_sensors
     pkgs.rpi-imager
+		pkgs.dfu-util
 
     # emulators
     pkgs.flycast
