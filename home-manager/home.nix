@@ -21,8 +21,6 @@
   xdg.mime.enable = true;
   targets.genericLinux.enable = true;
 
-  home.username = "szymon";
-  home.homeDirectory = "/home/szymon";
   home.stateVersion = "23.05";
   home.sessionVariables = {
     EDITOR = "nvim";

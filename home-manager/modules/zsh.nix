@@ -23,11 +23,15 @@
     initExtra = ''
             export PATH=$HOME/bin:/usr/local/bin:$PATH
             export PATH=$HOME/.local/bin:$PATH
+						export PATH=/run/current-system/sw/bin:$PATH
 
       			export USER_ID=$(id -u)
       			export GROUP_ID=$(id -g)
 
-            source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+						if [ -n "''${commands[fzf-share]}" ]; then
+							source "$(fzf-share)/key-bindings.zsh"
+							source "$(fzf-share)/completion.zsh"
+						fi
     '';
 
     plugins = with pkgs; [

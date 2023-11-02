@@ -38,13 +38,13 @@ local mappings = {
 		C = { "<cmd>Telescope commands<cr>", "Commands" },
 		f = { "<cmd>Telescope resume<cr>", "Resume last search" },
 		u = { "<cmd>Telescope undo<cr>", "Undo" },
+		w = { "<cmd>Telescope grep_string theme=ivy<cr>", "Search for word under cursor" },
 	},
 
 	l = {
 		name = "LSP",
 		a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-		f = { "<cmd>lua vim.lsp.buf.format { async = true }<cr>", "Format" },
-		F = { "<cmd>lua vim.lsp.buf.range_formatting()<cr>", "Format", mode = "v" },
+		f = { "<cmd>lua require('conform').format({ lsp_fallback = true })<cr>", "Format" },
 		r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
 		l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
 		h = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature help" },

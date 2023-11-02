@@ -7,18 +7,41 @@ in {
     enable = true;
     settings = {
       # font_family = "Iosevka Term";
-      font_size = 16;
+      font_size = 14;
       cursor_shape = "underline";
       enabled_layouts = "tall";
 			macos_option_as_alt = "yes";
+			allow_remote_control = "yes";
+			modify_font = "cell_height 125%";
+			hide_window_decorations = "yes";
+			window_margin_width = 4;
     };
 
     theme = "Catppuccin-Latte";
 
     extraConfig =
       ''
-				map kitty_mod+enter launch --cwd=current
+				# map kitty_mod+enter launch --cwd=current
 				map kitty_mod+t     new_tab_with_cwd
 			'';
   };
+
+	programs.zsh.initExtra = ''
+		set_theme () {
+			kitty @ set-colors --all ${pkgs.kitty-themes}/share/kitty-themes/themes/"$1".conf;
+		}
+
+		set_theme_based_on_time () {
+			local switch_to_dark_after_hour='13'
+			local current_hour=$(date +"%H")
+
+			if [ $current_hour -lt $switch_to_dark_after_hour ]; then
+				set_theme Catppuccin-Latte;
+			else
+				set_theme Catppuccin-Mocha;
+			fi
+		}
+
+		[[ -v KITTY_WINDOW_ID ]] && set_theme_based_on_time
+	'';
 }

@@ -59,8 +59,9 @@ in
       lsp-zero-nvim
       nvim-lspconfig
       lspkind-nvim
-      null-ls-nvim
       trouble-nvim
+			nvim-lint
+			(fromGitHub "stevearc/conform.nvim" "master" "4db76a68b47aa6e9777e4da4aed16f0fff74920e")
 
       # treesitter
       nvim-treesitter.withAllGrammars

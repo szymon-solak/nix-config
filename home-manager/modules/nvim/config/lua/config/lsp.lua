@@ -7,7 +7,6 @@ end)
 
 lsp.setup_servers({
 	'tsserver',
-	'eslint',
 	'lua_ls',
 	'rust_analyzer',
 	'rnix',
@@ -17,25 +16,37 @@ require('lspconfig').lua_ls.setup({})
 
 lsp.setup()
 
--- Format/Lint
-local null_ls_status_ok, null_ls = pcall(require, "null-ls")
-if not null_ls_status_ok then
-	return
-end
+-- Linters
+local lint = require('lint')
 
--- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
-local formatting = null_ls.builtins.formatting
--- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
-local diagnostics = null_ls.builtins.diagnostics
+lint.linters_by_ft = {
+	javascript = { "eslint_d" },
+	typescript = { "eslint_d" },
+	javascriptreact = { "eslint_d" },
+	typescriptreact = { "eslint_d" },
+	bash = { "shellcheck" },
+	json = { "jsonlint" },
+}
 
-null_ls.setup({
-	debug = false,
-	sources = {
-		formatting.eslint,
-		formatting.rustfmt,
-		diagnostics.eslint,
-		diagnostics.tsc,
-		diagnostics.jsonlint,
-		diagnostics.shellcheck,
+local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+	group = lint_augroup,
+	callback = function()
+		lint.try_lint()
+	end,
+})
+
+-- Formatters
+local conform = require('conform')
+
+conform.setup({
+	formatters_by_ft = {
+		javascript = { "eslint_d" },
+		typescript = { "eslint_d" },
+		javascriptreact = { "eslint_d" },
+		typescriptreact = { "eslint_d" },
+		rust = { "rustfmt" },
+		nix = { "nixfmt" },
 	},
 })
