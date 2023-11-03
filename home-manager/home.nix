@@ -1,6 +1,7 @@
 { inputs, lib, config, pkgs, ... }: {
   imports = [
     ./modules/base-utils.nix
+		./modules/firefox.nix
     ./modules/zsh.nix
     ./modules/kitty.nix
     ./modules/gnome.nix
@@ -28,7 +29,6 @@
     TERMINAL = "kitty";
   };
   home.packages = [
-    pkgs.firefox
     pkgs.obsidian
     pkgs.usbutils
     pkgs.appimage-run
