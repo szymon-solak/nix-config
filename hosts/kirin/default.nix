@@ -26,6 +26,17 @@
     devices = [ "nodev" ];
     efiSupport = true;
     useOSProber = true;
+    theme = pkgs.stdenv.mkDerivation {
+      pname = "distro-themes";
+      version = "3.2";
+      src = pkgs.fetchFromGitHub {
+        owner = "AdisonCavani";
+        repo = "distro-grub-themes";
+        rev = "v3.2";
+        hash = "sha256-U5QfwXn4WyCXvv6A/CYv9IkR/uDx4xfdSgbXDl5bp9M=";
+      };
+      installPhase = "mkdir $out && tar -C $out -xf themes/nixos.tar";
+    };
   };
 
   networking.hostName = "kirin";
