@@ -4,12 +4,10 @@
   nixpkgs = {
     overlays = [ ];
 
-    config = { 
-			allowUnfree = true;
-			permittedInsecurePackages = [
-				"electron-24.8.6"
-			];
-		};
+    config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [ "electron-24.8.6" ];
+    };
 
   };
 

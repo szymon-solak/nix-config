@@ -9,7 +9,7 @@
     pkgs.unzip
     pkgs.fzf
     pkgs.fx
-		pkgs.jq
+    pkgs.jq
   ];
 
   fonts.fontconfig.enable = true;
