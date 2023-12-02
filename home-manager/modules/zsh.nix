@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 {
   programs.zsh = {
     enable = true;
@@ -9,7 +8,7 @@
 
     shellAliases = {
       ip = "ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\\  -f2";
-      ls = "exa -lah --sort=type --icons";
+      ls = "eza -lah --sort=type --icons";
 
       # Git
       gst = "git status";

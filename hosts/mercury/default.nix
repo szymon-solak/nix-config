@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   services.nix-daemon.enable = true;
   programs.zsh = {
     enable = true;
@@ -10,8 +10,10 @@
     home = "/Users/szymonsolak/";
   };
 
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowUnfreePredicate = (_: true);
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+		"obsidian"
+		"terraform"
+	];
 
   imports = [ ./sketchybar ];
 

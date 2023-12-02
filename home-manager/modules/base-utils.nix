@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   home.packages = [
-    pkgs.exa
+    pkgs.eza
     pkgs.bat
     pkgs.ripgrep
     pkgs.fd
