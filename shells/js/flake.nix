@@ -23,7 +23,7 @@
             pkgs.asdf-vm
             pkgs.nodePackages.jsonlint
             pkgs.nodePackages.eslint
-						pkgs.nodePackages.eslint_d
+            pkgs.nodePackages.eslint_d
             pkgs.nodePackages.typescript
             pkgs.nodePackages.typescript-language-server
             pkgs.nodePackages.vscode-langservers-extracted

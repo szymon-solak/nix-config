@@ -1,7 +1,7 @@
-{ inputs, lib, config, pkgs, ... }: {
+{ pkgs, ... }@inputs: {
   imports = [
     ./modules/base-utils.nix
-		./modules/firefox.nix
+    # ./modules/firefox.nix
     ./modules/zsh.nix
     ./modules/kitty.nix
     ./modules/gnome.nix
@@ -9,6 +9,7 @@
     ./modules/nvim
     ./modules/git.nix
     ./modules/3dp.nix
+    ./modules/hyprland.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -29,16 +30,18 @@
     TERMINAL = "kitty";
   };
   home.packages = [
+    pkgs.firefox
     pkgs.obsidian
     pkgs.usbutils
     pkgs.appimage-run
+    pkgs.amdgpu_top
 
     # microcontrollers/electronics
     pkgs.temurin-jre-bin
     pkgs.kicad
     pkgs.lm_sensors
     pkgs.rpi-imager
-		pkgs.dfu-util
+    pkgs.dfu-util
 
     # emulators
     pkgs.flycast

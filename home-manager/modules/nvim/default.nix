@@ -11,8 +11,7 @@ let
         rev = rev;
       };
     };
-in
-{
+in {
   programs.neovim = {
     enable = true;
     viAlias = true;
@@ -40,11 +39,11 @@ in
       telescope-nvim
       telescope-ui-select-nvim
       telescope-undo-nvim
-			telescope-fzf-native-nvim
+      telescope-fzf-native-nvim
 
       # theme
       # nightfox-nvim
-			catppuccin-nvim
+      catppuccin-nvim
 
       # completion
       nvim-cmp
@@ -60,8 +59,9 @@ in
       nvim-lspconfig
       lspkind-nvim
       trouble-nvim
-			nvim-lint
-			(fromGitHub "stevearc/conform.nvim" "master" "4db76a68b47aa6e9777e4da4aed16f0fff74920e")
+      nvim-lint
+      (fromGitHub "stevearc/conform.nvim" "master"
+        "4db76a68b47aa6e9777e4da4aed16f0fff74920e")
 
       # treesitter
       nvim-treesitter.withAllGrammars
