@@ -5,26 +5,35 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     rust-overlay.url = "github:oxalica/rust-overlay";
     flake-utils.url = "github:numtide/flake-utils";
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, rust-overlay, flake-utils, ... }:
+  outputs = { self, nixpkgs, rust-overlay, fenix, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        overlays = [ (import rust-overlay) ];
+        overlays = [ fenix.overlays.default ];
         pkgs = import nixpkgs { inherit system overlays; };
       in {
         devShells.default = pkgs.mkShell {
           name = "rust-env";
 
           buildInputs = [
-            pkgs.openssl
-            pkgs.pkg-config
-            pkgs.rust-bin.stable.latest.default
-            pkgs.rust-analyzer
-            pkgs.rnix-lsp
-          ];
+						(fenix.packages.${system}.stable.withComponents [
+							"cargo"
+							"clippy"
+							"rust-src"
+							"rustc"
+							"rustfmt"
+						])
+						pkgs.rnix-lsp
+						pkgs.rust-analyzer
+					];
 
           shellHook = "";
         };
       });
 }
+
