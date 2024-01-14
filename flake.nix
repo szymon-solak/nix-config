@@ -2,9 +2,9 @@
   description = "Nix Config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
 
-    home-manager.url = "github:nix-community/home-manager/release-23.05";
+    home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-darwin.url = "github:LnL7/nix-darwin/master";
@@ -13,17 +13,12 @@
     hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { nixpkgs, home-manager, nix-darwin, hyprland, ... }@inputs: {
+  outputs = { nixpkgs, home-manager, nix-darwin, ... }@inputs: {
     nixosConfigurations = {
       kirin = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/kirin
-          {
-            programs.hyprland.enable = true;
-          }
-          # hyprland.nixosModules.default
-          # hyprland.homeManagerModules.default
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

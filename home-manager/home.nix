@@ -9,7 +9,7 @@
     ./modules/nvim
     ./modules/git.nix
     ./modules/3dp.nix
-    ./modules/hyprland.nix
+    # ./modules/hyprland.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -35,6 +35,7 @@
     pkgs.usbutils
     pkgs.appimage-run
     pkgs.amdgpu_top
+    pkgs.via
 
     # microcontrollers/electronics
     pkgs.temurin-jre-bin
