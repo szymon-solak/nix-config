@@ -9,7 +9,7 @@
 				"obsidian"
 				"terraform"
 			];
-      permittedInsecurePackages = [ "electron-24.8.6" ];
+      permittedInsecurePackages = [ "electron-24.8.6" "electron-25.9.0" ];
     };
 
   };
@@ -24,22 +24,25 @@
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot.loader.timeout = 1;
   boot.loader.grub = {
     enable = true;
     devices = [ "nodev" ];
     efiSupport = true;
     useOSProber = true;
-    theme = pkgs.stdenv.mkDerivation {
-      pname = "distro-themes";
-      version = "3.2";
-      src = pkgs.fetchFromGitHub {
-        owner = "AdisonCavani";
-        repo = "distro-grub-themes";
-        rev = "v3.2";
-        hash = "sha256-U5QfwXn4WyCXvv6A/CYv9IkR/uDx4xfdSgbXDl5bp9M=";
-      };
-      installPhase = "mkdir $out && tar -C $out -xf themes/nixos.tar";
-    };
+    # theme = pkgs.stdenv.mkDerivation {
+    #   pname = "distro-themes";
+    #   version = "3.2";
+    #   src = pkgs.fetchFromGitHub {
+    #     owner = "AdisonCavani";
+    #     repo = "distro-grub-themes";
+    #     rev = "v3.2";
+    #     hash = "sha256-U5QfwXn4WyCXvv6A/CYv9IkR/uDx4xfdSgbXDl5bp9M=";
+    #   };
+    #   installPhase = "mkdir $out && tar -C $out -xf themes/nixos.tar";
+    # };
+    extraConfig =
+      "	GRUB_GFXMODE=3440x1440x32,1920x1080x32,auto\n	GRUB_GFXPAYLOAD_LINUX=keep\n";
   };
 
   networking.hostName = "kirin";
@@ -69,7 +72,17 @@
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.desktopManager.gnome = {
+    enable = true;
+    extraGSettingsOverrides =
+      "	[org.gnome.desktop.peripherals.keyboard]\n	delay=150\n	repeat-interval=30\n";
+  };
+  # services.xserver.displayManager.sddm = {
+  # 	enable = true;
+  # 	# wayland.enable = true;
+  # };
+  # programs.hyprland.enable = true;
+  services.udev.packages = [ pkgs.via ];
 
   # Configure keymap in X11
   services.xserver = {
