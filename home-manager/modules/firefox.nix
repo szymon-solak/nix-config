@@ -24,5 +24,5 @@
 					"signon.rememberSignons" = false;
 			};
 		};
-  };
+	};
 }

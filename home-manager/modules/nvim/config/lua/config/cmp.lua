@@ -31,11 +31,21 @@ cmp.setup({
 		['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	}),
 	sources = cmp.config.sources({
-		{ name = 'nvim_lsp' },
-		{ name = 'vsnip' },
-		{ name = 'buffer' },
-		{ name = 'path' },
+		{ name = 'nvim_lsp', priority = 4 },
+		{ name = 'vsnip', priority = 3 },
+		{ name = 'buffer', priority = 2 },
+		{ name = 'path', priority = 1 },
 	}),
+	sorting = {
+		priority_weight = 1.0,
+		comparators = {
+			cmp.config.compare.locality,
+			cmp.config.compare.recently_used,
+			cmp.config.compare.score,
+			cmp.config.compare.offset,
+			cmp.config.compare.order,
+		},
+	},
 	formatting = {
 		format = lspkind.cmp_format({
 			mode = 'symbol_text',
@@ -44,6 +54,6 @@ cmp.setup({
 	},
 	experimental = {
 		ghost_text = true
-	}
+	},
 })
 
