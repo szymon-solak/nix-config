@@ -75,7 +75,7 @@ nvimtree.setup({
 	on_attach = on_attach,
 	sort_by = "case_sensitive",
 	view = {
-		width = 35,
+		width = 40,
 		-- adaptive_size = true,
 		side = "right",
 	},

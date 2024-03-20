@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 {
   programs.zsh = {
     enable = true;
@@ -19,6 +18,13 @@
       gwc = "git worktree add -b";
       gwd = "git worktree remove";
     };
+
+    initExtraFirst = ''
+            if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
+              . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+              . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
+            fi
+      		'';
 
     initExtra = ''
                   export PATH=$HOME/bin:/usr/local/bin:$PATH

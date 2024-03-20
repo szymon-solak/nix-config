@@ -46,7 +46,7 @@ local mappings = {
 		a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
 		f = { "<cmd>lua require('conform').format({ lsp_fallback = true })<cr>", "Format" },
 		r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-		l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+		l = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Show diagnostics" },
 		h = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature help" },
 
 		d = { "<cmd>Trouble document_diagnostics<cr>", "Document Diagnostics" },

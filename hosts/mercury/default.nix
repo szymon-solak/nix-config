@@ -1,5 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   services.nix-daemon.enable = true;
+
   programs.zsh = {
     enable = true;
     promptInit = "";
@@ -10,8 +11,10 @@
     home = "/Users/szymonsolak/";
   };
 
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowUnfreePredicate = (_: true);
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "obsidian"
+    "terraform"
+  ];
 
   imports = [ ./sketchybar ];
 
@@ -36,6 +39,7 @@
         InitialKeyRepeat = 10;
         KeyRepeat = 1;
       };
+      screencapture.location = "~/Pictures";
     };
   };
 
@@ -94,6 +98,8 @@
       left_padding = 6;
       right_padding = 6;
       bottom_padding = 40;
+      mouse_follows_focus = "on";
+      focus_follow_mouse = "off";
     };
   };
 }
