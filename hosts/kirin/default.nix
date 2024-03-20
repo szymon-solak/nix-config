@@ -6,7 +6,7 @@
 
     config = {
       allowUnfreePredicate = pkg:
-        builtins.elem (lib.getName pkg) [ "obsidian" "terraform" ];
+        builtins.elem (lib.getName pkg) [ "obsidian" "terraform" "steam" "steam-original" "steam-run" ];
       permittedInsecurePackages = [ "electron-24.8.6" "electron-25.9.0" ];
     };
 
