@@ -11,10 +11,8 @@
     home = "/Users/szymonsolak/";
   };
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "obsidian"
-    "terraform"
-  ];
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [ "obsidian" "terraform" ];
 
   imports = [ ./sketchybar ];
 

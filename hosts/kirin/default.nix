@@ -5,10 +5,8 @@
     overlays = [ ];
 
     config = {
-			allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-				"obsidian"
-				"terraform"
-			];
+      allowUnfreePredicate = pkg:
+        builtins.elem (lib.getName pkg) [ "obsidian" "terraform" ];
       permittedInsecurePackages = [ "electron-24.8.6" "electron-25.9.0" ];
     };
 

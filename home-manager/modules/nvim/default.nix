@@ -60,7 +60,7 @@ in {
       lspkind-nvim
       trouble-nvim
       nvim-lint
-			conform-nvim
+      conform-nvim
 
       # treesitter
       nvim-treesitter.withAllGrammars

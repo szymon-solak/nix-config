@@ -1,7 +1,6 @@
 { pkgs, ... }:
 let scripts = ./scripts;
-in
-{
+in {
   services.sketchybar = {
     enable = true;
     package = pkgs.sketchybar;
