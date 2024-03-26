@@ -23,7 +23,7 @@
         # };
       in {
         devShells.default = pkgs.mkShell {
-          name = "node-env";
+          name = "node";
 
           buildInputs = [
             pkgs.nodejs-18_x

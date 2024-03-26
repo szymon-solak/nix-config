@@ -36,16 +36,16 @@ cmp.setup({
 		{ name = 'buffer', priority = 2 },
 		{ name = 'path', priority = 1 },
 	}),
-	sorting = {
-		priority_weight = 1.0,
-		comparators = {
-			cmp.config.compare.locality,
-			cmp.config.compare.recently_used,
-			cmp.config.compare.score,
-			cmp.config.compare.offset,
-			cmp.config.compare.order,
-		},
-	},
+	-- sorting = {
+	-- 	priority_weight = 1.0,
+	-- 	comparators = {
+	-- 		cmp.config.compare.locality,
+	-- 		cmp.config.compare.recently_used,
+	-- 		cmp.config.compare.score,
+	-- 		cmp.config.compare.offset,
+	-- 		cmp.config.compare.order,
+	-- 	},
+	-- },
 	formatting = {
 		format = lspkind.cmp_format({
 			mode = 'symbol_text',

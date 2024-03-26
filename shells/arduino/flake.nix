@@ -12,7 +12,7 @@
 
       in {
         devShells.default = pkgs.mkShell {
-          name = "arduino-env";
+          name = "arduino";
 
           buildInputs = [ pkgs.python3 pkgs.arduino-cli pkgs.avrdude ];
 

@@ -18,7 +18,7 @@
         pkgs = import nixpkgs { inherit system overlays; };
       in {
         devShells.default = pkgs.mkShell {
-          name = "rust-env";
+          name = "rust";
 
           buildInputs = [
 						(fenix.packages.${system}.stable.withComponents [

@@ -15,7 +15,7 @@
 
       in {
         devShells.default = pkgs.mkShell {
-          name = "node-env";
+          name = "node";
 
           buildInputs = [
             pkgs.gnupg

@@ -11,7 +11,7 @@
       let pkgs = import nixpkgs { inherit system; };
       in {
         devShells.default = pkgs.mkShell {
-          name = "node-env";
+          name = "node";
 
           buildInputs = [
             pkgs.nodejs_20

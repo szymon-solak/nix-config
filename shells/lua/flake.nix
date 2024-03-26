@@ -12,7 +12,7 @@
 
       in {
         devShells.default = pkgs.mkShell {
-          name = "lua-env";
+          name = "lua";
 
           buildInputs =
             [ pkgs.lua pkgs.luajit pkgs.sumneko-lua-language-server ];
