@@ -21,16 +21,16 @@
           name = "rust";
 
           buildInputs = [
-						(fenix.packages.${system}.stable.withComponents [
-							"cargo"
-							"clippy"
-							"rust-src"
-							"rustc"
-							"rustfmt"
-						])
-						pkgs.rnix-lsp
-						pkgs.rust-analyzer
-					];
+            (fenix.packages.${system}.stable.withComponents [
+              "cargo"
+              "clippy"
+              "rust-src"
+              "rustc"
+              "rustfmt"
+            ])
+            pkgs.rnix-lsp
+            pkgs.rust-analyzer
+          ];
 
           shellHook = "";
         };

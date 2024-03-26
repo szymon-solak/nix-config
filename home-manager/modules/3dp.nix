@@ -17,11 +17,11 @@ let
   orcaslicer = pkgs.appimageTools.wrapType2 rec {
     name = "OrcaSlicer";
     pname = "orcaslicer";
-    version = "1.9.0";
+    version = "2.0.0-beta";
     src = pkgs.fetchurl {
       url =
         "https://github.com/SoftFever/OrcaSlicer/releases/download/v${version}/OrcaSlicer_Linux_V${version}.AppImage";
-      sha256 = "sha256-lo8pMueFU92G/2KWbE94HyLWWbSADNMVpp5IoZV7j10=";
+      sha256 = "sha256-KsHPGlIUhaKjGv9BfAlYs4eWmFMcqclYvm2XwGRnbeA=";
     };
     extraPkgs = pkgs: with pkgs; [ webkitgtk ];
   };
@@ -39,7 +39,7 @@ let
   };
 
   orcaslicer-desktop = pkgs.writeTextDir "share/applications/OrcaSlicer.desktop"
-    "	[Desktop Entry]\n	Version=1.9.0\n	Type=Application\n	Name=OrcaSlicer\n	Exec=OrcaSlicer\n";
+    "	[Desktop Entry]\n	Version=2.0.0-beta\n	Type=Application\n	Name=OrcaSlicer\n	Exec=OrcaSlicer\n";
 in {
   home.packages =
     [ pkgs.prusa-slicer orcaslicer orcaslicer-desktop bambu-studio ];
