@@ -6,7 +6,13 @@
 
     config = {
       allowUnfreePredicate = pkg:
-        builtins.elem (lib.getName pkg) [ "obsidian" "terraform" "steam" "steam-original" "steam-run" ];
+        builtins.elem (lib.getName pkg) [
+          "obsidian"
+          "terraform"
+          "steam"
+          "steam-original"
+          "steam-run"
+        ];
       permittedInsecurePackages = [ "electron-24.8.6" "electron-25.9.0" ];
     };
 
@@ -103,13 +109,17 @@
   };
 
   programs.zsh.enable = true;
+
   users.users.szymon = {
     isNormalUser = true;
     description = "szymon";
     extraGroups = [ "networkmanager" "wheel" "dialout" ];
     shell = pkgs.zsh;
-    packages = with pkgs; [ zsh git gcc ];
+    packages = with pkgs; [ git gcc ];
   };
+
+  security.sudo.enable = false;
+  security.sudo-rs.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "22.11";
