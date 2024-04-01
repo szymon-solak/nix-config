@@ -81,11 +81,9 @@
     extraGSettingsOverrides =
       "	[org.gnome.desktop.peripherals.keyboard]\n	delay=150\n	repeat-interval=30\n";
   };
-  # services.xserver.displayManager.sddm = {
-  # 	enable = true;
-  # 	# wayland.enable = true;
-  # };
-  # programs.hyprland.enable = true;
+
+  programs.hyprland.enable = true;
+
   services.udev.packages = [ pkgs.via ];
 
   # Configure keymap in X11
