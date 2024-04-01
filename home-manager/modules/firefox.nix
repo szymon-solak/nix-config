@@ -1,15 +1,16 @@
 # TODO: FIXME
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   programs.firefox = {
+    package = pkgs.firefox-devedition;
     enable = true;
     profiles.default = {
       bookmarks = { };
-      extensions = with pkgs.inputs.firefox-addons; [
-        ublock-origin
-        bitwarden
-        react-devtools
-        reduxdevtools
-      ];
+      # extensions = with inputs.firefox-addons; [
+      # ublock-origin
+      # bitwarden
+      # react-devtools
+      # reduxdevtools
+      # ];
       settings = {
         "browser.startup.homepage" = "file:///~/projects/start-page/index.html";
         "browser.disableResetPrompt" = true;
