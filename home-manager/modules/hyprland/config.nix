@@ -1,9 +1,7 @@
-{ pkgs, ... }:
-let fonts = pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; };
-in {
+{ pkgs, ... }: {
   home.packages = [
     pkgs.tofi # TODO: Theme
-    pkgs.obs-studio
+    pkgs.obs-studio # TODO: Fix screenshare
     pkgs.mako
     pkgs.killall
   ];

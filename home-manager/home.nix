@@ -9,7 +9,7 @@
     ./modules/nvim
     ./modules/git.nix
     ./modules/3dp.nix
-    ./modules/hyprland.nix
+    ./modules/hyprland
   ];
 
   programs.home-manager.enable = true;
