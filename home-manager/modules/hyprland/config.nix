@@ -1,17 +1,34 @@
 { pkgs, ... }: {
   home.packages = [
-    pkgs.tofi # TODO: Theme
+    pkgs.tofi
     pkgs.obs-studio # TODO: Fix screenshare
     pkgs.mako
     pkgs.killall
+		pkgs.udiskie
   ];
 
+	home.file.".config/mako/config".text = ''
+		background-color=#1e1e2e
+		text-color=#cdd6f4
+		border-color=#89b4fa
+		progress-color=over #313244
+
+		[urgency=high]
+		border-color=#fab387
+	'';
+
   home.file.".config/hypr/hyprland.conf".text = ''
+								exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+								exec-once = dbus-update-activation-environment --systemd HYPRLAND_INSTANCE_SIGNATURE
+        				exec-once = hyprpaper
+
             		monitor=,preferred,auto,auto
             		env = XCURSOR_SIZE,24
 
-								exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-        				exec-once = hyprpaper & mako
+								exec-once = ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
+								exec-once = mako
+								exec-once = waybar
+								exec = hyprshade auto
 
     						input {
     								kb_layout = pl,us
@@ -24,7 +41,7 @@
     								sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
 
 										repeat_delay = 150
-										repeat_rate = 30
+										repeat_rate = 50
     						}
 
     						general {
@@ -55,6 +72,10 @@
 										smart_split = false
     						}
 
+								misc {
+									disable_hyprland_logo = true
+								}
+
     						$mainMod = SUPER
     						bind = $mainMod, Q, exec, kitty
     						bind = $mainMod, C, killactive
@@ -62,7 +83,7 @@
     						bind = $mainMod, E, exec, nautilus
     						bind = $mainMod, W, exec, firefox
     						bind = $mainMod, V, togglefloating
-    						bind = $mainMod, R, exec, tofi-drun
+    						bind = $mainMod, R, exec, tofi-drun --fuzzy-match=true --prompt-text "can I have " --background-color 181825 --text-color cdd6f4 --selection-color cba6f7 --border-width=2 --border-color cba6f7 --outline-width=0 --corner-radius=10 --font-size 20 | xargs hyprctl dispatch exec --
     						bind = $mainMod, P, pseudo
     						bind = $mainMod, J, togglesplit
 

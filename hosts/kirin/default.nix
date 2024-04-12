@@ -1,5 +1,10 @@
-{ inputs, lib, config, pkgs, ... }: {
-  imports = [ ./hardware-configuration.nix ];
+{ inputs, lib, config, pkgs, ... }:
+let
+  plymouth_themes = pkgs.adi1090x-plymouth-themes.override {
+    selected_themes = [ "hexagon_dots" ];
+  };
+in {
+  imports = [ ./hardware-configuration.nix ./polkit.nix ];
 
   nixpkgs = {
     overlays = [ ];
@@ -34,19 +39,11 @@
     devices = [ "nodev" ];
     efiSupport = true;
     useOSProber = true;
-    # theme = pkgs.stdenv.mkDerivation {
-    #   pname = "distro-themes";
-    #   version = "3.2";
-    #   src = pkgs.fetchFromGitHub {
-    #     owner = "AdisonCavani";
-    #     repo = "distro-grub-themes";
-    #     rev = "v3.2";
-    #     hash = "sha256-U5QfwXn4WyCXvv6A/CYv9IkR/uDx4xfdSgbXDl5bp9M=";
-    #   };
-    #   installPhase = "mkdir $out && tar -C $out -xf themes/nixos.tar";
-    # };
-    extraConfig =
-      "	GRUB_GFXMODE=3440x1440x32,1920x1080x32,auto\n	GRUB_GFXPAYLOAD_LINUX=keep\n";
+  };
+  boot.plymouth = {
+    enable = true;
+    themePackages = [ plymouth_themes ];
+    theme = "hexagon_dots";
   };
 
   networking.hostName = "kirin";
@@ -83,7 +80,7 @@
   };
 
   programs.hyprland.enable = true;
-
+  services.udisks2.enable = true;
   services.udev.packages = [ pkgs.via ];
 
   # Configure keymap in X11

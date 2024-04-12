@@ -1,16 +1,14 @@
-{ pkgs, ... }: {
+{ pkgs, pkgs-unstable, ... }: {
 	home.packages = [
 		pkgs.waybar
+		pkgs.bluez
+		pkgs-unstable.overskride
 	];
 
 	programs.waybar = {
 		enable = true;
 		systemd.enable = true;
 
-		# icon before window title
-		# active workspace
-		# bt/wifi formatting
-		# usage islands/groups
 		style = ''
 			/* Catppuccin Mocha */
 			@define-color rosewater #f5e0dc;
@@ -41,43 +39,62 @@
 			@define-color crust #11111b;
 
 			* {
-				font-family: 'Iosevka Nerd Font Mono';
-				color: @text;
+				font-family: 'Iosevka Nerd Font';
 			}
 
 			window#waybar {
 				background-color: transparent;
 			}
 
-			#center {
+			#workspace {
 				background-color: @mantle;
-				border-radius: 6px;
-				padding-left: 16px;
-				padding-right: 16px;
+				border-radius: 0.375em;
+				padding-left: 0.625em;
+				padding-right: 0.625em;
 			}
 
-			#cpu-usage {
-				background-color: @mantle;
-				border-radius: 6px;
-				padding-left: 10px;
-				padding-right: 10px;
-				margin-right: 10px;
+			#workspaces button {
+				border-radius: 0;
+				color: @overlay0;
 			}
 
-			#gpu-usage {
-				background-color: @mantle;
-				border-radius: 6px;
-				padding-left: 10px;
-				padding-right: 10px;
-				margin-right: 10px;
+			#workspaces button.active {
+				color: @lavender;
+				border-bottom: 1px solid @lavender;
 			}
 
-			#memory-usage {
+			#workspaces button.urgent {
+				color: @red;
+			}
+
+			#window {
+				color: @text;
+			}
+
+			window#waybar.empty #window {
+				font-size: 0;
+				padding: 0;
+				margin: 0;
+			}
+
+			#center, 
+			#cpu-usage,
+			#gpu-usage,
+			#memory-usage,
+			#bluetooth,
+			#network
+			{
 				background-color: @mantle;
-				border-radius: 6px;
-				padding-left: 10px;
-				padding-right: 10px;
-				margin-right: 10px;
+				color: @text;
+				border-radius: 0.375em;
+				padding-left: 0.625em;
+				padding-right: 0.625em;
+				margin-right: 0.625em;
+			}
+
+			#bluetooth.on, #bluetooth.connected {
+				background-color: @blue;
+				color: @mantle;
 			}
 		'';
 
@@ -89,10 +106,24 @@
 
 			# TODO: Volume widget?
       # TODO: Warning states for high usage?
-			# TODO: Power menu?
-			modules-left = [ "hyprland/workspaces" "hyprland/window" ];
+			modules-left = [ "group/workspace" ];
 			modules-center = [ "group/center" ];
-			modules-right = [ "group/cpu-usage" "group/gpu-usage" "group/memory-usage" "bluetooth" "network" "tray" ];
+			modules-right = [ 
+				"group/cpu-usage"
+				"group/gpu-usage"
+				"group/memory-usage"
+				"bluetooth"
+				"network"
+				"tray"
+			];
+
+			"group/workspace" = {
+				orientation = "inherit";
+				modules = [
+					"hyprland/workspaces"
+					"hyprland/window"
+				];
+			};
 
 			"group/center" = {
 				orientation = "inherit";
@@ -128,10 +159,22 @@
 				format = "{:%A, %d %B, %H:%M}";
 			};
 
+			bluetooth = {
+				format = "󰂯";
+				format-connected = "󰂱 ({num_connections})";
+				tooltip-format = "{device_enumerate}";
+				on-click = "overskride";
+			};
+
 			"hyprland/workspaces" = {
 				persistent-workspaces = {
 					"*" = 4;
 				};
+			};
+
+			"hyprland/window"	 = {
+				format = " {}";
+				separate-outputs = true;
 			};
 
 			cpu = {
@@ -162,6 +205,14 @@
 				interval = 30;
 				format = "{used:0.1f}G/{total:0.1f}G";
 				tooltip = false;
+			};
+
+			network = {
+				format = "{ifname}";
+				foramt-wifi = "󰖩 {essid} ({signalStrength}%)";
+				format-ethernet = "󰈁 {ipaddr}";
+				format-disconnected = "󰈂 Offline";
+				tooltip-format = "{ifname} via {gwaddr}";
 			};
 		}];
 	};
