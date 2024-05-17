@@ -23,7 +23,7 @@
     extraPkgs = pkgs: with pkgs; [webkitgtk];
   };
 
-  bambu-studio = pkgs.appimageTools.wrapType2 rec {
+  bambu-studio = pkgs.appimageTools.wrapType2 {
     name = "BambuStudio";
     pname = "bambustudio";
     version = "1.7.6";

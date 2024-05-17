@@ -20,25 +20,28 @@
     ...
   }:
     flake-utils.lib.eachDefaultSystem (system: let
-      overlays = [fenix.overlays.default];
-      pkgs = import nixpkgs {inherit system overlays;};
-    in {
-      devShells.default = pkgs.mkShell {
-        name = "rust";
+        overlays = [fenix.overlays.default];
+        pkgs = import nixpkgs {inherit system overlays;};
+      in {
+        devShells.default =
+          pkgs.mkShell {
+            name = "rust";
 
-        buildInputs = [
-          (fenix.packages.${system}.stable.withComponents [
-            "cargo"
-            "clippy"
-            "rust-src"
-            "rustc"
-            "rustfmt"
-          ])
-          pkgs.rnix-lsp
-          pkgs.rust-analyzer
-        ];
+            buildInputs = [
+              (fenix.packages.${system}.stable.withComponents [
+                "cargo"
+                "clippy"
+                "rust-src"
+                "rustc"
+                "rustfmt"
+              ])
+              pkgs.nil
+              pkgs.rust-analyzer
+            ];
 
-        shellHook = "";
-      };
-    });
+            shellHook = "
+						export NIL_LS_PATH=${pkgs.nil}/bin/nil
+					";
+          };
+      });
 }

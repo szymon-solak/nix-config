@@ -9,10 +9,22 @@ lsp.setup_servers({
 	'tsserver',
 	'lua_ls',
 	'rust_analyzer',
-	'rnix',
+	'nil_ls',
+	'elixirls',
 })
 
+
 require('lspconfig').lua_ls.setup({})
+
+local elixir_ls_path = vim.env.ELIXIR_LS_PATH
+require('lspconfig').elixirls.setup({
+	cmd = { elixir_ls_path }
+})
+
+local nil_ls_path = vim.env.NIL_LS_PATH
+require('lspconfig').nil_ls.setup({
+	cmd = { nil_ls_path }
+})
 
 lsp.setup()
 
@@ -26,6 +38,7 @@ lint.linters_by_ft = {
 	typescriptreact = { "eslint_d" },
 	bash = { "shellcheck" },
 	json = { "jsonlint" },
+	elixir = { "credo" },
 }
 
 local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
@@ -48,5 +61,6 @@ conform.setup({
 		typescriptreact = { "eslint_d" },
 		rust = { "rustfmt" },
 		nix = { "nixfmt" },
+		elixir = { "mix" },
 	},
 })

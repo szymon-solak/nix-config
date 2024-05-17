@@ -16,7 +16,7 @@
   };
 
   nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) ["obsidian" "terraform"];
+    builtins.elem (lib.getName pkg) ["obsidian" "terraform" "tart"];
 
   imports = [./sketchybar];
 

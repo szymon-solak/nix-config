@@ -1,8 +1,4 @@
-{
-  pkgs,
-  pkgs-unstable,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = [
     pkgs.tofi
     pkgs.obs-studio # TODO: Fix recording

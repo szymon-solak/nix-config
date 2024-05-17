@@ -36,9 +36,6 @@
             export PATH=$PATH:$HOME/bin:/usr/local/bin
             export PATH=$PATH:$HOME/.local/bin
 
-      			export USER_ID=$(id -u)
-      			export GROUP_ID=$(id -g)
-
       if [ -n "''${commands[fzf-share]}" ]; then
       	source "$(fzf-share)/key-bindings.zsh"
       	source "$(fzf-share)/completion.zsh"
