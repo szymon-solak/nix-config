@@ -6,21 +6,26 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, flake-utils, ... }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = import nixpkgs { inherit system; };
-      in {
-        devShells.default = pkgs.mkShell {
-          name = "node";
+  outputs = {
+    self,
+    nixpkgs,
+    flake-utils,
+    ...
+  }:
+    flake-utils.lib.eachDefaultSystem (system: let
+      pkgs = import nixpkgs {inherit system;};
+    in {
+      devShells.default = pkgs.mkShell {
+        name = "node";
 
-          buildInputs = [
-            pkgs.nodejs_20
-            pkgs.nodePackages.jsonlint
-            pkgs.nodePackages.eslint
-            pkgs.nodePackages.typescript
-            pkgs.nodePackages.typescript-language-server
-            # pkgs.nodePackages.vscode-langservers-extracted
-          ];
-        };
-      });
+        buildInputs = [
+          pkgs.nodejs_20
+          pkgs.nodePackages.jsonlint
+          pkgs.nodePackages.eslint
+          pkgs.nodePackages.typescript
+          pkgs.nodePackages.typescript-language-server
+          # pkgs.nodePackages.vscode-langservers-extracted
+        ];
+      };
+    });
 }

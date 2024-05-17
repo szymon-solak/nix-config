@@ -1,9 +1,9 @@
 # TODO: FIXME
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.firefox = {
     enable = true;
     profiles.default = {
-      bookmarks = { };
+      bookmarks = {};
       extensions = with pkgs.inputs.firefox-addons; [
         ublock-origin
         bitwarden

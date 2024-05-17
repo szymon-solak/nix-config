@@ -17,9 +17,9 @@
     };
 
     extraConfig = {
-      rerere = { enabled = 1; };
-      commit = { template = "${./.gitmessage}"; };
-      init = { defaultBranch = "main"; };
+      rerere = {enabled = 1;};
+      commit = {template = "${./.gitmessage}";};
+      init = {defaultBranch = "main";};
     };
   };
 }

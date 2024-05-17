@@ -1,15 +1,20 @@
-{ inputs, lib, config, pkgs, ... }: {
-  imports = [ ./hardware-configuration.nix ];
+{
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [./hardware-configuration.nix];
 
   nixpkgs = {
-    overlays = [ ];
+    overlays = [];
 
     config = {
       allowUnfreePredicate = pkg:
-        builtins.elem (lib.getName pkg) [ "obsidian" "terraform" "steam" "steam-original" "steam-run" ];
-      permittedInsecurePackages = [ "electron-24.8.6" "electron-25.9.0" ];
+        builtins.elem (lib.getName pkg) ["obsidian" "terraform" "steam" "steam-original" "steam-run"];
+      permittedInsecurePackages = ["electron-24.8.6" "electron-25.9.0"];
     };
-
   };
 
   nix = {
@@ -25,7 +30,7 @@
   boot.loader.timeout = 1;
   boot.loader.grub = {
     enable = true;
-    devices = [ "nodev" ];
+    devices = ["nodev"];
     efiSupport = true;
     useOSProber = true;
     # theme = pkgs.stdenv.mkDerivation {
@@ -39,8 +44,7 @@
     #   };
     #   installPhase = "mkdir $out && tar -C $out -xf themes/nixos.tar";
     # };
-    extraConfig =
-      "	GRUB_GFXMODE=3440x1440x32,1920x1080x32,auto\n	GRUB_GFXPAYLOAD_LINUX=keep\n";
+    extraConfig = "	GRUB_GFXMODE=3440x1440x32,1920x1080x32,auto\n	GRUB_GFXPAYLOAD_LINUX=keep\n";
   };
 
   networking.hostName = "kirin";
@@ -66,21 +70,20 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  services.xserver.videoDrivers = ["amdgpu"];
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome = {
     enable = true;
-    extraGSettingsOverrides =
-      "	[org.gnome.desktop.peripherals.keyboard]\n	delay=150\n	repeat-interval=30\n";
+    extraGSettingsOverrides = "	[org.gnome.desktop.peripherals.keyboard]\n	delay=150\n	repeat-interval=30\n";
   };
   # services.xserver.displayManager.sddm = {
   # 	enable = true;
   # 	# wayland.enable = true;
   # };
   # programs.hyprland.enable = true;
-  services.udev.packages = [ pkgs.via ];
+  services.udev.packages = [pkgs.via];
 
   # Configure keymap in X11
   services.xserver = {
@@ -106,9 +109,9 @@
   users.users.szymon = {
     isNormalUser = true;
     description = "szymon";
-    extraGroups = [ "networkmanager" "wheel" "dialout" ];
+    extraGroups = ["networkmanager" "wheel" "dialout"];
     shell = pkgs.zsh;
-    packages = with pkgs; [ zsh git gcc ];
+    packages = with pkgs; [zsh git gcc];
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

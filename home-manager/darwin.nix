@@ -1,4 +1,7 @@
-{ config, pkgs, ... }: {
+{
+  pkgs,
+  ...
+}: {
   imports = [
     ./modules/base-utils.nix
     ./modules/git.nix
@@ -22,5 +25,6 @@
     pkgs.awscli2
     pkgs.terraform
     pkgs.terragrunt
+    pkgs.tart
   ];
 }

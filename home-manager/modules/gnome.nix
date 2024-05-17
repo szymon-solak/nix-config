@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home.packages = [
     pkgs.gnomeExtensions.pop-shell
     pkgs.gnomeExtensions.pop-launcher-super-key
@@ -12,7 +12,7 @@
       name = "Catppuccin-Frappe-Compact-Pink";
       package = pkgs.catppuccin-gtk.override {
         size = "compact";
-        tweaks = [ "rimless" ];
+        tweaks = ["rimless"];
         # TODO: Revisit after update
         # accents = [ "pink" ];
         # variant = "frappe";

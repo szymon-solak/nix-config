@@ -1,4 +1,4 @@
-{ pkgs, ... }@inputs: {
+{pkgs, ...} @ inputs: {
   imports = [
     ./modules/base-utils.nix
     # ./modules/firefox.nix
