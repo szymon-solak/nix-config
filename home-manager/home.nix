@@ -9,7 +9,7 @@
     ./modules/nvim
     ./modules/git.nix
     ./modules/3dp.nix
-    # ./modules/hyprland.nix
+    ./modules/hyprland
   ];
 
   programs.home-manager.enable = true;
@@ -40,9 +40,5 @@
     pkgs.lm_sensors
     pkgs.rpi-imager
     pkgs.dfu-util
-
-    # emulators
-    pkgs.flycast
-    pkgs.mame
   ];
 }

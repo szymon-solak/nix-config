@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -18,6 +22,9 @@
       gwd = "git worktree remove";
     };
 
+    history.size = 25000;
+    history.path = "${config.xdg.dataHome}/.zsh/history";
+
     initExtraFirst = ''
       if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
         . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
@@ -26,9 +33,8 @@
     '';
 
     initExtra = ''
-            export PATH=$HOME/bin:/usr/local/bin:$PATH
-            export PATH=$HOME/.local/bin:$PATH
-      export PATH=/run/current-system/sw/bin:$PATH
+                  export PATH=$PATH:$HOME/bin:/usr/local/bin
+                  export PATH=$PATH:$HOME/.local/bin
 
       if [ -n "''${commands[fzf-share]}" ]; then
       	source "$(fzf-share)/key-bindings.zsh"

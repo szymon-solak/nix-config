@@ -1,18 +1,26 @@
 {
-  inputs,
   lib,
-  config,
   pkgs,
   ...
-}: {
-  imports = [./hardware-configuration.nix];
+}: let
+  plymouth_themes = pkgs.adi1090x-plymouth-themes.override {
+    selected_themes = ["hexagon_dots"];
+  };
+in {
+  imports = [./hardware-configuration.nix ./polkit.nix];
 
   nixpkgs = {
     overlays = [];
 
     config = {
       allowUnfreePredicate = pkg:
-        builtins.elem (lib.getName pkg) ["obsidian" "terraform" "steam" "steam-original" "steam-run"];
+        builtins.elem (lib.getName pkg) [
+          "obsidian"
+          "terraform"
+          "steam"
+          "steam-original"
+          "steam-run"
+        ];
       permittedInsecurePackages = ["electron-24.8.6" "electron-25.9.0"];
     };
   };
@@ -33,18 +41,11 @@
     devices = ["nodev"];
     efiSupport = true;
     useOSProber = true;
-    # theme = pkgs.stdenv.mkDerivation {
-    #   pname = "distro-themes";
-    #   version = "3.2";
-    #   src = pkgs.fetchFromGitHub {
-    #     owner = "AdisonCavani";
-    #     repo = "distro-grub-themes";
-    #     rev = "v3.2";
-    #     hash = "sha256-U5QfwXn4WyCXvv6A/CYv9IkR/uDx4xfdSgbXDl5bp9M=";
-    #   };
-    #   installPhase = "mkdir $out && tar -C $out -xf themes/nixos.tar";
-    # };
-    extraConfig = "	GRUB_GFXMODE=3440x1440x32,1920x1080x32,auto\n	GRUB_GFXPAYLOAD_LINUX=keep\n";
+  };
+  boot.plymouth = {
+    enable = true;
+    themePackages = [plymouth_themes];
+    theme = "hexagon_dots";
   };
 
   networking.hostName = "kirin";
@@ -78,11 +79,9 @@
     enable = true;
     extraGSettingsOverrides = "	[org.gnome.desktop.peripherals.keyboard]\n	delay=150\n	repeat-interval=30\n";
   };
-  # services.xserver.displayManager.sddm = {
-  # 	enable = true;
-  # 	# wayland.enable = true;
-  # };
-  # programs.hyprland.enable = true;
+
+  programs.hyprland.enable = true;
+  services.udisks2.enable = true;
   services.udev.packages = [pkgs.via];
 
   # Configure keymap in X11
@@ -106,13 +105,17 @@
   };
 
   programs.zsh.enable = true;
+
   users.users.szymon = {
     isNormalUser = true;
     description = "szymon";
     extraGroups = ["networkmanager" "wheel" "dialout"];
     shell = pkgs.zsh;
-    packages = with pkgs; [zsh git gcc];
+    packages = with pkgs; [git gcc];
   };
+
+  security.sudo.enable = false;
+  security.sudo-rs.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "22.11";
