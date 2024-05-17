@@ -1,10 +1,14 @@
 # TODO: FIXME
-{ pkgs, inputs, ... }: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   programs.firefox = {
     package = pkgs.firefox-devedition;
     enable = true;
     profiles.default = {
-      bookmarks = { };
+      bookmarks = {};
       # extensions = with inputs.firefox-addons; [
       # ublock-origin
       # bitwarden

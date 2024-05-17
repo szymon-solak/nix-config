@@ -6,17 +6,21 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, flake-utils, ... }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = import nixpkgs { inherit system; };
+  outputs = {
+    self,
+    nixpkgs,
+    flake-utils,
+    ...
+  }:
+    flake-utils.lib.eachDefaultSystem (system: let
+      pkgs = import nixpkgs {inherit system;};
+    in {
+      devShells.default = pkgs.mkShell {
+        name = "arduino";
 
-      in {
-        devShells.default = pkgs.mkShell {
-          name = "arduino";
+        buildInputs = [pkgs.python3 pkgs.arduino-cli pkgs.avrdude];
 
-          buildInputs = [ pkgs.python3 pkgs.arduino-cli pkgs.avrdude ];
-
-          shellHook = "";
-        };
-      });
+        shellHook = "";
+      };
+    });
 }

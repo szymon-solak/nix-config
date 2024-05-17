@@ -1,13 +1,21 @@
-{ inputs, lib, config, pkgs, ... }:
-let
-  plymouth_themes = pkgs.adi1090x-plymouth-themes.override {
-    selected_themes = [ "hexagon_dots" ];
-  };
-in {
-  imports = [ ./hardware-configuration.nix ./polkit.nix ];
+{
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./hardware-configuration.nix
+    ../modules/polkit.nix
+    ../modules/bluetooth.nix
+    ../modules/ssh.nix
+    ../modules/steam.nix
+    ../modules/hyprland.nix
+    ../modules/plymouth.nix
+    ../modules/sddm.nix
+  ];
 
   nixpkgs = {
-    overlays = [ ];
+    overlays = [];
 
     config = {
       allowUnfreePredicate = pkg:
@@ -18,9 +26,8 @@ in {
           "steam-original"
           "steam-run"
         ];
-      permittedInsecurePackages = [ "electron-24.8.6" "electron-25.9.0" ];
+      permittedInsecurePackages = ["electron-25.9.0"];
     };
-
   };
 
   nix = {
@@ -28,23 +35,37 @@ in {
       experimental-features = "nix-command flakes";
       auto-optimise-store = true;
     };
-    extraOptions = "	keep-outputs = true\n	keep-derivations = true\n";
+    extraOptions = ''
+      keep-outputs = true
+      keep-derivations = true
+    '';
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 1w";
+    };
   };
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  boot.loader.timeout = 1;
+  boot.loader.timeout = 3;
   boot.loader.grub = {
     enable = true;
-    devices = [ "nodev" ];
+    devices = ["nodev"];
     efiSupport = true;
     useOSProber = true;
+    gfxmodeEfi = "3440x1440,auto";
+    gfxmodeBios = "3440x1440,auto";
+    splashImage = null;
+    extraConfig = ''
+      insmod gfxterm
+    '';
+    theme = pkgs.sleek-grub-theme.override {
+      withStyle = "dark";
+      withBanner = "Bootloader";
+    };
   };
-  boot.plymouth = {
-    enable = true;
-    themePackages = [ plymouth_themes ];
-    theme = "hexagon_dots";
-  };
+  boot.initrd.systemd.enable = true;
 
   networking.hostName = "kirin";
   networking.networkmanager.enable = true;
@@ -68,26 +89,17 @@ in {
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "amdgpu" ];
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome = {
-    enable = true;
-    extraGSettingsOverrides =
-      "	[org.gnome.desktop.peripherals.keyboard]\n	delay=150\n	repeat-interval=30\n";
-  };
-
-  programs.hyprland.enable = true;
-  services.udisks2.enable = true;
-  services.udev.packages = [ pkgs.via ];
-
-  # Configure keymap in X11
   services.xserver = {
+    enable = true;
+    videoDrivers = ["amdgpu"];
     layout = "pl,us";
     xkbVariant = "";
   };
+
+  services.devmon.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+  services.udev.packages = [pkgs.via];
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -108,14 +120,14 @@ in {
   users.users.szymon = {
     isNormalUser = true;
     description = "szymon";
-    extraGroups = [ "networkmanager" "wheel" "dialout" ];
+    extraGroups = ["networkmanager" "wheel" "dialout"];
     shell = pkgs.zsh;
-    packages = with pkgs; [ git gcc ];
+    packages = with pkgs; [git gcc];
   };
 
   security.sudo.enable = false;
   security.sudo-rs.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "22.11";
+  system.stateVersion = "23.11";
 }

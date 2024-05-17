@@ -1,11 +1,10 @@
-{ pkgs, ... }@inputs: {
+{pkgs, ...} @ inputs: {
   imports = [
     ./modules/base-utils.nix
     # ./modules/firefox.nix
     ./modules/zsh.nix
     ./modules/kitty.nix
-    ./modules/gnome.nix
-    ./modules/steam.nix
+    # ./modules/gnome.nix
     ./modules/nvim
     ./modules/git.nix
     ./modules/3dp.nix
@@ -33,6 +32,8 @@
     pkgs.appimage-run
     pkgs.amdgpu_top
     pkgs.via
+    pkgs.vulkan-tools
+    pkgs.pavucontrol
 
     # microcontrollers/electronics
     pkgs.temurin-jre-bin

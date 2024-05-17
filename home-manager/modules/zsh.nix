@@ -1,4 +1,8 @@
-{ pkgs, config, ... }: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -22,23 +26,23 @@
     history.path = "${config.xdg.dataHome}/.zsh/history";
 
     initExtraFirst = ''
-            if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
-              . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
-              . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
-            fi
-      		'';
+      if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
+        . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+        . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
+      fi
+    '';
 
     initExtra = ''
-                  export PATH=$PATH:$HOME/bin:/usr/local/bin
-                  export PATH=$PATH:$HOME/.local/bin
+            export PATH=$PATH:$HOME/bin:/usr/local/bin
+            export PATH=$PATH:$HOME/.local/bin
 
-            			export USER_ID=$(id -u)
-            			export GROUP_ID=$(id -g)
+      			export USER_ID=$(id -u)
+      			export GROUP_ID=$(id -g)
 
-      						if [ -n "''${commands[fzf-share]}" ]; then
-      							source "$(fzf-share)/key-bindings.zsh"
-      							source "$(fzf-share)/completion.zsh"
-      						fi
+      if [ -n "''${commands[fzf-share]}" ]; then
+      	source "$(fzf-share)/key-bindings.zsh"
+      	source "$(fzf-share)/completion.zsh"
+      fi
     '';
 
     plugins = with pkgs; [

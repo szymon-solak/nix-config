@@ -18,44 +18,54 @@
     };
   };
 
-  outputs =
-    { self, nixpkgs, nixpkgs-unstable, home-manager, nix-darwin, ... }@inputs: {
-      nixosConfigurations = {
-        kirin = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/kirin
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.users.szymon = import ./home-manager/home.nix;
-              home-manager.extraSpecialArgs = {
-                inherit inputs;
-                pkgs-unstable =
-                  import nixpkgs-unstable { system = "x86_64-linux"; };
-              };
-            }
-          ];
+  outputs = {
+    self,
+    nixpkgs,
+    nixpkgs-unstable,
+    home-manager,
+    nix-darwin,
+    ...
+  } @ inputs: {
+    nixosConfigurations = {
+      kirin = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+          pkgs-unstable =
+            import nixpkgs-unstable {system = "x86_64-linux";};
         };
+        modules = [
+          ./hosts/kirin
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.users.szymon = import ./home-manager/home.nix;
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              pkgs-unstable =
+                import nixpkgs-unstable {system = "x86_64-linux";};
+            };
+          }
+        ];
       };
-
-      darwinConfigurations = {
-        mercury = nix-darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/mercury
-            home-manager.darwinModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.szymonsolak = import ./home-manager/darwin.nix;
-              home-manager.extraSpecialArgs = { inherit inputs; };
-            }
-          ];
-        };
-      };
-
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
     };
+
+    darwinConfigurations = {
+      mercury = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/mercury
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.szymonsolak = import ./home-manager/darwin.nix;
+            home-manager.extraSpecialArgs = {inherit inputs;};
+          }
+        ];
+      };
+    };
+
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+  };
 }
