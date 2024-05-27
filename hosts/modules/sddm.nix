@@ -7,11 +7,11 @@ in {
         Background = "${./login_bg.jpg}";
         ScreenWidth = "3440";
         ScreenHeight = "1440";
-				FontSize = "12";
+        FontSize = "12";
         FormPosition = "center";
-				FullBlur = "false";
-				HaveFormBackground = "false";
-				PartialBlur = "false";
+        FullBlur = "false";
+        HaveFormBackground = "false";
+        PartialBlur = "false";
         Locale = "en_US.UTF-8";
       };
     })

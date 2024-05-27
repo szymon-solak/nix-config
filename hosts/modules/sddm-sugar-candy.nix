@@ -18,7 +18,7 @@ in
       owner = "szymon-solak";
       repo = "sddm-sugar-candy";
       rev = "32a365add24adc2abadc47d41ab7c6b22806af4b";
-			sha256 = "sha256-XNgdnZDYX/p4ZuFl5Po/jEbJBsngbSdrrsMNMjz9S3M=";
+      sha256 = "sha256-XNgdnZDYX/p4ZuFl5Po/jEbJBsngbSdrrsMNMjz9S3M=";
     };
 
     propagatedUserEnvPkgs = [
@@ -29,8 +29,8 @@ in
     ];
 
     installPhase = ''
-        mkdir -p $out/share/sddm/themes/sugar-candy
-				ln -sf ${user-cfg} $out/share/sddm/themes/sugar-candy/theme.conf.user
-        cp -r $src/* $out/share/sddm/themes/sugar-candy/
+          mkdir -p $out/share/sddm/themes/sugar-candy
+      ln -sf ${user-cfg} $out/share/sddm/themes/sugar-candy/theme.conf.user
+          cp -r $src/* $out/share/sddm/themes/sugar-candy/
     '';
   }

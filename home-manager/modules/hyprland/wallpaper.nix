@@ -3,9 +3,16 @@
     pkgs.hyprpaper
   ];
 
-  # TODO: Set this somewhere - config?
-  home.file.".config/hypr/hyprpaper.conf".text = ''
-    preload = ${../../../hosts/kirin/wallpaper.jpg}
-    wallpaper = DP-1,${../../../hosts/kirin/wallpaper.jpg}
-  '';
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      preload = [
+        "${./wallpaper.jpg}"
+      ];
+
+      wallpaper = [
+        "DP-1,${./wallpaper.jpg}"
+      ];
+    };
+  };
 }

@@ -10,17 +10,16 @@
     extraPkgs = pkgs: with pkgs; [webkitgtk];
   };
 
-  orcaslicer-desktop =
-    pkgs.writeTextDir "share/applications/OrcaSlicer.desktop" ''
-			[Desktop Entry]
-			Version=2.0.0
-			Type=Application 
-			Name=OrcaSlicer
-			Exec=OrcaSlicer
-		'';
+  orcaslicer-desktop = pkgs.writeTextDir "share/applications/OrcaSlicer.desktop" ''
+    [Desktop Entry]
+    Version=2.0.0
+    Type=Application
+    Name=OrcaSlicer
+    Exec=OrcaSlicer
+  '';
 in {
   home.packages = [
-		orcaslicer 
-		orcaslicer-desktop 
-	];
+    orcaslicer
+    orcaslicer-desktop
+  ];
 }

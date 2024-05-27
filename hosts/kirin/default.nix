@@ -89,10 +89,10 @@
   services.xserver = {
     enable = true;
     videoDrivers = ["amdgpu"];
-		xkb = {
-			variant = "";
-			layout = "pl,us";
-		};
+    xkb = {
+      variant = "";
+      layout = "pl,us";
+    };
   };
 
   services.devmon.enable = true;

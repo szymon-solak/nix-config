@@ -5,6 +5,8 @@
     ./waybar.nix
     ./hyprshade.nix
     ./hyprlock.nix
-		./tofi.nix
+    ./tofi.nix
+    ./obs.nix
+    ./clipboard.nix
   ];
 }

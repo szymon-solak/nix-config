@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = [
     pkgs.bluez
     pkgs.overskride
@@ -9,6 +6,8 @@
 
   programs.waybar = {
     enable = true;
+    systemd.enable = true;
+    systemd.target = "hyprland-session.target";
 
     style = ''
         @define-color red #f38ba8;

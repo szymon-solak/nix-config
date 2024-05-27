@@ -33,6 +33,7 @@
     pkgs.via
     pkgs.vulkan-tools
     pkgs.pavucontrol
+    pkgs.vlc
 
     # microcontrollers/electronics
     # pkgs.temurin-jre-bin
@@ -40,6 +41,6 @@
     pkgs.lm_sensors
     pkgs.rpi-imager
     pkgs.dfu-util
-		pkgs.glxinfo
+    pkgs.glxinfo
   ];
 }

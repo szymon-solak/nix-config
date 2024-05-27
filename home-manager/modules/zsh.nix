@@ -7,7 +7,7 @@
     enable = true;
     enableCompletion = true;
     autocd = true;
-		autosuggestion.enable = true;
+    autosuggestion.enable = true;
 
     shellAliases = {
       ip = "ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\\  -f2";
