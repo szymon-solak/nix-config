@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./stylix.nix
     ../modules/polkit.nix
     ../modules/bluetooth.nix
     ../modules/ssh.nix
@@ -56,14 +57,10 @@
     useOSProber = true;
     gfxmodeEfi = "3440x1440,auto";
     gfxmodeBios = "3440x1440,auto";
-    splashImage = null;
+    # splashImage = null;
     extraConfig = ''
       insmod gfxterm
     '';
-    theme = pkgs.sleek-grub-theme.override {
-      withStyle = "dark";
-      withBanner = "Bootloader";
-    };
   };
   boot.initrd.systemd.enable = true;
 
@@ -92,8 +89,10 @@
   services.xserver = {
     enable = true;
     videoDrivers = ["amdgpu"];
-    layout = "pl,us";
-    xkbVariant = "";
+		xkb = {
+			variant = "";
+			layout = "pl,us";
+		};
   };
 
   services.devmon.enable = true;

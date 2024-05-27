@@ -1,22 +1,17 @@
-{
-  pkgs,
-  pkgs-unstable,
-  ...
-}: let
-in {
+{pkgs, ...}: {
   home.packages = [
-    pkgs-unstable.hypridle
-    pkgs-unstable.hyprlock
+    pkgs.hypridle
+    pkgs.hyprlock
   ];
 
   home.file.".config/hypr/hypridle.conf".text = ''
     listener {
-    	timeout = 600
+    	timeout = 900
     	on-timeout = hyprlock
     }
 
     listener {
-    	timeout = 900
+    	timeout = 1500
     	on-timeout = hyprctl dispatch dpms off
     	on-resume = hyprctl dispatch dpms on
     }
@@ -48,7 +43,6 @@ in {
     	inner_color = rgba(0, 0, 0, 0.5)
     	font_color = rgb(200, 200, 200)
     	fade_on_empty = false
-    	font_family = Iosevka Term
     	placeholder_text = <i>Input Password...</i> # Text rendered in the input box when it's empty.
     	hide_input = false
     	position = 0, -20
@@ -59,8 +53,7 @@ in {
     label {
     	monitor =
     	text = cmd[update:1000] echo "$(date +"%-I:%M%p")"
-    	color = $foreground
-    	#color = rgba(255, 255, 255, 0.6)
+    	color = rgba(255, 255, 255, 0.6)
     	font_size = 120
     	font_family = Iosevka Term ExtraBold
     	position = 0, -300
