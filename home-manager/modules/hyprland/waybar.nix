@@ -1,104 +1,61 @@
-{
-  pkgs,
-  pkgs-unstable,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = [
-    pkgs.waybar
     pkgs.bluez
-    pkgs-unstable.overskride
+    pkgs.overskride
   ];
 
   programs.waybar = {
     enable = true;
+    systemd.enable = true;
+    systemd.target = "hyprland-session.target";
 
     style = ''
-      /* Catppuccin Mocha */
-      @define-color rosewater #f5e0dc;
-      @define-color flamingo #f2cdcd;
-      @define-color pink #f5c2e7;
-      @define-color mauve #cba6f7;
-      @define-color red #f38ba8;
-      @define-color maroon #eba0ac;
-      @define-color peach #fab387;
-      @define-color yellow #f9e2af;
-      @define-color green #a6e3a1;
-      @define-color teal #94e2d5;
-      @define-color sky #89dceb;
-      @define-color sapphire #74c7ec;
-      @define-color blue #89b4fa;
-      @define-color lavender #b4befe;
-      @define-color text #cdd6f4;
-      @define-color subtext1 #bac2de;
-      @define-color subtext0 #a6adc8;
-      @define-color overlay2 #9399b2;
-      @define-color overlay1 #7f849c;
-      @define-color overlay0 #6c7086;
-      @define-color surface2 #585b70;
-      @define-color surface1 #45475a;
-      @define-color surface0 #313244;
-      @define-color base #1e1e2e;
-      @define-color mantle #181825;
-      @define-color crust #11111b;
+        @define-color red #f38ba8;
+        @define-color blue #89b4fa;
+        @define-color lavender #b4befe;
 
-      * {
-      	font-family: 'Iosevka Nerd Font';
-      }
+        window#waybar {
+        	background-color: transparent;
+        }
 
-      window#waybar {
-      	background-color: transparent;
-      }
+        #workspace {
+        	padding-left: 0.625em;
+        	padding-right: 0.625em;
+        }
 
-      #workspace {
-      	background-color: @mantle;
-      	border-radius: 0.375em;
-      	padding-left: 0.625em;
-      	padding-right: 0.625em;
-      }
+        #workspaces button {
+        	border-radius: 0;
+        }
 
-      #workspaces button {
-      	border-radius: 0;
-      	color: @overlay0;
-      }
+        #workspaces button.active {
+        	border-bottom: 1px solid @lavender;
+        }
 
-      #workspaces button.active {
-      	color: @lavender;
-      	border-bottom: 1px solid @lavender;
-      }
+        #workspaces button.urgent {
+        	color: @red;
+        }
 
-      #workspaces button.urgent {
-      	color: @red;
-      }
+        window#waybar.empty #window {
+        	font-size: 0;
+        	padding: 0;
+        	margin: 0;
+        }
 
-      #window {
-      	color: @text;
-      }
+        #center,
+        #cpu-usage,
+        #gpu-usage,
+        #memory-usage,
+        #bluetooth,
+        #network
+        {
+        	padding-left: 0.625em;
+        	padding-right: 0.625em;
+        }
 
-      window#waybar.empty #window {
-      	font-size: 0;
-      	padding: 0;
-      	margin: 0;
-      }
-
-      #center,
-      #cpu-usage,
-      #gpu-usage,
-      #memory-usage,
-      #bluetooth,
-      #network
-      {
-      	background-color: @mantle;
-      	color: @text;
-      	border-radius: 0.375em;
-      	padding-left: 0.625em;
-      	padding-right: 0.625em;
-      	margin-right: 0.625em;
-      }
-
-      #bluetooth.on, #bluetooth.connected {
-      	background-color: @blue;
-      	color: @mantle;
-      }
+        #bluetooth.on, #bluetooth.connected {
+        	background-color: @blue;
+      color: #1f1f1f;
+        }
     '';
 
     settings = [
@@ -187,7 +144,7 @@
 
         "temperature#cpu" = {
           hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
-          format = " @ {temperatureC}°C";
+          format = "@ {temperatureC}°C";
           tooltip = false;
         };
 
@@ -201,7 +158,7 @@
 
         "temperature#gpu" = {
           hwmon-path = "/sys/class/hwmon/hwmon0/temp1_input";
-          format = " @ {temperatureC}°C";
+          format = "@ {temperatureC}°C";
           tooltip = false;
         };
 

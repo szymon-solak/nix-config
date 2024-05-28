@@ -1,10 +1,9 @@
-{pkgs, ...} @ inputs: {
+{pkgs, ...}: {
   imports = [
     ./modules/base-utils.nix
     # ./modules/firefox.nix
     ./modules/zsh.nix
     ./modules/kitty.nix
-    # ./modules/gnome.nix
     ./modules/nvim
     ./modules/git.nix
     ./modules/3dp.nix
@@ -34,12 +33,14 @@
     pkgs.via
     pkgs.vulkan-tools
     pkgs.pavucontrol
+    pkgs.vlc
 
     # microcontrollers/electronics
-    pkgs.temurin-jre-bin
-    pkgs.kicad
+    # pkgs.temurin-jre-bin
+    # pkgs.kicad
     pkgs.lm_sensors
     pkgs.rpi-imager
     pkgs.dfu-util
+    pkgs.glxinfo
   ];
 }

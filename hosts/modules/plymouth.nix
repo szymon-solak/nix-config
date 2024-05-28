@@ -5,7 +5,7 @@
 in {
   boot.plymouth = {
     enable = true;
-    themePackages = [plymouth_themes];
-    theme = "hexagon_dots";
+    # themePackages = [plymouth_themes];
+    # theme = "hexagon_dots";
   };
 }

@@ -1,11 +1,6 @@
-{
-  pkgs,
-  pkgs-unstable,
-  ...
-}: let
-in {
+{pkgs, ...}: {
   home.packages = [
-    pkgs-unstable.hyprshade
+    pkgs.hyprshade
   ];
 
   home.file.".config/hypr/hyprshade.toml".text = ''

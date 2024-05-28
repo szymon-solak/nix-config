@@ -5,7 +5,6 @@
   config,
   lib,
   pkgs,
-  pkgs-unstable,
   modulesPath,
   ...
 }: {
@@ -46,18 +45,5 @@
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
-    # package = pkgs-unstable.mesa.drivers;
-    # package32 = pkgs-unstable.pkgsi686Linux.mesa.drivers;
-
-    # extraPackages = [
-    # 	pkgs-unstable.vulkan-loader
-    # 	pkgs-unstable.vulkan-validation-layers
-    # 	pkgs-unstable.vulkan-extension-layer
-    # ];
-    # extraPackages32 = with pkgs; [
-    # 	pkgs-unstable.vulkan-loader
-    # 	pkgs-unstable.vulkan-validation-layers
-    # 	pkgs-unstable.vulkan-extension-layer
-    # ];
   };
 }

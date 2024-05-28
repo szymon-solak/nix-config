@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    rust-overlay.url = "github:oxalica/rust-overlay";
     flake-utils.url = "github:numtide/flake-utils";
     fenix = {
       url = "github:nix-community/fenix";
@@ -12,9 +11,7 @@
   };
 
   outputs = {
-    self,
     nixpkgs,
-    rust-overlay,
     fenix,
     flake-utils,
     ...
@@ -40,7 +37,8 @@
             ];
 
             shellHook = "
-						export NIL_LS_PATH=${pkgs.nil}/bin/nil
+							export NIL_LS_PATH=${pkgs.nil}/bin/nil
+							export PATH=$HOME/.cargo/bin:$PATH
 					";
           };
       });

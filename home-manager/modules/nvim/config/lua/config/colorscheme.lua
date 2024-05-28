@@ -1,5 +1,9 @@
 local theme = {}
 
+require('catppuccin').setup({
+	transparent_background = true,
+})
+
 vim.cmd("colorscheme catppuccin")
 
 local timer = vim.loop.new_timer()
