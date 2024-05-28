@@ -29,7 +29,19 @@
           pkgs.nodePackages.vscode-langservers-extracted
         ];
 
-        shellHook = "	export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_available\n	export PATH=$HOME/.asdf/shims:$PATH\n\n	if [[ ! -e $HOME/.asdfrc ]]; then\n		echo \"legacy_version_file = yes\" > $HOME/.asdfrc\n	fi\n\n	if [[ ! -e ./.nvmrc ]]; then\n		echo \"20\" >> .nvmrc\n	fi\n";
+        shellHook = ''
+          export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_available
+          export PATH=$HOME/.asdf/shims:$PATH
+          export ESLINT_USE_FLAT_CONFIG=true
+
+          if [[ ! -e $HOME/.asdfrc ]]; then
+          	echo \"legacy_version_file = yes\" > $HOME/.asdfrc
+          fi
+
+          if [[ ! -e ./.nvmrc ]]; then
+          	echo \"20\" >> .nvmrc
+          fi
+        '';
       };
     });
 }

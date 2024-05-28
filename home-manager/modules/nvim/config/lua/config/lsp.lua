@@ -11,6 +11,7 @@ lsp.setup_servers({
 	'rust_analyzer',
 	'nil_ls',
 	'elixirls',
+	'eslint',
 })
 
 
@@ -32,10 +33,6 @@ lsp.setup()
 local lint = require('lint')
 
 lint.linters_by_ft = {
-	javascript = { "eslint_d" },
-	typescript = { "eslint_d" },
-	javascriptreact = { "eslint_d" },
-	typescriptreact = { "eslint_d" },
 	bash = { "shellcheck" },
 	json = { "jsonlint" },
 	elixir = { "credo" },
