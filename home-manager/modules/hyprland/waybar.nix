@@ -143,13 +143,13 @@
         };
 
         "temperature#cpu" = {
-          hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
+          hwmon-path = "/sys/class/hwmon/hwmon3/temp1_input";
           format = "@ {temperatureC}°C";
           tooltip = false;
         };
 
         "custom/gpu-usage" = {
-          exec = "cat /sys/class/hwmon/hwmon0/device/gpu_busy_percent";
+          exec = "cat /sys/class/hwmon/hwmon1/device/gpu_busy_percent";
           format = "GPU: {}%";
           return-type = "";
           interval = 10;
@@ -157,7 +157,7 @@
         };
 
         "temperature#gpu" = {
-          hwmon-path = "/sys/class/hwmon/hwmon0/temp1_input";
+          hwmon-path = "/sys/class/hwmon/hwmon1/temp1_input";
           format = "@ {temperatureC}°C";
           tooltip = false;
         };

@@ -1,12 +1,16 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
+    inputs.nur.hmModules.nur
     ./modules/base-utils.nix
-    # ./modules/firefox.nix
+    ./modules/firefox.nix
     ./modules/zsh.nix
     ./modules/kitty.nix
     ./modules/nvim
     ./modules/git.nix
-    ./modules/3dp.nix
     ./modules/hyprland
   ];
 
@@ -25,7 +29,6 @@
     TERMINAL = "kitty";
   };
   home.packages = [
-    pkgs.firefox
     pkgs.obsidian
     pkgs.usbutils
     pkgs.appimage-run
@@ -34,10 +37,7 @@
     pkgs.vulkan-tools
     pkgs.pavucontrol
     pkgs.vlc
-
-    # microcontrollers/electronics
-    # pkgs.temurin-jre-bin
-    # pkgs.kicad
+    pkgs.orca-slicer
     pkgs.lm_sensors
     pkgs.rpi-imager
     pkgs.dfu-util

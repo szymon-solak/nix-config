@@ -15,6 +15,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nur.url = "github:nix-community/NUR";
+
     # TODO: 24.05
     stylix = {
       url = "github:danth/stylix";
@@ -29,6 +31,7 @@
     home-manager,
     nix-darwin,
     stylix,
+    nur,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -42,6 +45,23 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.users.szymon = import ./home-manager/home.nix;
+          }
+        ];
+      };
+
+      nezumi = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+        };
+        modules = [
+          ./hosts/nezumi
+          nur.nixosModules.nur
+          {nixpkgs.overlays = [nur.overlay];}
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.users.szymon = import ./home-manager/home.nix;
+            home-manager.extraSpecialArgs = {inherit inputs;};
           }
         ];
       };

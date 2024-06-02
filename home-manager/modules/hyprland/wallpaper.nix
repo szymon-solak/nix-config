@@ -11,7 +11,7 @@
       ];
 
       wallpaper = [
-        "DP-1,${./wallpaper.jpg}"
+        ",${./wallpaper.jpg}"
       ];
     };
   };
