@@ -3,6 +3,12 @@
   lib,
   ...
 }: {
+  imports = [
+    ../modules/nix-settings.nix
+    ./stylix.nix
+    ./sketchybar
+  ];
+
   services.nix-daemon.enable = true;
 
   programs.zsh = {
@@ -17,8 +23,6 @@
 
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) ["obsidian" "terraform" "tart"];
-
-  imports = [./sketchybar];
 
   system = {
     keyboard = {
@@ -40,6 +44,7 @@
         _HIHideMenuBar = true;
         InitialKeyRepeat = 10;
         KeyRepeat = 1;
+        NSWindowShouldDragOnGesture = true;
       };
       screencapture.location = "~/Pictures";
     };

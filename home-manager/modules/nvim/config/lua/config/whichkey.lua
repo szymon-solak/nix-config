@@ -78,8 +78,13 @@ local mappings = {
 local no_prefix_mappings = {
 	K = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover details" },
 	gD = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Go to declaration" },
-	gd = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Go to definition" },
-	gi = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "Go to implementation" },
+	gd = { "<cmd>Telescope lsp_definitions jump_type=vsplit<cr>", "Go to definition" },
+	gi = { "<cmd>Telescope lsp_implementations jump_type=vsplit<cr>", "Go to implementation" },
+	gr = { "<cmd>Telescope lsp_references<cr>", "Go to references" },
+	['[d'] = { "<cmd>lua vim.diagnostic.goto_prev<cr>", "Go to prev diagnostic" },
+	[']d'] = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Go to next diagnostic" },
+	['[q'] = { "<cmd>cprev<cr>", "Go to prev quickfix" },
+	[']q'] = { "<cmd>cnext<cr>", "Go to next quickfix" },
 }
 
 whichkey.register(mappings, {

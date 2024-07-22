@@ -35,6 +35,9 @@ keymap("n", "<S-h>", "<cmd>tabp<cr>", opts)
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 
+-- Clear highlight on escape
+keymap("n", "<Esc>", "<cmd>nohlsearch<cr>", opts)
+
 -- Insert --
 -- Press jk fast to enter
 keymap("i", "jk", "<ESC>", opts)

@@ -14,8 +14,23 @@ lsp.setup_servers({
 	'eslint',
 })
 
-
-require('lspconfig').lua_ls.setup({})
+require('lspconfig').lua_ls.setup({
+	settings = {
+		Lua = {
+			runtime = {
+				version = 'LuaJIT'
+			},
+			diagnostics = {
+				globals = {'vim'},
+			},
+			workspace = {
+				library = {
+					vim.env.VIMRUNTIME,
+				}
+			}
+		}
+	}
+})
 
 local elixir_ls_path = vim.env.ELIXIR_LS_PATH
 require('lspconfig').elixirls.setup({
@@ -25,6 +40,29 @@ require('lspconfig').elixirls.setup({
 local nil_ls_path = vim.env.NIL_LS_PATH
 require('lspconfig').nil_ls.setup({
 	cmd = { nil_ls_path }
+})
+
+require('lspconfig').tsserver.setup({
+	init_options = {
+		preferences = {
+			importModuleSpecifierPreference = 'relative'
+		}
+	},
+})
+
+require('lspconfig').eslint.setup({
+	filetypes = {
+		'javascript',
+		'javascriptreact',
+		'javascript.jsx',
+		'typescript',
+		'typescriptreact',
+		'typescript.tsx',
+		'vue',
+		'svelte',
+		'astro',
+		'graphql',
+	}
 })
 
 lsp.setup()

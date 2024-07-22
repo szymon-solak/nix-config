@@ -6,6 +6,7 @@
   imports = [
     ./hardware-configuration.nix
     ./stylix.nix
+    ../modules/nix-settings.nix
     ../modules/polkit.nix
     ../modules/bluetooth.nix
     ../modules/ssh.nix

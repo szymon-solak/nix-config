@@ -10,9 +10,11 @@ in {
       enabled_layouts = "tall";
       macos_option_as_alt = "yes";
       allow_remote_control = "yes";
-      modify_font = "cell_height 125%";
+      # modify_font = "cell_height 125%";
       hide_window_decorations = "yes";
-      window_margin_width = 4;
+      # window_margin_width = 4;
+      # window_padding_width = 4;
+      resize_in_steps = "yes";
     };
 
     theme = "Catppuccin-Latte";

@@ -6,6 +6,7 @@
   imports = [
     ./hardware-configuration.nix
     ./stylix.nix
+    ../modules/nix-settings.nix
     ../modules/polkit.nix
     ../modules/bluetooth.nix
     ../modules/ssh.nix
@@ -27,22 +28,6 @@
           "steam-run"
         ];
       permittedInsecurePackages = ["electron-25.9.0"];
-    };
-  };
-
-  nix = {
-    settings = {
-      experimental-features = "nix-command flakes";
-      auto-optimise-store = true;
-    };
-    extraOptions = ''
-      keep-outputs = true
-      keep-derivations = true
-    '';
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 1w";
     };
   };
 
