@@ -1,6 +1,4 @@
-{pkgs, ...}: let
-  scripts = ./scripts;
-in {
+{pkgs, ...}: {
   services.sketchybar = {
     enable = true;
     package = pkgs.sketchybar;
@@ -20,7 +18,7 @@ in {
       source ${./items/battery.sh}
       source ${./items/wifi.sh}
 
-      			sketchybar --update
+			sketchybar --update
     '';
   };
 }

@@ -104,7 +104,7 @@
       top_padding = 6;
       left_padding = 6;
       right_padding = 6;
-      bottom_padding = 40;
+      bottom_padding = 36;
       mouse_follows_focus = "on";
       focus_follow_mouse = "off";
     };
