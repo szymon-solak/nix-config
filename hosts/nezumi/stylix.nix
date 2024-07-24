@@ -6,6 +6,8 @@
   imports = [inputs.stylix.nixosModules.stylix];
 
   stylix = {
+    enable = true;
+
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-frappe.yaml";
     base16Scheme = {
       base00 = "303446";
@@ -59,6 +61,7 @@
     opacity = {
       applications = 1.0;
       terminal = 0.8;
+      # desktop = 0.0;
       desktop = 0.8;
       popups = 1.0;
     };

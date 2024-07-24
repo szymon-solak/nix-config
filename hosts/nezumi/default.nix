@@ -13,7 +13,14 @@
     ../modules/steam.nix
     ../modules/hyprland.nix
     ../modules/sddm.nix
+    ../modules/lact.nix
   ];
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 1w";
+  };
 
   nixpkgs = {
     overlays = [];
@@ -100,12 +107,12 @@
   };
 
   programs.zsh.enable = true;
-  programs.corectrl.enable = true;
+  programs.adb.enable = true;
 
   users.users.szymon = {
     isNormalUser = true;
     description = "szymon";
-    extraGroups = ["networkmanager" "wheel" "dialout" "corectrl"];
+    extraGroups = ["networkmanager" "wheel" "dialout" "adbusers"];
     shell = pkgs.zsh;
     packages = with pkgs; [git gcc];
   };

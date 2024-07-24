@@ -17,6 +17,12 @@
   programs.gamescope = {
     enable = true;
     capSysNice = true;
+    args = [
+      "-f"
+      "--adaptive-sync"
+      "--hdr-enabled"
+      "--hdr-itm-enable"
+    ];
   };
 
   programs.gamemode = {
@@ -31,6 +37,7 @@
 
   environment.sessionVariables = {
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "home/user/.steam/root/compatibilitytoold.d";
+    MANGOHUD_CONFIG = "cpu_temp,gpu_temp";
   };
 
   boot.kernel.sysctl."vm.max_map_count" = 2147483642;

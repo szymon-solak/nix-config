@@ -12,6 +12,7 @@
     ./modules/nvim
     ./modules/git.nix
     ./modules/hyprland
+    ./modules/android-studio.nix
   ];
 
   programs.home-manager.enable = true;

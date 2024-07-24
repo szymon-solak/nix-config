@@ -11,7 +11,7 @@
 
     shellAliases = {
       ip = "ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\\  -f2";
-      ls = "eza -lah --sort=type --icons";
+      ls = "eza -lah --sort=type --icons=auto";
 
       # Git
       gst = "git status";
@@ -48,8 +48,8 @@
         src = fetchFromGitHub {
           owner = "wfxr";
           repo = "forgit";
-          rev = "f1ac9e3f7f1cfb5eb7cea02bfcaa56eb25ddbcbc";
-          sha256 = "sha256-/hnofpzfhgSrJyzMWgk0DLIhIWEl9juVBuxwztwF8Yo=";
+          rev = "17394d10569899eded337dec59ef461f8becea51";
+          sha256 = "odxdySx3Bzxs5RMXJ4nivwltQYIaM/UrPb+A0/pnDSk=";
         };
         file = "forgit.plugin.zsh";
       }
@@ -58,8 +58,8 @@
         src = fetchFromGitHub {
           owner = "agkozak";
           repo = "zsh-z";
-          rev = "dc9e2bc0cdbaa0a507371c248d3dcc9f58db8726";
-          sha256 = "sha256-T0iZK9Tb7ExJaZ6e2UmwecnKHMQilwAPkyAa/uhqrw0=";
+          rev = "afaf2965b41fdc6ca66066e09382726aa0b6aa04";
+          sha256 = "FnGjp/VJLPR6FaODY0GtCwcsTYA4d6D8a6dMmNpXQ+g=";
         };
         file = "zsh-z.plugin.zsh";
       }
@@ -68,8 +68,8 @@
         src = fetchFromGitHub {
           owner = "sindresorhus";
           repo = "pure";
-          rev = "87e6f5dd4c793f6d980532205aaefe196780606f";
-          sha256 = "sha256-TR4CyBZ+KoZRs9XDmWE5lJuUXXU1J8E2Z63nt+FS+5w=";
+          rev = "da1a722238febb9a4b97c77628fae753d1817490";
+          sha256 = "Hdb5wGVkNrmmVWZaKf3xUnNYsTX/8Bb7AhgLNJxNAUc=";
         };
         file = "pure.plugin.zsh";
       }
@@ -78,10 +78,20 @@
         src = fetchFromGitHub {
           owner = "zsh-users";
           repo = "zsh-syntax-highlighting";
-          rev = "1386f1213eb0b0589d73cd3cf7c56e6a972a9bfd";
-          sha256 = "sha256-iKx7lsQCoSAbpANYFkNVCZlTFdwOEI34rx/h1rnraSg=";
+          rev = "e0165eaa730dd0fa321a6a6de74f092fe87630b0";
+          sha256 = "4rW2N+ankAH4sA6Sa5mr9IKsdAg7WTgrmyqJ2V1vygQ=";
         };
         file = "zsh-syntax-highlighting.plugin.zsh";
+      }
+      {
+        name = "fzf-tab";
+        src = fetchFromGitHub {
+          owner = "Aloxaf";
+          repo = "fzf-tab";
+          rev = "c7fb028ec0bbc1056c51508602dbd61b0f475ac3";
+          sha256 = "Qv8zAiMtrr67CbLRrFjGaPzFZcOiMVEFLg1Z+N6VMhg=";
+        };
+        file = "fzf-tab.plugin.zsh";
       }
     ];
   };

@@ -1,4 +1,12 @@
-{
+{pkgs, ...}: {
+  home.packages = [
+    (pkgs.callPackage ./dmenu-bluetooth.nix {})
+  ];
+
+  home.sessionVariables = {
+    DMENU_BLUETOOTH_LAUNCHER = "tofi";
+  };
+
   programs.tofi = {
     enable = true;
     settings = {
