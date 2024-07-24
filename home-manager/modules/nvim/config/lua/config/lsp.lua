@@ -12,6 +12,7 @@ lsp.setup_servers({
 	'nil_ls',
 	'elixirls',
 	'eslint',
+	'biome',
 })
 
 require('lspconfig').lua_ls.setup({
