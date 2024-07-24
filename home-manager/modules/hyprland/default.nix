@@ -8,5 +8,6 @@
     ./tofi.nix
     ./obs.nix
     ./clipboard.nix
+    ./wlogout.nix
   ];
 }

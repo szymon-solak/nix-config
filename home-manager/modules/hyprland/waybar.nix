@@ -10,57 +10,66 @@
     systemd.target = "hyprland-session.target";
 
     style = ''
-        @define-color red #f38ba8;
-        @define-color blue #89b4fa;
-        @define-color lavender #b4befe;
+         @define-color blue #89b4fa;
+         @define-color red #f38ba8;
+         @define-color lavender #b4befe;
 
-        window#waybar {
-        	background-color: transparent;
-        }
+         window#waybar {
+         	background-color: transparent;
+         }
 
-        #workspace {
-        	padding-left: 0.625em;
-        	padding-right: 0.625em;
-        }
+         button {
+         	border: none;
+         	border-radius: 0;
+         }
 
-        #workspaces button {
-        	border-radius: 0;
-        }
+         #workspace {
+         	padding-right: 0.625em;
+         }
 
-        #workspaces button.active {
-        	border-bottom: 1px solid @lavender;
-        }
+         #workspaces button {
+         	padding: 0 0.5em;
+         	background-color: transparent;
+         	color: @lavender;
+         	border: none;
+         	border-radius: 0;
+         }
 
-        #workspaces button.urgent {
-        	color: @red;
-        }
+         window#waybar #workspaces button,
+         window#waybar #workspaces button.focused,
+         window#waybar #workspaces button.active {
+         	border: none;
+         }
 
-        window#waybar.empty #window {
-        	font-size: 0;
-        	padding: 0;
-        	margin: 0;
-        }
+         #workspaces button.urgent {
+         	color: @red;
+         }
 
-        #center,
-        #cpu-usage,
-        #gpu-usage,
-        #memory-usage,
-        #bluetooth,
-        #network
-        {
-        	padding-left: 0.625em;
-        	padding-right: 0.625em;
-        }
+         #center,
+         #cpu-usage,
+         #gpu-usage,
+         #memory-usage,
+         #bluetooth,
+         #network {
+         	padding-left: 0.625em;
+         	padding-right: 0.625em;
+         }
 
-        #bluetooth.on, #bluetooth.connected {
-        	background-color: @blue;
-      color: #1f1f1f;
-        }
+         #bluetooth.on, #bluetooth.connected {
+         	background-color: @blue;
+         	color: #1f1f1f;
+         }
+
+      #clock {
+      	background: @base00;
+      	border-radius: 0.5em;
+      }
     '';
 
     settings = [
       {
-        margin = "0 20 6 20";
+        height = 34;
+        margin = "0 8 6 8";
         layer = "top";
         position = "bottom";
         spacing = 0;
@@ -76,12 +85,12 @@
           "bluetooth"
           "network"
           "tray"
+          "clock"
         ];
 
         "group/workspace" = {
           orientation = "inherit";
           modules = [
-            "hyprland/workspaces"
             "hyprland/window"
           ];
         };
@@ -89,7 +98,7 @@
         "group/center" = {
           orientation = "inherit";
           modules = [
-            "clock"
+            "hyprland/workspaces"
           ];
         };
 
@@ -117,7 +126,8 @@
         };
 
         clock = {
-          format = "{:%A, %d %B, %H:%M}";
+          # format = "{:%A, %d %B, %H:%M}";
+          format = "{:%H:%M}";
         };
 
         bluetooth = {
@@ -128,6 +138,11 @@
         };
 
         "hyprland/workspaces" = {
+          format = "{icon}";
+          format-icons = {
+            default = "";
+            active = "";
+          };
           persistent-workspaces = {
             "*" = 4;
           };
@@ -143,13 +158,13 @@
         };
 
         "temperature#cpu" = {
-          hwmon-path = "/sys/class/hwmon/hwmon3/temp1_input";
+          hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
           format = "@ {temperatureC}°C";
           tooltip = false;
         };
 
         "custom/gpu-usage" = {
-          exec = "cat /sys/class/hwmon/hwmon1/device/gpu_busy_percent";
+          exec = "cat /sys/class/hwmon/hwmon0/device/gpu_busy_percent";
           format = "GPU: {}%";
           return-type = "";
           interval = 10;
@@ -157,7 +172,7 @@
         };
 
         "temperature#gpu" = {
-          hwmon-path = "/sys/class/hwmon/hwmon1/temp1_input";
+          hwmon-path = "/sys/class/hwmon/hwmon0/temp1_input";
           format = "@ {temperatureC}°C";
           tooltip = false;
         };
@@ -174,6 +189,10 @@
           format-ethernet = "󰈁 {ipaddr}";
           format-disconnected = "󰈂 Offline";
           tooltip-format = "{ifname} via {gwaddr}";
+        };
+
+        tray = {
+          spacing = 6;
         };
       }
     ];

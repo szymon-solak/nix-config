@@ -17,7 +17,7 @@
       monitor = ",preferred,auto,auto";
 
       env = [
-        "XCURSOR_SIZE,24"
+        "XCURSOR_SIZE,10"
         "SSH_ASKPASS_REQUIRE, \"prefer\""
       ];
 
@@ -39,7 +39,7 @@
 
       general = {
         gaps_in = 5;
-        gaps_out = "20, 20, 8, 20";
+        gaps_out = "8, 8, 8, 8";
         border_size = 2;
         layout = "dwindle";
       };
@@ -51,6 +51,13 @@
 
       animations = {
         enabled = true;
+        bezier = "easeOutExpo, 0.16, 1, 0.3, 1";
+
+        animation = [
+          "windows, 1, 2, easeOutExpo, slide"
+          "windowsOut, 1, 2, easeOutExpo, slide"
+          "border, 1, 6, easeOutExpo"
+        ];
       };
 
       dwindle = {
@@ -61,6 +68,7 @@
 
       misc = {
         disable_hyprland_logo = true;
+        disable_splash_rendering = true;
       };
 
       "$mainMod" = "SUPER";
@@ -74,9 +82,11 @@
         "$mainMod, V, togglefloating"
         "$mainMod, R, exec, tofi-drun"
         # "$mainMod, R, exec, tofi-run | xargs hyprctl dispatch exec"
+        "$mainMod, B, exec, dmenu-bluetooth --connected-icon 󰂱"
         "$mainMod, P, pseudo"
         "$mainMod, J, togglesplit"
         "$mainMod, L, exec, hyprlock"
+        "$mainMod SHIFT, Q, exec, wlogout --buttons-per-row=1"
 
         # Move focus with mainMod + arrow keys
         "$mainMod, left, movefocus, l"
