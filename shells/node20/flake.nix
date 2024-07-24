@@ -7,7 +7,6 @@
   };
 
   outputs = {
-    self,
     nixpkgs,
     flake-utils,
     ...
@@ -22,6 +21,7 @@
           pkgs.nodejs_20
           pkgs.nodePackages.jsonlint
           pkgs.nodePackages.eslint
+          pkgs.nodePackages.eslint_d
           pkgs.nodePackages.typescript
           pkgs.nodePackages.typescript-language-server
           # pkgs.nodePackages.vscode-langservers-extracted
