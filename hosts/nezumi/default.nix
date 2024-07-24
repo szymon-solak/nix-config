@@ -16,6 +16,12 @@
     ../modules/lact.nix
   ];
 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 1w";
+  };
+
   nixpkgs = {
     overlays = [];
 
