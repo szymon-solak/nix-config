@@ -43,5 +43,6 @@
     pkgs.rpi-imager
     pkgs.dfu-util
     pkgs.glxinfo
+		pkgs.flyctl
   ];
 }

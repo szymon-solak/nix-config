@@ -4,67 +4,14 @@
     pkgs.overskride
   ];
 
+	stylix.targets.waybar.enable = false;
+
   programs.waybar = {
     enable = true;
     systemd.enable = true;
     systemd.target = "hyprland-session.target";
 
-    style = ''
-         @define-color blue #89b4fa;
-         @define-color red #f38ba8;
-         @define-color lavender #b4befe;
-
-         window#waybar {
-         	background-color: transparent;
-         }
-
-         button {
-         	border: none;
-         	border-radius: 0;
-         }
-
-         #workspace {
-         	padding-right: 0.625em;
-         }
-
-         #workspaces button {
-         	padding: 0 0.5em;
-         	background-color: transparent;
-         	color: @lavender;
-         	border: none;
-         	border-radius: 0;
-         }
-
-         window#waybar #workspaces button,
-         window#waybar #workspaces button.focused,
-         window#waybar #workspaces button.active {
-         	border: none;
-         }
-
-         #workspaces button.urgent {
-         	color: @red;
-         }
-
-         #center,
-         #cpu-usage,
-         #gpu-usage,
-         #memory-usage,
-         #bluetooth,
-         #network {
-         	padding-left: 0.625em;
-         	padding-right: 0.625em;
-         }
-
-         #bluetooth.on, #bluetooth.connected {
-         	background-color: @blue;
-         	color: #1f1f1f;
-         }
-
-      #clock {
-      	background: @base00;
-      	border-radius: 0.5em;
-      }
-    '';
+    style = ./waybar.css;
 
     settings = [
       {
@@ -113,7 +60,7 @@
         "group/gpu-usage" = {
           orientation = "inherit";
           modules = [
-            "custom/gpu-usage"
+            "custom/gpu"
             "temperature#gpu"
           ];
         };
@@ -163,7 +110,7 @@
           tooltip = false;
         };
 
-        "custom/gpu-usage" = {
+        "custom/gpu" = {
           exec = "cat /sys/class/hwmon/hwmon0/device/gpu_busy_percent";
           format = "GPU: {}%";
           return-type = "";
@@ -173,7 +120,7 @@
 
         "temperature#gpu" = {
           hwmon-path = "/sys/class/hwmon/hwmon0/temp1_input";
-          format = "@ {temperatureC}°C";
+          format = " @ {temperatureC}°C";
           tooltip = false;
         };
 
