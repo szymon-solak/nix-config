@@ -16,7 +16,7 @@
     settings = [
       {
         height = 34;
-        margin = "0 8 6 8";
+        margin = "0 8 10 8";
         layer = "top";
         position = "bottom";
         spacing = 0;
@@ -33,6 +33,7 @@
           "network"
           "tray"
           "clock"
+					"custom/power-button"
         ];
 
         "group/workspace" = {
@@ -137,6 +138,12 @@
           format-disconnected = "󰈂 Offline";
           tooltip-format = "{ifname} via {gwaddr}";
         };
+
+				"custom/power-button" = {
+					format = "";
+					on-click = "wlogout --buttons-per-row=1";
+					tooltip = false;
+				};
 
         tray = {
           spacing = 6;

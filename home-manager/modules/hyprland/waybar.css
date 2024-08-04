@@ -64,6 +64,8 @@ window#waybar #workspaces button.active {
 #bluetooth,
 #clock,
 #workspace,
+#tray,
+#custom-power-button,
 #network {
 	padding-left: 1em;
 	padding-right: 1em;
@@ -76,4 +78,8 @@ window#waybar #workspaces button.active {
 #bluetooth.on, #bluetooth.connected {
 	background-color: @blue;
 	color: #1f1f1f;
+}
+
+#custom-power-button {
+	padding-right: 1.4em;
 }
