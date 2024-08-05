@@ -2,19 +2,19 @@
 @define-color red #f38ba8;
 @define-color lavender #b4befe;
 
-@define-color base00 #303446;
+@define-color base00 #303446; /* Base */
 /* base01 = "292c3c"; */
 /* base02 = "414559"; */
 /* base03 = "51576d"; */
 /* base04 = "626880"; */
-/* base05 = "c6d0f5"; */
+@define-color base05 #c6d0f5; /* Text */
 /* base06 = "f2d5cf"; */
 /* base07 = "babbf1"; */
-/* base08 = "e78284"; */
-/* base09 = "ef9f76"; */
-/* base0A = "e5c890"; */
+@define-color base08 #e78284; /* Red */
+@define-color base09 #ef9f76; /* Peach */
+@define-color base0A #e5c890; /* Yellow */
 /* base0B = "a6d189"; */
-/* base0C = "81c8be"; */
+@define-color base0C #81c8be; /* Teal */
 /* base0D = "8caaee"; */
 /* base0E = "ca9ee6"; */
 /* base0F = "eebebe"; */
@@ -26,10 +26,6 @@ window#waybar {
 button {
 	border: none;
 	border-radius: 0;
-}
-
-#workspace {
-	padding-right: 0.625em;
 }
 
 #workspaces button {
@@ -62,17 +58,12 @@ window#waybar #workspaces button.active {
 #gpu-usage,
 #memory-usage,
 #bluetooth,
-#clock,
 #workspace,
 #tray,
 #custom-power-button,
 #network {
-	padding-left: 1em;
-	padding-right: 1em;
-	margin-left: 0.4em;
-	margin-right: 0.4em;
 	background-color: @base00;
-	border-radius: 1.6rem;
+	border-radius: 0;
 }
 
 #bluetooth.on, #bluetooth.connected {
@@ -82,4 +73,100 @@ window#waybar #workspaces button.active {
 
 #custom-power-button {
 	padding-right: 1.4em;
+	background-color: @base08;
+	color: @base00;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+#cpu-usage,
+#gpu-usage,
+#memory-usage {
+	margin-left: 0;
+	padding-left: 0;
+}
+
+#tray {
+	margin-left: 0;
+	padding-left: 1em;
+}
+
+#window {
+	padding-left: 0.8em;
+	padding-right: 1em;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+#time,
+#workspace {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+#clock {
+	padding-left: 0.2em;
+	padding-right: 0.4em;
+}
+
+#memory {
+	padding-left: 0.4em;
+}
+
+#bluetooth {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+#network {
+	padding-left: 1em;
+	margin-left: 0;
+}
+
+#custom-workspace-icon {
+	background-color: @base0A;
+	color: @base00;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+#custom-cpu-icon {
+	background-color: @base0A;
+	color: @base00;
+	padding-left: 1em;
+	padding-right: 1em;
+	margin-right: 0.4em;
+}
+
+#custom-gpu-icon {
+	background-color: @base0A;
+	color: @base00;
+	padding-left: 1em;
+	padding-right: 1em;
+	margin-right: 0.4em;
+}
+
+#custom-memory-icon {
+	background-color: @base0A;
+	color: @base00;
+	padding-left: 1em;
+	padding-right: 1em;
+	margin-right: 0.4em;
+}
+
+#custom-clock-icon {
+	background-color: @base09;
+	color: @base00;
+	padding-left: 1em;
+	padding-right: 1.4em;
+	margin-right: 0.4em;
+}
+
+#custom-network-icon {
+	background-color: @base0C;
+	color: @base00;
+	padding-left: 1em;
+	padding-right: 1.4em;
+	margin-left: 0.4em;
+	margin-right: 0;
 }

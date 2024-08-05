@@ -4,7 +4,7 @@
     pkgs.overskride
   ];
 
-	stylix.targets.waybar.enable = false;
+  stylix.targets.waybar.enable = false;
 
   programs.waybar = {
     enable = true;
@@ -30,15 +30,32 @@
           "group/gpu-usage"
           "group/memory-usage"
           "bluetooth"
-          "network"
+          "group/net"
           "tray"
-          "clock"
-					"custom/power-button"
+          "group/time"
+          "custom/power-button"
         ];
+
+        "group/time" = {
+          orientation = "inherit";
+          modules = [
+            "custom/clock-icon"
+            "clock"
+          ];
+        };
+
+        "group/net" = {
+          orientation = "inherit";
+          modules = [
+            "custom/network-icon"
+            "network"
+          ];
+        };
 
         "group/workspace" = {
           orientation = "inherit";
           modules = [
+            "custom/workspace-icon"
             "hyprland/window"
           ];
         };
@@ -53,6 +70,7 @@
         "group/cpu-usage" = {
           orientation = "inherit";
           modules = [
+            "custom/cpu-icon"
             "cpu"
             "temperature#cpu"
           ];
@@ -61,6 +79,7 @@
         "group/gpu-usage" = {
           orientation = "inherit";
           modules = [
+            "custom/gpu-icon"
             "custom/gpu"
             "temperature#gpu"
           ];
@@ -69,8 +88,14 @@
         "group/memory-usage" = {
           orientation = "inherit";
           modules = [
+            "custom/memory-icon"
             "memory"
           ];
+        };
+
+        "custom/clock-icon" = {
+          format = "";
+          tooltip = false;
         };
 
         clock = {
@@ -96,13 +121,23 @@
           };
         };
 
+        "custom/workspace-icon" = {
+          format = "";
+          tooltip = false;
+        };
+
         "hyprland/window" = {
-          format = " {}";
+          format = "{}";
           separate-outputs = true;
         };
 
+        "custom/cpu-icon" = {
+          format = "CPU";
+          tooltip = false;
+        };
+
         cpu = {
-          format = "CPU: {usage:2}%";
+          format = "{usage:2}%";
         };
 
         "temperature#cpu" = {
@@ -111,9 +146,14 @@
           tooltip = false;
         };
 
+        "custom/gpu-icon" = {
+          format = "GPU";
+          tooltip = false;
+        };
+
         "custom/gpu" = {
           exec = "cat /sys/class/hwmon/hwmon0/device/gpu_busy_percent";
-          format = "GPU: {}%";
+          format = " {}%";
           return-type = "";
           interval = 10;
           tooltip = false;
@@ -125,9 +165,21 @@
           tooltip = false;
         };
 
+        "custom/memory-icon" = {
+          # format = "";
+          format = "MEM";
+          tooltip = false;
+        };
+
         memory = {
           interval = 30;
           format = "{used:0.1f}G/{total:0.1f}G";
+          tooltip = false;
+        };
+
+        # TODO: Format different for wired vs wireless
+        "custom/network-icon" = {
+          format = "󰖩";
           tooltip = false;
         };
 
@@ -139,11 +191,11 @@
           tooltip-format = "{ifname} via {gwaddr}";
         };
 
-				"custom/power-button" = {
-					format = "";
-					on-click = "wlogout --buttons-per-row=1";
-					tooltip = false;
-				};
+        "custom/power-button" = {
+          format = "";
+          on-click = "wlogout --buttons-per-row=1";
+          tooltip = false;
+        };
 
         tray = {
           spacing = 6;
