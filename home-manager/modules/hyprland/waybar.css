@@ -61,17 +61,24 @@ window#waybar #workspaces button.active {
 #workspace,
 #tray,
 #custom-power-button,
+#clock,
 #network {
 	background-color: @base00;
 	border-radius: 0;
 }
 
-#bluetooth.on, #bluetooth.connected {
-	background-color: @blue;
-	color: #1f1f1f;
+#cpu-usage,
+#gpu-usage,
+#memory-usage,
+#bluetooth,
+#network,
+#clock {
+	padding-right: 1em;
+	margin-right: 0.4em;
 }
 
 #custom-power-button {
+	padding-left: 1em;
 	padding-right: 1.4em;
 	background-color: @base08;
 	color: @base00;
@@ -105,8 +112,8 @@ window#waybar #workspaces button.active {
 }
 
 #clock {
-	padding-left: 0.2em;
-	padding-right: 0.4em;
+	padding-left: 1em;
+	padding-right: 1em;
 }
 
 #memory {
@@ -114,6 +121,12 @@ window#waybar #workspaces button.active {
 }
 
 #bluetooth {
+	color: @base05;
+	margin-right: 0;
+	padding-left: 1em;
+}
+
+#bt {
 	margin-left: 0;
 	margin-right: 0;
 }
@@ -159,7 +172,7 @@ window#waybar #workspaces button.active {
 	color: @base00;
 	padding-left: 1em;
 	padding-right: 1.4em;
-	margin-right: 0.4em;
+	margin-right: 0em;
 }
 
 #custom-network-icon {
@@ -170,3 +183,11 @@ window#waybar #workspaces button.active {
 	margin-left: 0.4em;
 	margin-right: 0;
 }
+
+#custom-bluetooth-icon {
+	background-color: @blue;
+	color: @base00;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+

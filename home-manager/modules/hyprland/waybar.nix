@@ -29,7 +29,7 @@
           "group/cpu-usage"
           "group/gpu-usage"
           "group/memory-usage"
-          "bluetooth"
+          "group/bt"
           "group/net"
           "tray"
           "group/time"
@@ -49,6 +49,14 @@
           modules = [
             "custom/network-icon"
             "network"
+          ];
+        };
+
+        "group/bt" = {
+          orientation = "inherit";
+          modules = [
+            "custom/bluetooth-icon"
+            "bluetooth"
           ];
         };
 
@@ -103,9 +111,14 @@
           format = "{:%H:%M}";
         };
 
-        bluetooth = {
+        "custom/bluetooth-icon" = {
           format = "󰂯";
-          format-connected = "󰂱 ({num_connections})";
+          tooltip = false;
+        };
+
+        bluetooth = {
+          format = "{status}";
+          format-connected = "{status} ({num_connections})";
           tooltip-format = "{device_enumerate}";
           on-click = "overskride";
         };
