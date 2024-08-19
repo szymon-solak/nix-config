@@ -96,6 +96,8 @@ window#waybar #workspaces button.active {
 #tray {
 	margin-left: 0;
 	padding-left: 1em;
+	padding-right: 1em;
+	margin-right: 0.4em;
 }
 
 #window {

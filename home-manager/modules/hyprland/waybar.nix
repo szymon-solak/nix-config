@@ -199,8 +199,8 @@
         network = {
           format = "{ifname}";
           foramt-wifi = "󰖩 {essid} ({signalStrength}%)";
-          format-ethernet = "󰈁 {ipaddr}";
-          format-disconnected = "󰈂 Offline";
+          format-ethernet = "{ipaddr}";
+          format-disconnected = "Offline";
           tooltip-format = "{ifname} via {gwaddr}";
         };
 
