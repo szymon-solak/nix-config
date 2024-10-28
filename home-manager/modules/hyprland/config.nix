@@ -6,6 +6,7 @@
     pkgs.gnome.nautilus
     pkgs.gnome.sushi
     pkgs.imv
+    pkgs.hyprshot
   ];
 
   services.mako.enable = true;
@@ -45,8 +46,10 @@
       };
 
       decoration = {
-        rounding = 0;
+        rounding = 6;
         drop_shadow = false;
+        active_opacity = 1.0;
+        inactive_opacity = 0.95;
       };
 
       animations = {
@@ -129,10 +132,9 @@
         "$mainMod, mouse_up, workspace, e-1"
 
         # Screenshots
-        "$mainMod, p, exec, grimblast save active"
-        "$mainMod SHIFT, p, exec, grimblast save area"
-        "$mainMod ALT, p, exec, grimblast save output"
-        "$mainMod CTRL, p, exec, grimblast save screen"
+        "$mainMod, p, exec, hyprshot -m region --clipboard-only"
+        "$mainMod SHIFT, p, exec, hyprshot -m window"
+        "$mainMod ALT, p, exec, hyprshot -m output"
       ];
 
       bindm = [

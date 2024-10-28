@@ -58,6 +58,14 @@
 
   networking.hostName = "nezumi";
   networking.networkmanager.enable = true;
+  #  networking.networkmanager.wifi.backend = "iwd";
+  # networking.wireless.iwd = {
+  # 	enable = true;
+  # 	settings = {
+  # 		IPv6.Enabled = true;
+  # 		Settings.AutoConnect = true;
+  # 	};
+  # };
 
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
@@ -84,6 +92,7 @@
     xkb = {
       variant = "";
       layout = "pl,us";
+      options = "caps:swapescape";
     };
   };
 
@@ -108,6 +117,7 @@
 
   programs.zsh.enable = true;
   programs.adb.enable = true;
+  programs.nm-applet.enable = true;
 
   users.users.szymon = {
     isNormalUser = true;
