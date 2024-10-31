@@ -15,7 +15,7 @@
       resize_in_steps = "yes";
     };
 
-    theme = "Catppuccin-Latte";
+    theme = "Catppuccin-Mocha";
 
     extraConfig = ''
       map kitty_mod+enter launch --cwd=current
@@ -23,23 +23,23 @@
     '';
   };
 
-  programs.zsh.initExtra = ''
-     set_theme () {
-       kitty @ set-colors --all ${pkgs.kitty-themes}/share/kitty-themes/themes/"$1".conf;
-     }
-
-     set_theme_based_on_time () {
-       local switch_to_dark_after_hour=13
-       local switch_to_light_after_hour=7
-       local current_hour=$(($(date +\"%-k\")))
-
-       if [ $current_hour -lt $switch_to_dark_after_hour ] && [ $current_hour -gt $switch_to_light_after_hour ]; then
-       	set_theme Catppuccin-Latte;
-       else
-       	set_theme Catppuccin-Mocha;
-       fi
-     }
-
-    [[ -v KITTY_WINDOW_ID ]] && set_theme_based_on_time
-  '';
+  # programs.zsh.initExtra = ''
+  #    set_theme () {
+  #      kitty @ set-colors --all ${pkgs.kitty-themes}/share/kitty-themes/themes/"$1".conf;
+  #    }
+  #
+  #    set_theme_based_on_time () {
+  #      local switch_to_dark_after_hour=13
+  #      local switch_to_light_after_hour=7
+  #      local current_hour=$(($(date +\"%-k\")))
+  #
+  #      if [ $current_hour -lt $switch_to_dark_after_hour ] && [ $current_hour -gt $switch_to_light_after_hour ]; then
+  #      	set_theme Catppuccin-Latte;
+  #      else
+  #      	set_theme Catppuccin-Mocha;
+  #      fi
+  #    }
+  #
+  #   [[ -v KITTY_WINDOW_ID ]] && set_theme_based_on_time
+  # '';
 }

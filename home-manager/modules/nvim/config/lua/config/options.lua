@@ -53,3 +53,23 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+
+-- Folds
+function CountFoldLines()
+  local text = vim.treesitter.foldtext()
+
+  local n_lines = vim.v.foldend - vim.v.foldstart
+  local text_lines = " lines"
+
+  if n_lines == 1 then
+    text_lines = " line"
+  end
+
+  table.insert(text, { " - " .. n_lines .. text_lines, { "Folded" }})
+
+  return text
+end
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldlevel = 20
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
