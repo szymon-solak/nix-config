@@ -38,12 +38,16 @@
       name = "Default";
       isDefault = true;
       bookmarks = {};
+
       extensions = [
         pkgs.nur.repos.rycee.firefox-addons.ublock-origin
         pkgs.nur.repos.rycee.firefox-addons.bitwarden
         pkgs.nur.repos.rycee.firefox-addons.react-devtools
         pkgs.nur.repos.rycee.firefox-addons.reduxdevtools
+        pkgs.nur.repos.rycee.firefox-addons.sidebery
+        pkgs.nur.repos.rycee.firefox-addons.adaptive-tab-bar-colour
       ];
+
       settings = {
         "browser.disableResetPrompt" = true;
         "browser.download.panel.shown" = true;
@@ -52,10 +56,20 @@
         "browser.shell.checkDefaultBrowser" = false;
         "browser.shell.defaultBrowserCheckCount" = 1;
         "browser.startup.page" = 3;
+        "browser.urlbar.suggest.calculator" = true;
+        "browser.urlbar.unitConversion.enabled" = true;
+        "browser.urlbar.trimHttps" = true;
+        "browser.urlbar.trimURLs" = true;
         "dom.security.https_only_mode" = true;
         "privacy.trackingprotection.enabled" = true;
         "signon.rememberSignons" = false;
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        "widget.gtk.rounded-bottom-corners.enabled" = true;
+        "widget.gtk.ignore-bogus-leave-notify" = true;
       };
+
+      userChrome = builtins.readFile ./userChrome.css;
+      userContent = builtins.readFile ./userContent.css;
 
       search = {
         force = true;

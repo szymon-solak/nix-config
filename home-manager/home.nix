@@ -6,7 +6,7 @@
   imports = [
     inputs.nur.hmModules.nur
     ./modules/base-utils.nix
-    ./modules/firefox.nix
+    ./modules/firefox
     ./modules/zsh.nix
     ./modules/kitty.nix
     ./modules/nvim
@@ -44,5 +44,10 @@
     pkgs.dfu-util
     pkgs.glxinfo
     pkgs.flyctl
+    pkgs.qbittorrent-nox
+    pkgs.heroic
+
+    pkgs.temurin-jre-bin
+    pkgs.kicad
   ];
 }

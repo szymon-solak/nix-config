@@ -12,7 +12,9 @@
     ...
   }:
     flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = import nixpkgs {inherit system;};
+      pkgs = import nixpkgs {
+        inherit system;
+      };
     in {
       devShells.default = pkgs.mkShell {
         name = "node";
@@ -24,7 +26,6 @@
           pkgs.nodePackages.eslint_d
           pkgs.nodePackages.typescript
           pkgs.nodePackages.typescript-language-server
-          # pkgs.nodePackages.vscode-langservers-extracted
         ];
       };
     });
