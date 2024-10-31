@@ -29,7 +29,6 @@
 
       input = {
         kb_layout = "pl,us";
-        kb_options = "caps:swapescape";
         follow_mouse = 1;
         touchpad = {
           natural_scroll = false;

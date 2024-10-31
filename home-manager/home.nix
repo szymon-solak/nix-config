@@ -46,7 +46,7 @@
     pkgs.flyctl
     pkgs.qbittorrent-nox
     pkgs.heroic
-
+    pkgs.thunderbird
     pkgs.temurin-jre-bin
     pkgs.kicad
   ];

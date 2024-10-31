@@ -18,13 +18,13 @@
         name = "kotlin";
 
         buildInputs = [
-					pkgs.kotlin
-					pkgs.kotlin-language-server
-					pkgs.detekt
-					pkgs.ktfmt
-					pkgs.ktlint
-					pkgs.gradle
-				];
+          pkgs.kotlin
+          pkgs.kotlin-language-server
+          pkgs.detekt
+          pkgs.ktfmt
+          pkgs.ktlint
+          pkgs.gradle
+        ];
 
         shellHook = "";
       };

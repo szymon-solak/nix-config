@@ -24,26 +24,28 @@
           pkgs.mkShell {
             name = "rust";
 
-            buildInputs = [
-              (fenix.packages.${system}.stable.withComponents [
-                "cargo"
-                "clippy"
-                "rust-src"
-                "rustc"
-                "rustfmt"
-              ])
-              pkgs.nil
-              pkgs.rust-analyzer
-							pkgs.iconv
-            ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
-							pkgs.darwin.apple_sdk.frameworks.CoreFoundation
-							pkgs.darwin.apple_sdk.frameworks.CoreServices
-							pkgs.darwin.apple_sdk.frameworks.CoreGraphics
-							pkgs.darwin.apple_sdk.frameworks.CoreVideo
-							pkgs.darwin.apple_sdk.frameworks.ApplicationServices
-							pkgs.darwin.apple_sdk.frameworks.Carbon
-							pkgs.darwin.apple_sdk.frameworks.AppKit
-						];
+            buildInputs =
+              [
+                (fenix.packages.${system}.stable.withComponents [
+                  "cargo"
+                  "clippy"
+                  "rust-src"
+                  "rustc"
+                  "rustfmt"
+                ])
+                pkgs.nil
+                pkgs.rust-analyzer
+                pkgs.iconv
+              ]
+              ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
+                pkgs.darwin.apple_sdk.frameworks.CoreFoundation
+                pkgs.darwin.apple_sdk.frameworks.CoreServices
+                pkgs.darwin.apple_sdk.frameworks.CoreGraphics
+                pkgs.darwin.apple_sdk.frameworks.CoreVideo
+                pkgs.darwin.apple_sdk.frameworks.ApplicationServices
+                pkgs.darwin.apple_sdk.frameworks.Carbon
+                pkgs.darwin.apple_sdk.frameworks.AppKit
+              ];
 
             shellHook = "
 							export NIL_LS_PATH=${pkgs.nil}/bin/nil

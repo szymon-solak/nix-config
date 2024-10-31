@@ -12,7 +12,7 @@
     shellAliases = {
       ip = "ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\\  -f2";
       ls = "eza -lah --sort=type --icons=auto";
-			uuid = "uuidgen | tr -d '\n' | tr '[:upper:]' '[:lower:]' | pbcopy";
+      uuid = "uuidgen | tr -d '\n' | tr '[:upper:]' '[:lower:]' | pbcopy";
 
       # Git
       gst = "git status";

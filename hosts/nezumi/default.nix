@@ -92,7 +92,6 @@
     xkb = {
       variant = "";
       layout = "pl,us";
-      options = "caps:swapescape";
     };
   };
 
