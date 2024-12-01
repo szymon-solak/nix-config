@@ -1,11 +1,11 @@
 /* wallpaper */
 body {
-	background-repeat: no-repeat !important;
-	background-position: center !important;
-	background-size: cover !important;
-	background-attachment: fixed !important;
+	/* background-repeat: no-repeat !important; */
+	/* background-position: center !important; */
+	/* background-size: cover !important; */
+	/* background-attachment: fixed !important; */
 	/* Upload wallpaper to git and use url from there? */
-	background-image: url("./wallpaper.png") !important;
+	/* background-image: url("./wallpaper.png") !important; */
 }
 
 @-moz-document regexp("^moz-extension://.*?/sidebar/sidebar.html") {

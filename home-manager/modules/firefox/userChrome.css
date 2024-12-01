@@ -2,6 +2,10 @@
 	height: 0 !important;
 }
 
+#TabsToolbar {
+	visibility: collapse;
+}
+
 /* Window buttons */
 .titlebar-buttonbox-container{
   position: fixed !important;
@@ -112,3 +116,74 @@
 /* #sidebar-box:hover + .sidebar-splitter, .sidebar-splitter:hover { */
 /* 	display: block !important; */
 /* } */
+
+/* Floating search */
+#urlbar[breakout-extend]{
+	#urlbar-input {font-size: 23.5px !important;}
+	#urlbar-input-container, .urlbar-input-container {height: 50px !important;}
+	#urlbar-background {border-radius: 20px !important;}
+
+	#urlbar-input-container, .urlbar-input-container {
+		& > :is(box, image){
+			height: 28px !important;
+			margin-block: calc((50px - 28px) / 4) !important;
+		}
+	}
+
+	position: fixed !important;
+	z-index: 999999 !important;
+
+	bottom: auto !important;
+	top: 20vh !important;
+
+	left: 18vw !important;
+	right: 18vw !important;
+	width: 64vw !important;
+
+	&:before{
+		content: "";
+		position: fixed;
+		pointer-events: none;
+		border-radius: 11.5px;
+
+		width: 100vw;
+		height: 100vh;
+
+		top: 0px;
+		left: 0px;
+
+		background-color: color-mix(in srgb, var(--lwt-accent-color) 80%, transparent);
+	}
+}
+
+/* Content Outline */
+/* if it not fullscreen video or floating window */
+#main-window:not([inDOMFullscreen="true"])[chromehidden=""]{
+    
+  /* if navbar is not hidden in f11 fullscreen or not only navbar is visible in f11 or window is not maximized in clean mode */
+  &:not(
+    :is(
+      :is([titlepreface*=""], [titlepreface*=""][titlepreface*=""])[inFullscreen="true"]),
+      [titlepreface*=""]:is([sizemode="maximized"], [inFullscreen="true"], [gtktiledwindow="true"])
+  ){
+    
+    /* add rounded corners and outline to browser content */
+    #tabbrowser-tabbox {
+      border-radius: 12 !important;
+      border: 6px solid var(--lwt-accent-color);
+      outline: none !important;
+    }
+    
+    #tabbrowser-tabpanels::after {
+      content: "";
+      margin: -6px;
+      border: 6px solid var(--lwt-accent-color);
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      box-shadow: 0 0 0 100px var(--lwt-accent-color) !important;
+      clip-path: inset(0);
+      pointer-events: none;
+    }
+  }
+}

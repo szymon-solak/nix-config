@@ -24,7 +24,7 @@
     enable = true;
     settings = {
       background = {
-        path = "${./lock.png}";
+        # path = "${./lock.png}";
         blur_passes = 3;
         contrast = 0.9;
         brightness = 0.8;
@@ -42,9 +42,9 @@
         dots_size = 0.2;
         dots_spacing = 0.2;
         dots_center = true;
-        outer_color = "rgba(0, 0, 0, 0)";
-        inner_color = "rgba(0, 0, 0, 0.5)";
-        font_color = "rgb(200, 200, 200)";
+        # outer_color = "rgba(0, 0, 0, 0)";
+        # inner_color = "rgba(0, 0, 0, 0.5)";
+        # font_color = "rgb(200, 200, 200)";
         fade_on_empty = false;
         placeholder_text = "<i>Input Password...</i>";
         hide_input = false;

@@ -6,13 +6,14 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.setup_servers({
-	'tsserver',
+	'ts_ls',
 	'lua_ls',
 	'rust_analyzer',
 	'nil_ls',
 	'elixirls',
 	'eslint',
 	'biome',
+	'ruff'
 })
 
 require('lspconfig').lua_ls.setup({
@@ -43,7 +44,7 @@ require('lspconfig').nil_ls.setup({
 	cmd = { nil_ls_path }
 })
 
-require('lspconfig').tsserver.setup({
+require('lspconfig').ts_ls.setup({
 	init_options = {
 		preferences = {
 			importModuleSpecifierPreference = 'relative'

@@ -13,6 +13,7 @@
     ./modules/git.nix
     ./modules/hyprland
     ./modules/android-studio.nix
+    ./modules/orca-slicer.nix
   ];
 
   programs.home-manager.enable = true;
@@ -23,7 +24,7 @@
   xdg.mime.enable = true;
   targets.genericLinux.enable = true;
 
-  home.stateVersion = "23.05";
+  home.stateVersion = "24.11";
   home.sessionVariables = {
     EDITOR = "nvim";
     BROWSER = "firefox";
@@ -38,12 +39,10 @@
     pkgs.vulkan-tools
     pkgs.pavucontrol
     pkgs.vlc
-    pkgs.orca-slicer
     pkgs.lm_sensors
     pkgs.rpi-imager
     pkgs.dfu-util
     pkgs.glxinfo
-    pkgs.flyctl
     pkgs.qbittorrent-nox
     pkgs.heroic
     pkgs.thunderbird

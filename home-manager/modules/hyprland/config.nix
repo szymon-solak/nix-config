@@ -3,8 +3,10 @@
     pkgs.killall
     pkgs.udiskie
     pkgs.grimblast
-    pkgs.gnome.nautilus
-    pkgs.gnome.sushi
+    pkgs.adwaita-icon-theme
+    pkgs.bibata-cursors
+    pkgs.nautilus
+    pkgs.sushi
     pkgs.imv
     pkgs.hyprshot
   ];
@@ -18,8 +20,11 @@
       monitor = ",preferred,auto,auto";
 
       env = [
-        "XCURSOR_SIZE,10"
         "SSH_ASKPASS_REQUIRE, \"prefer\""
+        "XCURSOR_THEME,Bibata-Modern-Ice"
+        "XCURSOR_SIZE,24"
+        "HYPRCURSOR_THEME,Bibata-Modern-Ice"
+        "HYPRCURSOR_SIZE,24"
       ];
 
       exec-once = [
@@ -47,7 +52,6 @@
 
       decoration = {
         rounding = 6;
-        drop_shadow = false;
         active_opacity = 1.0;
         inactive_opacity = 0.95;
       };
@@ -73,6 +77,11 @@
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
       };
+
+      windowrulev2 = [
+        "idleinhibit always, class:^(vlc)"
+        "size 1000 700, title:^(Select one or more files to open), initialClass:^(vlc)$"
+      ];
 
       "$mainMod" = "SUPER";
 
