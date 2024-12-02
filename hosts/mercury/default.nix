@@ -9,8 +9,9 @@
     ./sketchybar
   ];
 
+	system.stateVersion = 5;
+
   services.nix-daemon.enable = true;
-	# programs.ssh.startAgent = true;
 
   nix.gc = {
     automatic = true;

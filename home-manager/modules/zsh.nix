@@ -41,6 +41,10 @@
       	source "$(fzf-share)/key-bindings.zsh"
       	source "$(fzf-share)/completion.zsh"
       fi
+
+			if [ -z "$SSH_AUTH_SOCK" ]; then
+				eval `ssh-agent -s`
+			fi
     '';
 
     plugins = with pkgs; [
