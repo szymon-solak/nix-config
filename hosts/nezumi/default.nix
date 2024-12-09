@@ -14,6 +14,7 @@
     ../modules/hyprland.nix
     ../modules/sddm.nix
     ../modules/lact.nix
+    ../modules/samba.nix
   ];
 
   nix.gc = {
@@ -34,7 +35,7 @@
           "steam-original"
           "steam-run"
         ];
-      permittedInsecurePackages = ["electron-25.9.0"];
+      permittedInsecurePackages = [];
     };
   };
 
@@ -92,7 +93,6 @@
     xkb = {
       variant = "";
       layout = "pl,us";
-      options = "caps:swapescape";
     };
   };
 
@@ -105,7 +105,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -131,5 +130,5 @@
   security.sudo-rs.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.11";
 }

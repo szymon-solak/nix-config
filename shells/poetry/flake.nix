@@ -1,5 +1,5 @@
 {
-  description = "Kotlin devShell";
+  description = "Python devShell with Poetry";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -15,18 +15,17 @@
       pkgs = import nixpkgs {inherit system;};
     in {
       devShells.default = pkgs.mkShell {
-        name = "kotlin";
+        name = "python";
 
         buildInputs = [
-          pkgs.kotlin
-          pkgs.kotlin-language-server
-          pkgs.detekt
-          pkgs.ktfmt
-          pkgs.ktlint
-          pkgs.gradle
+          pkgs.python314
+          pkgs.poetry
+          pkgs.ruff
+          pkgs.ruff-lsp
         ];
 
-        shellHook = "";
+        shellHook = ''
+        '';
       };
     });
 }

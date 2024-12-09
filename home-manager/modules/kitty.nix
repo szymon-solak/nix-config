@@ -15,7 +15,7 @@
       resize_in_steps = "yes";
     };
 
-    theme = "Catppuccin-Mocha";
+    themeFile = "Catppuccin-Mocha";
 
     extraConfig = ''
       map kitty_mod+enter launch --cwd=current
