@@ -10,7 +10,7 @@
     autosuggestion.enable = true;
 
     shellAliases = {
-      ip = "ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\\  -f2";
+      # ip = "ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\\  -f2";
       ls = "eza -lah --sort=type --icons=auto";
       uuid = "uuidgen | tr -d '\n' | tr '[:upper:]' '[:lower:]' | pbcopy";
 
@@ -34,13 +34,14 @@
     '';
 
     initExtra = ''
-            export PATH=$PATH:$HOME/bin:/usr/local/bin
-            export PATH=$PATH:$HOME/.local/bin
+      export PATH=$PATH:$HOME/bin:/usr/local/bin
+      export PATH=$PATH:$HOME/.local/bin
+      export SSH_ASKPASS_REQUIRE=prefer
 
-      if [ -n "''${commands[fzf-share]}" ]; then
-      	source "$(fzf-share)/key-bindings.zsh"
-      	source "$(fzf-share)/completion.zsh"
-      fi
+         if [ -n "''${commands[fzf-share]}" ]; then
+         	source "$(fzf-share)/key-bindings.zsh"
+         	source "$(fzf-share)/completion.zsh"
+         fi
     '';
 
     plugins = with pkgs; [
@@ -49,8 +50,8 @@
         src = fetchFromGitHub {
           owner = "wfxr";
           repo = "forgit";
-          rev = "17394d10569899eded337dec59ef461f8becea51";
-          sha256 = "odxdySx3Bzxs5RMXJ4nivwltQYIaM/UrPb+A0/pnDSk=";
+          rev = "755b3dd9f85c044a3bd76059b24b1ad63d5c0617";
+          sha256 = "sha256-tZFGQirm7dCHXGrnAB5qynVzWEMKnV/6Kfmja/3Os20=";
         };
         file = "forgit.plugin.zsh";
       }
@@ -59,8 +60,8 @@
         src = fetchFromGitHub {
           owner = "agkozak";
           repo = "zsh-z";
-          rev = "afaf2965b41fdc6ca66066e09382726aa0b6aa04";
-          sha256 = "FnGjp/VJLPR6FaODY0GtCwcsTYA4d6D8a6dMmNpXQ+g=";
+          rev = "dd94ef04acc41748ba171eb219971cb455e0040b";
+          sha256 = "sha256-CJjPjXIHUpEcKoExyskVeJGWXAjr2Pix3Uszuy/veGc=";
         };
         file = "zsh-z.plugin.zsh";
       }
@@ -69,8 +70,8 @@
         src = fetchFromGitHub {
           owner = "sindresorhus";
           repo = "pure";
-          rev = "da1a722238febb9a4b97c77628fae753d1817490";
-          sha256 = "Hdb5wGVkNrmmVWZaKf3xUnNYsTX/8Bb7AhgLNJxNAUc=";
+          rev = "92b8e9057988566b37ff695e70e2e9bbeb7196c8";
+          sha256 = "sha256-TbOrnhLHgOvcfsgmL0l3bWY33yLIhG1KSi4ITIPq1+A=";
         };
         file = "pure.plugin.zsh";
       }
@@ -79,8 +80,8 @@
         src = fetchFromGitHub {
           owner = "zsh-users";
           repo = "zsh-syntax-highlighting";
-          rev = "e0165eaa730dd0fa321a6a6de74f092fe87630b0";
-          sha256 = "4rW2N+ankAH4sA6Sa5mr9IKsdAg7WTgrmyqJ2V1vygQ=";
+          rev = "5eb677bb0fa9a3e60f0eff031dc13926e093df92";
+          sha256 = "sha256-KRsQEDRsJdF7LGOMTZuqfbW6xdV5S38wlgdcCM98Y/Q=";
         };
         file = "zsh-syntax-highlighting.plugin.zsh";
       }
@@ -89,8 +90,8 @@
         src = fetchFromGitHub {
           owner = "Aloxaf";
           repo = "fzf-tab";
-          rev = "c7fb028ec0bbc1056c51508602dbd61b0f475ac3";
-          sha256 = "Qv8zAiMtrr67CbLRrFjGaPzFZcOiMVEFLg1Z+N6VMhg=";
+          rev = "6aced3f35def61c5edf9d790e945e8bb4fe7b305";
+          sha256 = "sha256-EWMeslDgs/DWVaDdI9oAS46hfZtp4LHTRY8TclKTNK8=";
         };
         file = "fzf-tab.plugin.zsh";
       }

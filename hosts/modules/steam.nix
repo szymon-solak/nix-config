@@ -18,7 +18,6 @@
     enable = true;
     capSysNice = true;
     args = [
-      "-f"
       "--adaptive-sync"
       "--hdr-enabled"
       "--hdr-itm-enable"
