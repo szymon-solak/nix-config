@@ -20,7 +20,7 @@
       monitor = ",preferred,auto,auto";
 
       env = [
-        "SSH_ASKPASS_REQUIRE, \"prefer\""
+        "SSH_ASKPASS_REQUIRE,prefer"
         "XCURSOR_THEME,Bibata-Modern-Ice"
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_THEME,Bibata-Modern-Ice"

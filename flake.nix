@@ -54,7 +54,7 @@
         };
         modules = [
           ./hosts/nezumi
-          nur.nixosModules.nur
+          nur.modules.nixos.default
           {nixpkgs.overlays = [nur.overlay];}
           home-manager.nixosModules.home-manager
           {

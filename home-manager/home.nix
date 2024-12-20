@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    inputs.nur.hmModules.nur
+    inputs.nur.modules.homeManager.default
     ./modules/base-utils.nix
     ./modules/firefox
     ./modules/zsh.nix
