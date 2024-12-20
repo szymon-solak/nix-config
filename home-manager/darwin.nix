@@ -23,5 +23,6 @@
     pkgs.terraform
     pkgs.terragrunt
     pkgs.tart
+    pkgs.ollama
   ];
 }

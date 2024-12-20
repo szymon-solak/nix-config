@@ -21,7 +21,6 @@ in {
 
     plugins = with pkgs.vimPlugins; [
       # base
-      popup-nvim
       plenary-nvim
 
       # general use
@@ -61,6 +60,7 @@ in {
       nvim-lspconfig
       lspkind-nvim
       trouble-nvim
+      tiny-inline-diagnostic-nvim
       nvim-lint
       conform-nvim
 
