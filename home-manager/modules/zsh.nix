@@ -34,17 +34,17 @@
     '';
 
     initExtra = ''
-            export PATH=$PATH:$HOME/bin:/usr/local/bin
-            export PATH=$PATH:$HOME/.local/bin
+               export PATH=$PATH:$HOME/bin:/usr/local/bin
+               export PATH=$PATH:$HOME/.local/bin
 
-      if [ -n "''${commands[fzf-share]}" ]; then
-      	source "$(fzf-share)/key-bindings.zsh"
-      	source "$(fzf-share)/completion.zsh"
+         if [ -n "''${commands[fzf-share]}" ]; then
+         	source "$(fzf-share)/key-bindings.zsh"
+         	source "$(fzf-share)/completion.zsh"
+         fi
+
+      if [ -z "$SSH_AUTH_SOCK" ]; then
+      	eval `ssh-agent -s`
       fi
-
-			if [ -z "$SSH_AUTH_SOCK" ]; then
-				eval `ssh-agent -s`
-			fi
     '';
 
     plugins = with pkgs; [

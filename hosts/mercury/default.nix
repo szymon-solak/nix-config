@@ -9,7 +9,7 @@
     ./sketchybar
   ];
 
-	system.stateVersion = 5;
+  system.stateVersion = 5;
 
   services.nix-daemon.enable = true;
 

@@ -10,7 +10,7 @@ for _, sign in ipairs(signs) do
 end
 
 local config = {
-	virtual_text = true,
+	virtual_text = false,
 	signs = {
 		active = signs,
 	},
@@ -35,6 +35,15 @@ if not status_ok then
 end
 
 trouble.setup {}
+
+local status_ok, tiny_inline_diagnostic = pcall(require, "tiny-inline-diagnostic")
+if not status_ok then
+	return
+end
+
+tiny_inline_diagnostic.setup {
+	preset = "simple"
+}
 
 local status_ok, comment = pcall(require, "Comment")
 if not status_ok then
