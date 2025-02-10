@@ -14,6 +14,7 @@
     ./modules/hyprland
     ./modules/android-studio.nix
     ./modules/orca-slicer.nix
+    ./modules/zed.nix
   ];
 
   programs.home-manager.enable = true;
