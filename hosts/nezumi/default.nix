@@ -15,7 +15,10 @@
     ../modules/sddm.nix
     ../modules/lact.nix
     ../modules/samba.nix
+    ../modules/glance.nix
   ];
+
+  services.hardware.openrgb.enable = true;
 
   nix.gc = {
     automatic = true;

@@ -4,7 +4,6 @@
     gamescopeSession = {
       enable = true;
       args = [
-        "--expose-wayland"
         "-f"
         "--steam"
         "--adaptive-sync"
@@ -21,6 +20,7 @@
       "--adaptive-sync"
       "--hdr-enabled"
       "--hdr-itm-enable"
+      "--force-grab-cursor"
     ];
   };
 

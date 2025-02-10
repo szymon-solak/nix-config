@@ -16,6 +16,11 @@
           on-timeout = "hyprctl dispatch dpms off";
           on-resume = "hyprctl dispatch dpms on";
         }
+        {
+          timeout = 1500;
+          on-timeout = "kill -9 $(pidof hyperhdr)";
+          on-resume = "hyperhdr";
+        }
       ];
     };
   };
