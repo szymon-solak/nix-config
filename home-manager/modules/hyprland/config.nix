@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   home.packages = [
     pkgs.killall
-    pkgs.udiskie
     pkgs.grimblast
     pkgs.adwaita-icon-theme
     pkgs.bibata-cursors
@@ -9,9 +8,16 @@
     pkgs.sushi
     pkgs.imv
     pkgs.hyprshot
+    pkgs.hyperhdr
   ];
 
   services.mako.enable = true;
+  services.udiskie = {
+    enable = true;
+    automount = true;
+    notify = true;
+    tray = "always";
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -20,7 +26,7 @@
       monitor = ",preferred,auto,auto";
 
       env = [
-        "SSH_ASKPASS_REQUIRE, \"prefer\""
+        "SSH_ASKPASS_REQUIRE,prefer"
         "XCURSOR_THEME,Bibata-Modern-Ice"
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_THEME,Bibata-Modern-Ice"
@@ -30,6 +36,7 @@
       exec-once = [
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
         "hyprshade auto"
+        "sleep 5s && hyperhdr"
       ];
 
       input = {

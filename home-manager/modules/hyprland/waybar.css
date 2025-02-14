@@ -19,9 +19,9 @@
 /* base0E = "ca9ee6"; */
 /* base0F = "eebebe"; */
 
-window#waybar {
-	background-color: transparent;
-}
+/* window#waybar { */
+/* 	background-color: transparent; */
+/* } */
 
 button {
 	border: none;

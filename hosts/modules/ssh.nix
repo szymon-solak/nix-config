@@ -1,12 +1,4 @@
 {pkgs, ...}: {
-  environment.variables = {
-    SSH_ASKPASS_REQUIRE = "prefer";
-  };
-
-  environment.sessionVariables = {
-    SSH_ASKPASS_REQUIRE = "prefer";
-  };
-
   programs.ssh = {
     startAgent = true;
     enableAskPassword = true;

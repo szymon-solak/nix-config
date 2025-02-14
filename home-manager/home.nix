@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    inputs.nur.hmModules.nur
+    inputs.nur.modules.homeManager.default
     ./modules/base-utils.nix
     ./modules/firefox
     ./modules/zsh.nix
@@ -14,6 +14,7 @@
     ./modules/hyprland
     ./modules/android-studio.nix
     ./modules/orca-slicer.nix
+    ./modules/zed.nix
   ];
 
   programs.home-manager.enable = true;
