@@ -30,7 +30,7 @@
 
       terminal = {
         copy_on_select = false;
-        dock = "bottom";
+        dock = "left";
         line_height = "comfortable";
         shell = "system";
         font_family = "Iosevka NFM";
@@ -57,6 +57,10 @@
       };
 
       chat_panel = {
+        dock = "left";
+      };
+
+      assistant = {
         dock = "left";
       };
     };
