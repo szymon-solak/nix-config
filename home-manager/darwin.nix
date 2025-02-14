@@ -24,5 +24,6 @@
     pkgs.terragrunt
     pkgs.tart
     pkgs.ollama
+    pkgs.google-cloud-sdk
   ];
 }
