@@ -2,6 +2,7 @@
   programs.firefox = {
     enable = true;
 
+    # @todo: move to overlay, add alternative overlay for macos
     package = pkgs.wrapFirefox (pkgs.firefox-unwrapped.override {
       pipewireSupport = true;
     }) {};

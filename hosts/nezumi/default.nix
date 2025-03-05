@@ -18,8 +18,6 @@
     ../modules/glance.nix
   ];
 
-  services.hardware.openrgb.enable = true;
-
   nix.gc = {
     automatic = true;
     dates = "weekly";
@@ -57,6 +55,8 @@
     extraConfig = ''
       insmod gfxterm
     '';
+
+    memtest86.enable = true;
   };
   # boot.initrd.systemd.enable = true;
 

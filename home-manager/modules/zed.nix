@@ -1,4 +1,17 @@
-{
+{pkgs, ...}: let
+  zed-desktop =
+    pkgs.writeTextDir "share/applications/Zed.desktop"
+    ''
+      [Desktop Entry]
+      Type=Application
+      Name=Zed
+      Exec=zeditor
+    '';
+in {
+  home.packages = [
+    zed-desktop
+  ];
+
   programs.zed-editor = {
     enable = true;
 
