@@ -12,6 +12,7 @@
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 
+  # TODO: Bump
   home.stateVersion = "23.05";
   home.packages = [
     pkgs.coreutils

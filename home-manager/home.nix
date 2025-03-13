@@ -47,6 +47,7 @@
     pkgs.qbittorrent-nox
     pkgs.heroic
     pkgs.thunderbird
+    pkgs.chromium
     # pkgs.temurin-jre-bin
     # pkgs.kicad
   ];

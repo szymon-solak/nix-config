@@ -2,6 +2,8 @@
   home.packages = [
     pkgs.bluez
     pkgs.overskride
+    pkgs.pavucontrol
+    pkgs.helvum
   ];
 
   stylix.targets.waybar.enable = false;
@@ -21,7 +23,6 @@
         position = "bottom";
         spacing = 0;
 
-        # TODO: Volume widget?
         # TODO: Warning states for high usage?
         modules-left = ["group/workspace"];
         modules-center = ["group/center"];
@@ -30,6 +31,7 @@
           "group/gpu-usage"
           "group/memory-usage"
           "group/bt"
+          "group/audio"
           "group/net"
           "tray"
           "group/time"
@@ -98,6 +100,14 @@
           modules = [
             "custom/memory-icon"
             "memory"
+          ];
+        };
+
+        "group/audio" = {
+          orientation = "inherit";
+          modules = [
+            "custom/audio-icon"
+            "wireplumber"
           ];
         };
 
@@ -212,6 +222,19 @@
 
         tray = {
           spacing = 6;
+        };
+
+        "custom/audio-icon" = {
+          format = "󰎉";
+          tooltip = false;
+        };
+
+        wireplumber = {
+          format = "{icon}  {volume}%";
+          format-muted = "";
+          on-click = "pavucontrol";
+          on-click-right = "helvum";
+          format-icons = ["" "" ""];
         };
       }
     ];
