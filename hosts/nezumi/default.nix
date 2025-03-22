@@ -82,6 +82,10 @@
   networking.hostName = "nezumi";
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.backend = "iwd";
+  networking.networkmanager.dns = "systemd-resolved";
+  networking.networkmanager.connectionConfig = {
+    mdns = 2;
+  };
   networking.wireless.iwd = {
     enable = true;
     settings = {
@@ -89,11 +93,16 @@
       Settings.AutoConnect = true;
     };
   };
+  networking.nameservers = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
 
-  services.avahi = {
+  services.resolved = {
     enable = true;
-    nssmdns = true;
+    domains = ["~."];
+    fallbackDns = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
+    dnsovertls = "true";
   };
+
+  services.avahi.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
