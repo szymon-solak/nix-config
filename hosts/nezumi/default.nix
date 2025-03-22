@@ -18,6 +18,25 @@
     ../modules/glance.nix
   ];
 
+  # Works, but the delay is ~8s on local network
+  # services.icecast = {
+  # 	enable = true;
+  # 	hostname = "localhost";
+  # 	listen.port = 7444;
+  # 	admin.password = "admin";
+  # 	extraConf = ''
+  # 		<authentication>
+  # 			<source-password>hackme</source-password>
+  # 			<relay-password>hackme</relay-password>
+  # 		</authentication>
+  #
+  # 		<burst-on-connect>0</burst-on-connect>
+  # 		<burst-size>0</burst-size>
+  # 	'';
+  # };
+  #
+  # networking.firewall.allowedTCPPorts = [7444];
+
   nix.gc = {
     automatic = true;
     dates = "weekly";
@@ -69,6 +88,11 @@
       IPv6.Enabled = true;
       Settings.AutoConnect = true;
     };
+  };
+
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
   };
 
   # Set your time zone.

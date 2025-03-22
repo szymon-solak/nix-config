@@ -16,7 +16,7 @@
   boot.initrd.kernelModules = ["amdgpu"];
   boot.kernelModules = ["kvm-amd"];
   boot.kernelParams = ["quiet" "splash" "amdgpu.ppfeaturemask=0xffffffff"];
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.extraModulePackages = [];
 
   fileSystems."/" = {

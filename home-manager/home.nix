@@ -48,6 +48,8 @@
     pkgs.heroic
     pkgs.thunderbird
     pkgs.chromium
+    pkgs.awscli2
+    # pkgs.darkice
     # pkgs.temurin-jre-bin
     # pkgs.kicad
   ];
