@@ -6,14 +6,14 @@
     ./modules/kitty.nix
     ./modules/nvim
     ./modules/darwin-application-activation.nix
+    ./modules/zed.nix
   ];
 
   programs.home-manager.enable = true;
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 
-  # TODO: Bump
-  home.stateVersion = "23.05";
+  home.stateVersion = "24.11";
   home.packages = [
     pkgs.coreutils
     pkgs.gcc
@@ -25,5 +25,6 @@
     pkgs.terragrunt
     pkgs.tart
     pkgs.ollama
+    pkgs.google-cloud-sdk
   ];
 }

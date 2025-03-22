@@ -37,10 +37,6 @@
           if [[ ! -e $HOME/.asdfrc ]]; then
           	echo \"legacy_version_file = yes\" > $HOME/.asdfrc
           fi
-
-          if [[ ! -e ./.nvmrc ]]; then
-          	echo \"20\" >> .nvmrc
-          fi
         '';
       };
     });
