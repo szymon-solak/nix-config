@@ -18,7 +18,24 @@
     ../modules/glance.nix
   ];
 
-  services.hardware.openrgb.enable = true;
+  # Works, but the delay is ~8s on local network
+  # services.icecast = {
+  # 	enable = true;
+  # 	hostname = "localhost";
+  # 	listen.port = 7444;
+  # 	admin.password = "admin";
+  # 	extraConf = ''
+  # 		<authentication>
+  # 			<source-password>hackme</source-password>
+  # 			<relay-password>hackme</relay-password>
+  # 		</authentication>
+  #
+  # 		<burst-on-connect>0</burst-on-connect>
+  # 		<burst-size>0</burst-size>
+  # 	'';
+  # };
+  #
+  # networking.firewall.allowedTCPPorts = [7444];
 
   nix.gc = {
     automatic = true;
@@ -57,12 +74,18 @@
     extraConfig = ''
       insmod gfxterm
     '';
+
+    memtest86.enable = true;
   };
   # boot.initrd.systemd.enable = true;
 
   networking.hostName = "nezumi";
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.backend = "iwd";
+  networking.networkmanager.dns = "systemd-resolved";
+  networking.networkmanager.connectionConfig = {
+    mdns = 2;
+  };
   networking.wireless.iwd = {
     enable = true;
     settings = {
@@ -70,6 +93,16 @@
       Settings.AutoConnect = true;
     };
   };
+  networking.nameservers = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
+
+  services.resolved = {
+    enable = true;
+    domains = ["~."];
+    fallbackDns = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
+    dnsovertls = "true";
+  };
+
+  services.avahi.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";

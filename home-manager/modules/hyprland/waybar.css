@@ -1,6 +1,7 @@
 @define-color blue #89b4fa;
 @define-color red #f38ba8;
 @define-color lavender #b4befe;
+@define-color green #a6e3a1;
 
 @define-color base00 #303446; /* Base */
 /* base01 = "292c3c"; */
@@ -138,6 +139,11 @@ window#waybar #workspaces button.active {
 	margin-left: 0;
 }
 
+#wireplumber {
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
 #custom-workspace-icon {
 	background-color: @base0A;
 	color: @base00;
@@ -193,3 +199,9 @@ window#waybar #workspaces button.active {
 	padding-right: 1em;
 }
 
+#custom-audio-icon {
+	background-color: @green;
+	color: @base00;
+	padding-left: 1em;
+	padding-right: 1em;
+}

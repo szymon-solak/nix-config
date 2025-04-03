@@ -47,7 +47,10 @@
     pkgs.qbittorrent-nox
     pkgs.heroic
     pkgs.thunderbird
-    pkgs.temurin-jre-bin
-    pkgs.kicad
+    pkgs.chromium
+    pkgs.awscli2
+    # pkgs.darkice
+    # pkgs.temurin-jre-bin
+    # pkgs.kicad
   ];
 }
