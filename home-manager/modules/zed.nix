@@ -37,7 +37,7 @@
       };
 
       inlay_hints = {
-        enabled = true;
+        enabled = false;
       };
 
       project_panel = {
@@ -49,19 +49,41 @@
       };
 
       collaboration_panel = {
+        button = false;
         dock = "left";
       };
 
       notification_panel = {
+        button = false;
         dock = "left";
       };
 
       chat_panel = {
+        button = false;
         dock = "left";
+      };
+
+      language_models = {
+        ollama = {
+          api_url = "http://localhost:11434";
+          available_models = [
+            {
+              name = "mistral";
+              display_name = "mistral";
+              max_tokens = 16384;
+            }
+          ];
+        };
       };
 
       assistant = {
         dock = "left";
+        version = "2";
+        enabled = true;
+        default_model = {
+          provider = "ollama";
+          model = "mistral";
+        };
       };
     };
 
