@@ -56,6 +56,7 @@
           ./hosts/nezumi
           nur.modules.nixos.default
           {nixpkgs.overlays = [nur.overlays.default];}
+          (import ./overlays)
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -73,6 +74,7 @@
         modules = [
           ./hosts/mercury
           home-manager.darwinModules.home-manager
+          (import ./overlays)
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
