@@ -3,7 +3,7 @@
     pipewireSupport = true;
   }) {};
 
-  macos-firefox = pkgs.callPackage ./darwin-firefox.nix {};
+  macos-firefox = pkgs.callPackage ./pkgs/firefox.nix {};
 in {
   nixpkgs.overlays = [
     (final: prev: {
