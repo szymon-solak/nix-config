@@ -15,11 +15,24 @@
     ./modules/android-studio.nix
     ./modules/orca-slicer.nix
     ./modules/zed.nix
+    ./modules/dmenu
+    ./modules/wallpaper.nix
+    ./modules/lock.nix
+    ./modules/clipboard.nix
+    ./modules/obs.nix
   ];
 
   programs.home-manager.enable = true;
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
+
+  services.mako.enable = true;
+  services.udiskie = {
+    enable = true;
+    automount = true;
+    notify = true;
+    tray = "always";
+  };
 
   xdg.enable = true;
   xdg.mime.enable = true;
@@ -31,6 +44,7 @@
     BROWSER = "firefox";
     TERMINAL = "kitty";
   };
+
   home.packages = [
     pkgs.obsidian
     pkgs.usbutils
@@ -49,6 +63,7 @@
     pkgs.thunderbird
     pkgs.chromium
     pkgs.awscli2
+    pkgs.xwayland-satellite
     # pkgs.darkice
     # pkgs.temurin-jre-bin
     # pkgs.kicad
