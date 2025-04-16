@@ -11,19 +11,15 @@
     pkgs.hyperhdr
   ];
 
-  services.mako.enable = true;
-  services.udiskie = {
-    enable = true;
-    automount = true;
-    notify = true;
-    tray = "always";
-  };
-
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
     settings = {
-      monitor = ",preferred,auto,auto";
+      monitor = [
+        "DP-2,preferred,0x0,1"
+        "HDMI-A-1,highres,0x1440,1"
+        ",preferred,auto,1"
+      ];
 
       env = [
         "SSH_ASKPASS_REQUIRE,prefer"
@@ -146,6 +142,22 @@
         # Scroll through existing workspaces with mainMod + scroll
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
+
+        # Move active window to a monitor
+        "$mainMod SHIFT ALT, 1, movecurrentworkspacetomonitor, 1"
+        "$mainMod SHIFT ALT, 2, movecurrentworkspacetomonitor, 2"
+        "$mainMod SHIFT ALT, 3, movecurrentworkspacetomonitor, 3"
+        "$mainMod SHIFT ALT, 4, movecurrentworkspacetomonitor, 4"
+        "$mainMod SHIFT ALT, 5, movecurrentworkspacetomonitor, 5"
+        "$mainMod SHIFT ALT, 6, movecurrentworkspacetomonitor, 6"
+        "$mainMod SHIFT ALT, 7, movecurrentworkspacetomonitor, 7"
+        "$mainMod SHIFT ALT, 8, movecurrentworkspacetomonitor, 8"
+        "$mainMod SHIFT ALT, 9, movecurrentworkspacetomonitor, 9"
+        "$mainMod SHIFT ALT, 0, movecurrentworkspacetomonitor, 10"
+
+        # Move active window to sibling monitor
+        "$mainMod SHIFT ALT, left, movecurrentworkspacetomonitor, l"
+        "$mainMod SHIFT ALT, right, movecurrentworkspacetomonitor, r"
 
         # Screenshots
         "$mainMod, p, exec, hyprshot -m region --clipboard-only"

@@ -67,6 +67,7 @@
           modules = [
             "custom/workspace-icon"
             "hyprland/window"
+            "niri/window"
           ];
         };
 
@@ -74,6 +75,7 @@
           orientation = "inherit";
           modules = [
             "hyprland/workspaces"
+            "niri/workspaces"
           ];
         };
 
@@ -139,8 +141,16 @@
             default = "";
             active = "";
           };
-          persistent-workspaces = {
-            "*" = 4;
+          # persistent-workspaces = {
+          #   "*" = 4;
+          # };
+        };
+
+        "niri/workspaces" = {
+          format = "{icon}";
+          format-icons = {
+            default = "";
+            active = "";
           };
         };
 
@@ -151,6 +161,10 @@
 
         "hyprland/window" = {
           format = "{}";
+          separate-outputs = true;
+        };
+
+        "niri/window" = {
           separate-outputs = true;
         };
 

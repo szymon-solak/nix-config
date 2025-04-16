@@ -18,25 +18,6 @@
     ../modules/glance.nix
   ];
 
-  # Works, but the delay is ~8s on local network
-  # services.icecast = {
-  # 	enable = true;
-  # 	hostname = "localhost";
-  # 	listen.port = 7444;
-  # 	admin.password = "admin";
-  # 	extraConf = ''
-  # 		<authentication>
-  # 			<source-password>hackme</source-password>
-  # 			<relay-password>hackme</relay-password>
-  # 		</authentication>
-  #
-  # 		<burst-on-connect>0</burst-on-connect>
-  # 		<burst-size>0</burst-size>
-  # 	'';
-  # };
-  #
-  # networking.firewall.allowedTCPPorts = [7444];
-
   nix.gc = {
     automatic = true;
     dates = "weekly";
@@ -59,25 +40,8 @@
     };
   };
 
-  # boot.loader.efi.canTouchEfiVariables = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  boot.loader.timeout = 3;
-  boot.loader.grub = {
-    enable = true;
-    devices = ["nodev"];
-    efiSupport = true;
-    # useOSProber = true;
-    efiInstallAsRemovable = true;
-    gfxmodeEfi = "3440x1440,auto";
-    gfxmodeBios = "3440x1440,auto";
-    # splashImage = null;
-    extraConfig = ''
-      insmod gfxterm
-    '';
-
-    memtest86.enable = true;
-  };
-  # boot.initrd.systemd.enable = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.timeout = 2;
 
   networking.hostName = "nezumi";
   networking.networkmanager.enable = true;
@@ -153,6 +117,11 @@
   programs.zsh.enable = true;
   programs.adb.enable = true;
   programs.nm-applet.enable = true;
+  programs.xwayland.enable = true;
+  programs.niri.enable = true;
+  services.displayManager.sessionPackages = [pkgs.niri];
+
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   users.users.szymon = {
     isNormalUser = true;
