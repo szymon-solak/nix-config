@@ -97,6 +97,20 @@
             updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = ["@nw"];
           };
+          "MDN" = {
+            urls = [
+              {
+                template = "https://developer.mozilla.org/en-US/search";
+                params = [
+                  {
+                    name = "q";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            definedAliases = ["@mdn"];
+          };
           "Bing".metaData.hidden = true;
           "Google".metaData.alias = "@g";
         };

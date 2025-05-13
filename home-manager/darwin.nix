@@ -1,6 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
+    inputs.nur.modules.homeManager.default
     ./modules/base-utils.nix
+    ./modules/firefox
     ./modules/git.nix
     ./modules/zsh.nix
     ./modules/kitty.nix
