@@ -16,14 +16,6 @@
       hour_format = "hour24";
       show_whitespace = "all";
 
-      theme = "Catppuccin Mocha";
-
-      ui_font_family = "Iosevka Nerd Font";
-      ui_font_size = 16;
-
-      buffer_font_family = "Iosevka NFM";
-      buffer_font_size = 16;
-
       scrollbar = {
         show = "never";
       };
@@ -33,7 +25,6 @@
         dock = "left";
         line_height = "comfortable";
         shell = "system";
-        font_family = "Iosevka NFM";
       };
 
       inlay_hints = {

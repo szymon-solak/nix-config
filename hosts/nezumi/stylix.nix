@@ -37,13 +37,13 @@
 
     fonts = {
       monospace = {
-        package = pkgs.nerdfonts.override {fonts = ["Iosevka"];};
-        name = "Iosevka NFM";
+        package = pkgs.iosevka-bin;
+        name = "Iosevka";
       };
 
       sansSerif = {
-        package = pkgs.nerdfonts.override {fonts = ["Iosevka"];};
-        name = "Iosevka Nerd Font";
+        package = pkgs.iosevka-bin;
+        name = "Iosevka";
       };
 
       serif = {

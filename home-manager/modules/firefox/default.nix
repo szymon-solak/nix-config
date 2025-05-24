@@ -30,7 +30,7 @@
       isDefault = true;
       bookmarks = {};
 
-      extensions = [
+      extensions.packages = [
         pkgs.nur.repos.rycee.firefox-addons.ublock-origin
         pkgs.nur.repos.rycee.firefox-addons.bitwarden
         pkgs.nur.repos.rycee.firefox-addons.react-devtools
@@ -87,14 +87,14 @@
           };
           "NixOS Wiki" = {
             urls = [{template = "https://nixos.wiki/index.php?search={searchTerms}";}];
-            iconUpdateURL = "https://nixos.wiki/favicon.png";
+            icon = "https://nixos.wiki/favicon.png";
             updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = ["@nw"];
           };
           "Kagi" = {
             urls = [{template = "https://kagi.com/search?q={searchTerms}";}];
             definedAliases = ["@k"];
-					};
+          };
           "MDN" = {
             urls = [
               {
@@ -109,8 +109,8 @@
             ];
             definedAliases = ["@mdn"];
           };
-          "Bing".metaData.hidden = true;
-          "Google".metaData.alias = "@g";
+          bing.metaData.hidden = true;
+          google.metaData.alias = "@g";
         };
       };
     };
