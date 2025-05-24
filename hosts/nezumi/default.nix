@@ -7,15 +7,11 @@
     ./hardware-configuration.nix
     ./stylix.nix
     ../modules/nix-settings.nix
-    ../modules/polkit.nix
     ../modules/bluetooth.nix
     ../modules/ssh.nix
     ../modules/steam.nix
-    ../modules/hyprland.nix
     ../modules/sddm.nix
     ../modules/lact.nix
-    ../modules/samba.nix
-    ../modules/glance.nix
   ];
 
   nix.gc = {
@@ -40,8 +36,14 @@
     };
   };
 
-  boot.loader.systemd-boot.enable = true;
+  environment.systemPackages = [pkgs.sbctl];
+  boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.timeout = 2;
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/etc/secureboot/";
+    # pkiBundle = "/var/lib/sbctl";
+  };
 
   networking.hostName = "nezumi";
   networking.networkmanager.enable = true;
@@ -105,7 +107,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -120,6 +121,19 @@
   programs.xwayland.enable = true;
   programs.niri.enable = true;
   services.displayManager.sessionPackages = [pkgs.niri];
+  services.fwupd.enable = true;
+  security.pam.services.swaylock = {};
+
+  programs.uwsm = {
+    enable = true;
+    waylandCompositors = {
+      niri = {
+        prettyName = "Niri";
+        comment = "Hyprland compositor managed by UWSM";
+        binPath = "/run/current-system/sw/bin/niri-session";
+      };
+    };
+  };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 

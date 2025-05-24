@@ -17,13 +17,6 @@
       DisableTelemetry = true;
       DisableFormHistory = true;
       OfferToSaveLogins = false;
-      EnableTrackingProtection = {
-        Value = true;
-        Locked = true;
-        Cryptomining = true;
-        Fingerprinting = true;
-        EmailTracking = true;
-      };
       EncryptedMediaExtensions = {
         Enabled = true;
         Locked = true;
@@ -64,6 +57,7 @@
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "widget.gtk.rounded-bottom-corners.enabled" = true;
         "widget.gtk.ignore-bogus-leave-notify" = true;
+        "media.ffmpeg.vaapi.enabled" = true;
       };
 
       userChrome = builtins.readFile ./userChrome.css;
@@ -96,6 +90,10 @@
             iconUpdateURL = "https://nixos.wiki/favicon.png";
             updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = ["@nw"];
+          };
+          "Kagi" = {
+            urls = [{template = "https://kagi.com/search?q={searchTerms}";}];
+            definedAliases = ["@k"];
           };
           "Bing".metaData.hidden = true;
           "Google".metaData.alias = "@g";

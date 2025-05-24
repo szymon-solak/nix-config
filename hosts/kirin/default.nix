@@ -11,8 +11,6 @@
     ../modules/bluetooth.nix
     ../modules/ssh.nix
     ../modules/steam.nix
-    ../modules/hyprland.nix
-    ../modules/plymouth.nix
     ../modules/sddm.nix
   ];
 

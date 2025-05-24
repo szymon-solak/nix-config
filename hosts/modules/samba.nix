@@ -1,4 +1,4 @@
-{
+{config, ...}: {
   services.samba = {
     enable = true;
     openFirewall = true;
@@ -6,8 +6,8 @@
     settings = {
       global = {
         "workgroup" = "WORKGROUP";
-        "server string" = "smbnix";
-        "netbios name" = "smbnix";
+        "server string" = "smb.${toString config.networking.hostName}";
+        "netbios name" = "smb.${toString config.networking.hostName}";
         "security" = "user";
         "hosts allow" = "192.168.0. 127.0.0.1 localhost";
         "hosts deny" = "0.0.0.0/0";
@@ -23,7 +23,7 @@
       };
 
       "public" = {
-        "path" = "/home/szymon/Shares/Public";
+        "path" = "/mnt/Shares/Public";
         "browseable" = "yes";
         "read only" = "no";
         "guest ok" = "yes";

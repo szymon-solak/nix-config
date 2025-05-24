@@ -3,6 +3,7 @@
     enable = true;
 
     settings.server = {
+      host = "0.0.0.0";
       port = 8778;
     };
 
@@ -33,6 +34,32 @@
             widgets = [
               {type = "hacker-news";}
               {type = "lobsters";}
+            ];
+          }
+          {
+            size = "small";
+            widgets = [
+              {
+                type = "monitor";
+                cache = "5m";
+                title = "Services";
+                sites = [
+                  {
+                    title = "Grafana";
+                    url = "https://gf.pszczola.party";
+                    icon = "si:grafana";
+                  }
+                  {
+                    title = "Lyrion";
+                    url = "https://lms.pszczola.party";
+                  }
+                  {
+                    title = "Jellyfin";
+                    url = "http://jellyfin.pszczola.party";
+                    icon = "si:jellyfin";
+                  }
+                ];
+              }
             ];
           }
         ];

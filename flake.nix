@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-24.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -22,15 +23,28 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-unstable,
     home-manager,
     nix-darwin,
     stylix,
     nur,
+    lanzaboote,
+    agenix,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -53,6 +67,9 @@
           inherit inputs;
         };
         modules = [
+          lanzaboote.nixosModules.lanzaboote
+          agenix.nixosModules.default
+          {environment.systemPackages = [agenix.packages."x86_64-linux".default];}
           ./hosts/nezumi
           nur.modules.nixos.default
           {nixpkgs.overlays = [nur.overlays.default];}
@@ -63,6 +80,16 @@
             home-manager.users.szymon = import ./home-manager/home.nix;
             home-manager.extraSpecialArgs = {inherit inputs;};
           }
+        ];
+      };
+
+      bee = nixpkgs-unstable.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+        };
+        modules = [
+          agenix.nixosModules.default
+          ./hosts/bee
         ];
       };
     };

@@ -11,8 +11,7 @@
     ./modules/kitty.nix
     ./modules/nvim
     ./modules/git.nix
-    ./modules/hyprland
-    ./modules/android-studio.nix
+    # ./modules/android-studio.nix
     ./modules/orca-slicer.nix
     ./modules/zed.nix
     ./modules/dmenu
@@ -20,13 +19,20 @@
     ./modules/lock.nix
     ./modules/clipboard.nix
     ./modules/obs.nix
+    ./modules/xwayland.nix
+    ./modules/waybar.nix
+    ./modules/wlogout.nix
   ];
 
   programs.home-manager.enable = true;
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 
-  services.mako.enable = true;
+  services.mako = {
+    enable = true;
+    defaultTimeout = 5000;
+  };
+
   services.udiskie = {
     enable = true;
     automount = true;
@@ -63,7 +69,8 @@
     pkgs.thunderbird
     pkgs.chromium
     pkgs.awscli2
-    pkgs.xwayland-satellite
+    pkgs.nautilus
+    pkgs.hyperhdr
     # pkgs.darkice
     # pkgs.temurin-jre-bin
     # pkgs.kicad
