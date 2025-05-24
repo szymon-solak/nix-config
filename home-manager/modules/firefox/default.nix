@@ -94,6 +94,20 @@
           "Kagi" = {
             urls = [{template = "https://kagi.com/search?q={searchTerms}";}];
             definedAliases = ["@k"];
+					};
+          "MDN" = {
+            urls = [
+              {
+                template = "https://developer.mozilla.org/en-US/search";
+                params = [
+                  {
+                    name = "q";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            definedAliases = ["@mdn"];
           };
           "Bing".metaData.hidden = true;
           "Google".metaData.alias = "@g";

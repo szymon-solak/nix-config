@@ -16,7 +16,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nur.url = "github:nix-community/NUR";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     stylix = {
       url = "github:danth/stylix/release-24.11";
@@ -100,6 +103,8 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/mercury
+          nur.modules.darwin.default
+          {nixpkgs.overlays = [nur.overlays.default];}
           home-manager.darwinModules.home-manager
           (import ./overlays)
           {

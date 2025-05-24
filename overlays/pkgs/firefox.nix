@@ -3,6 +3,7 @@
   fetchurl,
   undmg,
   unzip,
+  lib,
 }: let
   version = "137.0";
 in
@@ -21,12 +22,12 @@ in
     src = fetchurl {
       name = "Firefox-${version}.dmg";
       url = "https://download-installer.cdn.mozilla.net/pub/firefox/releases/${version}/mac/en-GB/Firefox%20${version}.dmg";
-      sha256 = "11hjxkr183aixnsiriw77fvsag29479asvzmgpml0258b93rc9sy";
+      sha256 = "sha256-tJMgU6IOjXzjT74FXr2+D9QeV3CdOs/okgJcRoF1a00=";
     };
 
-    meta = with stdenv.lib; {
+    meta = {
       description = "The Firefox web browser";
       homepage = "https://www.mozilla.org/en-GB/firefox";
-      platforms = platforms.darwin;
+      platforms = lib.platforms.darwin;
     };
   }
