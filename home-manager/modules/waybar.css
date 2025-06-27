@@ -134,7 +134,8 @@ window#waybar #workspaces button.active {
 	margin-right: 0;
 }
 
-#network {
+#network,
+#custom-net {
 	padding-left: 1em;
 	margin-left: 0;
 }

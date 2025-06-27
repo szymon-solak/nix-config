@@ -42,8 +42,8 @@
       };
 
       sansSerif = {
-        package = pkgs.iosevka-bin;
-        name = "Iosevka";
+        package = pkgs.nerd-fonts.iosevka;
+        name = "Iosevka Nerd Font";
       };
 
       serif = {

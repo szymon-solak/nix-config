@@ -50,7 +50,7 @@
           orientation = "inherit";
           modules = [
             "custom/network-icon"
-            "network"
+            "custom/net"
           ];
         };
 
@@ -221,11 +221,17 @@
         };
 
         network = {
-          format = "{ifname}";
+          family = "ipv4";
+          format = "{ipaddr}";
           foramt-wifi = "󰖩 {essid} ({signalStrength}%)";
           format-ethernet = "{ipaddr}";
           format-disconnected = "Offline";
           tooltip-format = "{ifname} via {gwaddr}";
+        };
+
+        "custom/net" = {
+          exec = "ip -4 -br addr | awk 'NR==2 {print $3}' | tr -d '\n'";
+          tooltip = false;
         };
 
         "custom/power-button" = {

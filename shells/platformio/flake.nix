@@ -22,6 +22,7 @@
           pkgs.arduino-cli
           pkgs.avrdude
           pkgs.platformio
+          pkgs.esptool
         ];
 
         shellHook = "";
