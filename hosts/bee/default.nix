@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ../modules/nix-settings.nix
     ../modules/glance.nix
     ../modules/jellyfin.nix
     ../modules/mdns.nix
