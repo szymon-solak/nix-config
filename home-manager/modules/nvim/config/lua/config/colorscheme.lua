@@ -6,7 +6,7 @@ require('catppuccin').setup({
 
 vim.cmd("colorscheme catppuccin")
 
-local timer = vim.loop.new_timer()
+-- local timer = vim.loop.new_timer()
 
 vim.cmd("set background=dark")
 

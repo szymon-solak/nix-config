@@ -12,6 +12,7 @@
     ../modules/steam.nix
     ../modules/sddm.nix
     ../modules/lact.nix
+    ../modules/ollama.nix
   ];
 
   nix.gc = {
@@ -101,7 +102,10 @@
   services.devmon.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
-  services.udev.packages = [pkgs.via];
+  services.udev.packages = [
+    pkgs.via
+    pkgs.platformio-core
+  ];
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

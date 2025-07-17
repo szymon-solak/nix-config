@@ -92,6 +92,7 @@
         };
         modules = [
           agenix.nixosModules.default
+          (import ./overlays)
           ./hosts/bee
         ];
       };

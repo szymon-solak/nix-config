@@ -15,6 +15,8 @@
   ];
 
   nix.settings.trusted-users = ["bee"];
+  security.pam.sshAgentAuth.enable = true;
+  nix.package = pkgs.nixVersions.nix_2_28;
   nixpkgs = {
     overlays = [];
 

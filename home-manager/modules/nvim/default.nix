@@ -25,7 +25,6 @@ in {
 
       # general use
       nvim-autopairs
-      comment-nvim
       lualine-nvim
       nvim-web-devicons
       which-key-nvim
@@ -47,18 +46,12 @@ in {
       catppuccin-nvim
 
       # completion
-      nvim-cmp
-      cmp-nvim-lsp
-      cmp-buffer
-      cmp-path
-      cmp-cmdline
-      cmp-vsnip
-      vim-vsnip
+      blink-cmp
+      blink-cmp-avante
+      avante-nvim
 
       # lsp
-      lsp-zero-nvim
       nvim-lspconfig
-      lspkind-nvim
       trouble-nvim
       tiny-inline-diagnostic-nvim
       nvim-lint

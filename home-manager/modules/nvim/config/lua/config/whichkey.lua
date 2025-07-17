@@ -10,7 +10,7 @@ whichkey.setup {}
 	{ "<leader>b", group = "Buffers", nowait = true, remap = false },
 	{ "<leader>bb", "<cmd>Telescope buffers<cr>", desc = "Switch to buffer", nowait = true, remap = false },
 	{ "<leader>bc", "<cmd>Bdelete!<cr>", desc = "Close Buffer", nowait = true, remap = false },
-	{ 
+	{
 		"<leader>bs",
 		function ()
 			vim.cmd([[

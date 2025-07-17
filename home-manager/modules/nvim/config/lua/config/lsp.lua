@@ -1,29 +1,17 @@
--- LSP
-local lsp = require('lsp-zero').preset({})
+vim.lsp.enable('rust_analyzer')
+vim.lsp.enable('biome')
 
-lsp.on_attach(function(client, bufnr)
-	lsp.default_keymaps({ buffer = bufnr })
-end)
-
-lsp.setup_servers({
-	'ts_ls',
-	'lua_ls',
-	'rust_analyzer',
-	'nil_ls',
-	'elixirls',
-	'eslint',
-	'biome',
-	'ruff'
-})
-
-require('lspconfig').lua_ls.setup({
+vim.lsp.config('luals', {
+	cmd = { 'lua-language-server' },
+	filetypes = { 'lua' },
+	root_markers = { '.luarc.json', '.luarc.jsonc' },
 	settings = {
 		Lua = {
 			runtime = {
 				version = 'LuaJIT'
 			},
 			diagnostics = {
-				globals = {'vim'},
+				globals = { 'vim' },
 			},
 			workspace = {
 				library = {
@@ -33,26 +21,36 @@ require('lspconfig').lua_ls.setup({
 		}
 	}
 })
+vim.lsp.enable('luals')
 
 local elixir_ls_path = vim.env.ELIXIR_LS_PATH
-require('lspconfig').elixirls.setup({
-	cmd = { elixir_ls_path }
-})
+
+if elixir_ls_path ~= nil then
+	vim.lsp.config('elixirls', {
+		cmd = { elixir_ls_path }
+	})
+	vim.lsp.enable('elixirls')
+end
 
 local nil_ls_path = vim.env.NIL_LS_PATH
-require('lspconfig').nil_ls.setup({
-	cmd = { nil_ls_path }
-})
 
-require('lspconfig').ts_ls.setup({
+if nil_ls_path ~= nil then
+	vim.lsp.config('nil_ls', {
+		cmd = { nil_ls_path }
+	})
+	vim.lsp.enable('nil_ls')
+end
+
+vim.lsp.config('ts_ls', {
 	init_options = {
 		preferences = {
 			importModuleSpecifierPreference = 'relative'
 		}
 	},
 })
+vim.lsp.enable('ts_ls')
 
-require('lspconfig').eslint.setup({
+vim.lsp.config('eslint', {
 	filetypes = {
 		'javascript',
 		'javascriptreact',
@@ -66,15 +64,14 @@ require('lspconfig').eslint.setup({
 		'graphql',
 	}
 })
-
-lsp.setup()
+vim.lsp.enable('eslint')
 
 -- Linters
 local lint = require('lint')
 
 lint.linters_by_ft = {
 	bash = { "shellcheck" },
-	json = { "jsonlint" },
+	-- json = { "jsonlint" },
 	elixir = { "credo" },
 	typescript = { "biomejs" },
 	typescriptreact = { "biomejs" },

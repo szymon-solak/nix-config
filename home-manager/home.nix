@@ -51,6 +51,12 @@
     TERMINAL = "kitty";
   };
 
+  gtk.enable = true;
+  gtk.iconTheme = {
+    package = pkgs.zafiro-icons;
+    name = "zafiro-icons";
+  };
+
   home.packages = [
     pkgs.obsidian
     pkgs.usbutils
@@ -72,7 +78,8 @@
     pkgs.nautilus
     pkgs.hyperhdr
     # pkgs.darkice
-    # pkgs.temurin-jre-bin
-    # pkgs.kicad
+    pkgs.temurin-jre-bin
+    pkgs.kicad
+    pkgs.arduino-ide
   ];
 }

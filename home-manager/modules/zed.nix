@@ -4,6 +4,7 @@
 
     extensions = [
       "nix"
+      "markdown"
       "catppuccin"
     ];
 
@@ -59,8 +60,18 @@
           api_url = "http://localhost:11434";
           available_models = [
             {
-              name = "mistral";
+              name = "mistral:7b";
               display_name = "mistral";
+              max_tokens = 16384;
+            }
+            {
+              name = "granite-code:3b";
+              display_name = "granite-code:3b";
+              max_tokens = 16384;
+            }
+            {
+              name = "granite-code:8b";
+              display_name = "granite-code:8b";
               max_tokens = 16384;
             }
           ];
@@ -82,10 +93,10 @@
       {
         context = "Editor && vim_mode == normal && !VimWaiting && !menu";
         bindings = {
-          ctrl-h = ["workspace:ActivatePaneInDirection" "Left"];
-          ctrl-l = ["workspace:ActivatePaneInDirection" "Right"];
-          ctrl-k = ["workspace:ActivatePaneInDirection" "Up"];
-          ctrl-j = ["workspace:ActivatePaneInDirection" "Down"];
+          ctrl-h = "workspace::ActivatePaneLeft";
+          ctrl-l = "workspace::ActivatePaneRight";
+          ctrl-k = "workspace::ActivatePaneUp";
+          ctrl-j = "workspace::ActivatePaneDown";
           "space c a" = "editor::ToggleCodeActions";
           "space ." = "editor::ToggleCodeActions";
           "space c r" = "editor::Rename";
@@ -122,10 +133,10 @@
       {
         "context" = "Dock";
         "bindings" = {
-          "ctrl-w h" = ["workspace::ActivatePaneInDirection" "Left"];
-          "ctrl-w l" = ["workspace::ActivatePaneInDirection" "Right"];
-          "ctrl-w k" = ["workspace::ActivatePaneInDirection" "Up"];
-          "ctrl-w j" = ["workspace::ActivatePaneInDirection" "Down"];
+          "ctrl-w h" = "workspace::ActivatePaneLeft";
+          "ctrl-w l" = "workspace::ActivatePaneRight";
+          "ctrl-w k" = "workspace::ActivatePaneUp";
+          "ctrl-w j" = "workspace::ActivatePaneDown";
         };
       }
       {

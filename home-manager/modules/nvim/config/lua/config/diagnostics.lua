@@ -5,14 +5,28 @@ local signs = {
 	{ name = "DiagnosticSignInfo", text = "" },
 }
 
-for _, sign in ipairs(signs) do
-	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-end
-
-local config = {
+vim.diagnostic.config({
 	virtual_text = false,
 	signs = {
 		active = signs,
+		text = {
+			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.HINT] = "",
+			[vim.diagnostic.severity.INFO] = "",
+		},
+		linehl = {
+			[vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+			[vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+			[vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+			[vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+		},
+		numhl = {
+			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.HINT] = "",
+			[vim.diagnostic.severity.INFO] = "",
+		},
 	},
 	update_in_insert = true,
 	underline = true,
@@ -21,13 +35,11 @@ local config = {
 		focusable = false,
 		style = "minimal",
 		border = "rounded",
-		source = "always",
+		source = true,
 		header = "",
 		prefix = "",
 	},
-}
-
-vim.diagnostic.config(config)
+})
 
 local status_ok, trouble = pcall(require, "trouble")
 if not status_ok then
@@ -44,10 +56,3 @@ end
 tiny_inline_diagnostic.setup {
 	preset = "simple"
 }
-
-local status_ok, comment = pcall(require, "Comment")
-if not status_ok then
-	return
-end
-
-comment.setup {}

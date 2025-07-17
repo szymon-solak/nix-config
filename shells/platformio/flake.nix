@@ -23,6 +23,7 @@
           pkgs.avrdude
           pkgs.platformio
           pkgs.esptool
+          pkgs.nodejs
         ];
 
         shellHook = "";
