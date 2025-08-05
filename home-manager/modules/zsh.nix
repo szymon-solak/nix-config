@@ -1,14 +1,17 @@
 {
   pkgs,
   config,
-  lib,
   ...
 }: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
     autocd = true;
-    autosuggestion.enable = true;
+
+    autosuggestion = {
+      enable = true;
+      highlight = "fg=244";
+    };
 
     shellAliases = {
       # ip = "ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\\  -f2";

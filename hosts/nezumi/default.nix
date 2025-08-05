@@ -11,8 +11,7 @@
     ../modules/ssh.nix
     ../modules/steam.nix
     ../modules/sddm.nix
-    ../modules/lact.nix
-    ../modules/ollama.nix
+    # ../modules/lact.nix
   ];
 
   nix.gc = {
@@ -39,11 +38,11 @@
 
   environment.systemPackages = [pkgs.sbctl];
   boot.loader.systemd-boot.enable = lib.mkForce false;
+  boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.timeout = 2;
   boot.lanzaboote = {
     enable = true;
-    pkiBundle = "/etc/secureboot/";
-    # pkiBundle = "/var/lib/sbctl";
+    pkiBundle = "/var/lib/sbctl";
   };
 
   networking.hostName = "nezumi";
@@ -60,12 +59,18 @@
       Settings.AutoConnect = true;
     };
   };
-  networking.nameservers = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
+  networking.nameservers = [
+    "1.1.1.1#one.one.one.one"
+    "1.0.0.1#one.one.one.one"
+  ];
 
   services.resolved = {
     enable = true;
     domains = ["~."];
-    fallbackDns = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
+    fallbackDns = [
+      "1.1.1.1#one.one.one.one"
+      "1.0.0.1#one.one.one.one"
+    ];
     dnsovertls = "true";
   };
 
@@ -127,6 +132,7 @@
   services.displayManager.sessionPackages = [pkgs.niri];
   services.fwupd.enable = true;
   security.pam.services.swaylock = {};
+  xdg.portal.wlr.enable = true;
 
   programs.uwsm = {
     enable = true;
@@ -144,13 +150,24 @@
   users.users.szymon = {
     isNormalUser = true;
     description = "szymon";
-    extraGroups = ["networkmanager" "wheel" "dialout" "adbusers"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "dialout"
+      "adbusers"
+      "i2c"
+      "plugdev"
+    ];
     shell = pkgs.zsh;
-    packages = with pkgs; [git gcc];
+    packages = with pkgs; [
+      git
+      gcc
+    ];
   };
 
   security.sudo.enable = false;
   security.sudo-rs.enable = true;
+  security.pam.sshAgentAuth.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "24.11";

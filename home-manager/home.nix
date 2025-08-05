@@ -72,14 +72,14 @@
     pkgs.glxinfo
     pkgs.qbittorrent-nox
     pkgs.heroic
-    pkgs.thunderbird
+    # pkgs.thunderbird
     pkgs.chromium
     pkgs.awscli2
     pkgs.nautilus
     pkgs.hyperhdr
     # pkgs.darkice
-    pkgs.temurin-jre-bin
-    pkgs.kicad
-    pkgs.arduino-ide
+    # pkgs.temurin-jre-bin
+    # pkgs.kicad
+    # pkgs.arduino-ide
   ];
 }

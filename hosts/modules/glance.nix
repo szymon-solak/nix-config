@@ -52,6 +52,7 @@
                   {
                     title = "Lyrion";
                     url = "https://lms.pszczola.party";
+                    icon = "mdi:radio";
                   }
                   {
                     title = "Jellyfin";

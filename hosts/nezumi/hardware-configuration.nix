@@ -15,22 +15,24 @@
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = ["amdgpu"];
   boot.kernelModules = ["kvm-amd"];
-  boot.kernelParams = ["quiet" "splash" "amdgpu.ppfeaturemask=0xffffffff"];
+  # boot.kernelParams = ["quiet" "splash" "amdgpu.ppfeaturemask=0xffffffff"];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/ff5a8f1e-8f19-45c5-9b2b-c99c87becd0e";
+    device = "/dev/disk/by-uuid/65a7609c-5c5c-4765-bbce-2230be19903c";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/1F57-D6E3";
+    device = "/dev/disk/by-uuid/A5FD-6CFD";
     fsType = "vfat";
     options = ["fmask=0077" "dmask=0077"];
   };
 
-  swapDevices = [];
+  swapDevices = [
+    {device = "/dev/disk/by-uuid/f06c47ec-e46a-4976-9a80-b59d2cd221d9";}
+  ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -45,5 +47,4 @@
   hardware.enableAllFirmware = true;
   hardware.enableRedistributableFirmware = true;
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  hardware.graphics.enable = true;
 }

@@ -30,10 +30,8 @@ in {
       which-key-nvim
       editorconfig-nvim
       nvim-tree-lua
-      vim-sandwich
-      leap-nvim
-      vim-repeat
       tabby-nvim
+      render-markdown-nvim
 
       # telescope
       telescope-nvim
@@ -49,6 +47,8 @@ in {
       blink-cmp
       blink-cmp-avante
       avante-nvim
+      copilot-lua
+      blink-copilot
 
       # lsp
       nvim-lspconfig
@@ -66,6 +66,10 @@ in {
       vim-fugitive
     ];
   };
+
+  home.packages = [
+    pkgs.nodejs_22 # Required for copilot
+  ];
 
   xdg.configFile.nvim = {
     source = ./config;

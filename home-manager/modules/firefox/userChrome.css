@@ -35,7 +35,7 @@
 
 :root{
   --nav-rgt-btnbx-margin: var(--margin);
-  --nav-rgt-btnbx-button: var(--toolbar-button-wdt);
+  --nav-rgt-btnbx-button: var(--toolbar-button-wdt)
   
   --nav-lft-btnbx-margin: 0px;
   --nav-lft-btnbx-button: 0px;
@@ -106,7 +106,7 @@
 
 /* Sidebery */
 #sidebar-header { 
-	display: none
+	/* display: none */
 }
 
 .sidebar-splitter{

@@ -1,6 +1,4 @@
-{pkgs, ...}: {
-  home.packages = [pkgs.kitty-themes];
-
+{
   programs.kitty = {
     enable = true;
     settings = {
@@ -13,9 +11,8 @@
       # window_margin_width = 4;
       # window_padding_width = 4;
       resize_in_steps = "yes";
+      cursor_trail = 3;
     };
-
-    themeFile = "Catppuccin-Mocha";
 
     extraConfig = ''
       map kitty_mod+enter launch --cwd=current
