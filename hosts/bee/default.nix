@@ -13,6 +13,7 @@
     ./caddy.nix
     ./monitoring.nix
     ./lms.nix
+    ./home-assistant.nix
   ];
 
   nix.settings.trusted-users = ["bee"];
@@ -35,6 +36,21 @@
 
   networking.hostName = "bee";
   networking.networkmanager.enable = true;
+  networking.networkmanager.dns = "systemd-resolved";
+  networking.nameservers = [
+    "1.1.1.1#one.one.one.one"
+    "1.0.0.1#one.one.one.one"
+  ];
+
+  services.resolved = {
+    enable = true;
+    domains = ["~."];
+    fallbackDns = [
+      "1.1.1.1#one.one.one.one"
+      "1.0.0.1#one.one.one.one"
+    ];
+    dnsovertls = "true";
+  };
 
   time.timeZone = "Europe/Warsaw";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -62,7 +78,7 @@
     description = "bee";
     extraGroups = ["networkmanager" "wheel"];
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKgYrw3DhPtjLsF71tIhpw1YRDIWrqiLY9ldVHh3G6rp szymon"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIK4RbXhptAXWkKJ9YZbsI5q69MTcH0WATzsVBEML53z szymon"
     ];
   };
 

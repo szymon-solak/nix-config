@@ -39,6 +39,10 @@ in {
       reverse_proxy http://localhost:8096
     '';
 
+    virtualHosts."home.bee.local".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.home-assistant.config.http.server_port}
+    '';
+
     virtualHosts."pszczola.party".extraConfig = ''
       reverse_proxy http://localhost:8778
 
@@ -65,6 +69,14 @@ in {
 
     virtualHosts."jellyfin.pszczola.party".extraConfig = ''
       reverse_proxy http://localhost:8096
+
+      tls ${certs}/cert.pem ${certs}/key.pem {
+      	protocols tls1.3
+      }
+    '';
+
+    virtualHosts."home.pszczola.party".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.home-assistant.config.http.server_port}
 
       tls ${certs}/cert.pem ${certs}/key.pem {
       	protocols tls1.3

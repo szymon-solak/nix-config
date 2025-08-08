@@ -81,6 +81,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.users.szymon = import ./home-manager/home.nix;
             home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.backupFileExtension = ".bak";
           }
         ];
       };

@@ -17,7 +17,7 @@
     '';
 
     # Make nix3 commands consistent with flake
-    registry = lib.mapAttrs (_: value: {flake = value;}) inputs;
-    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
+    # registry = lib.mapAttrs (_: value: {flake = value;}) inputs;
+    # nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
   };
 }

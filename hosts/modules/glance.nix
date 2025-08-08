@@ -56,8 +56,13 @@
                   }
                   {
                     title = "Jellyfin";
-                    url = "http://jellyfin.pszczola.party";
+                    url = "https://jellyfin.pszczola.party";
                     icon = "si:jellyfin";
+                  }
+                  {
+                    title = "Home Assistant";
+                    url = "https://home.pszczola.party";
+                    icon = "si:homeassistant";
                   }
                 ];
               }
