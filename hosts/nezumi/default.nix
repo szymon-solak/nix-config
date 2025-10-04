@@ -11,7 +11,9 @@
     ../modules/ssh.nix
     ../modules/steam.nix
     ../modules/sddm.nix
-    # ../modules/lact.nix
+    ../modules/polkit.nix
+    ../modules/lact.nix
+    ../modules/podman.nix
   ];
 
   nix.gc = {
@@ -157,6 +159,8 @@
       "adbusers"
       "i2c"
       "plugdev"
+      "podman"
+      "docker"
     ];
     shell = pkgs.zsh;
     packages = with pkgs; [

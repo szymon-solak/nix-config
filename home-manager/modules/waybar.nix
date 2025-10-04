@@ -18,6 +18,7 @@
     settings = [
       {
         height = 34;
+        output = "DP-3";
         margin = "0 8 10 8";
         layer = "top";
         position = "bottom";

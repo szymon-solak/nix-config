@@ -22,6 +22,8 @@ in {
 
       # pipewire = unstable.pipewire;
       vimPlugins = unstable.vimPlugins;
+
+      lact = unstable.lact;
     })
   ];
 }

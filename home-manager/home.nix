@@ -40,6 +40,8 @@
     tray = "always";
   };
 
+  services.mpris-proxy.enable = true;
+
   xdg.enable = true;
   xdg.mime.enable = true;
   targets.genericLinux.enable = true;
@@ -77,6 +79,8 @@
     pkgs.awscli2
     pkgs.nautilus
     pkgs.hyperhdr
+    pkgs.gnome-disk-utility
+    pkgs.wdisplays
     # pkgs.temurin-jre-bin
     # pkgs.kicad
     # pkgs.arduino-ide

@@ -15,7 +15,7 @@
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = ["amdgpu"];
   boot.kernelModules = ["kvm-amd"];
-  # boot.kernelParams = ["quiet" "splash" "amdgpu.ppfeaturemask=0xffffffff"];
+  boot.kernelParams = ["quiet" "splash"];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.extraModulePackages = [];
 
@@ -47,4 +47,9 @@
   hardware.enableAllFirmware = true;
   hardware.enableRedistributableFirmware = true;
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  hardware.amdgpu = {
+    overdrive.enable = true;
+    initrd.enable = true;
+  };
 }
