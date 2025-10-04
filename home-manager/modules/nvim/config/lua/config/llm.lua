@@ -1,31 +1,21 @@
-local status_ok, avante = pcall(require, "avante")
-if not status_ok then
-	return
-end
-
 if vim.fn.executable('node') == 1 then
 	require("copilot").setup({})
 
 	local creds = require("copilot.auth").get_creds()
 
 	if creds then
-			avante.setup {
-				provider = "copilot",
-				auto_suggestions_provider = "copilot",
+		vim.api.nvim_create_autocmd("User", {
+			pattern = "BlinkCmpMenuOpen",
+			callback = function()
+				vim.b.copilot_suggestion_hidden = true
+			end,
+		})
 
-				providers = {
-					ollama = {
-						endpoint = "http://localhost:11434",
-						model = "qwen3:8b",
-						timeout = 15000,
-						disable_tools = true,
-					}
-				},
-
-				behaviour = {
-					auto_suggestions = true,
-					use_cwd_as_project_root = true,
-				},
-			}
-		end
+		vim.api.nvim_create_autocmd("User", {
+			pattern = "BlinkCmpMenuClose",
+			callback = function()
+				vim.b.copilot_suggestion_hidden = false
+			end,
+		})
+	end
 end

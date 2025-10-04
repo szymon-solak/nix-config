@@ -72,6 +72,12 @@ whichkey.setup {}
 	{ "gd", "<cmd>Telescope lsp_definitions jump_type=vsplit<cr>", desc = "Go to definition", nowait = true, remap = false },
 	{ "gi", "<cmd>Telescope lsp_implementations jump_type=vsplit<cr>", desc = "Go to implementation", nowait = true, remap = false },
 	{ "gr", "<cmd>Telescope lsp_references<cr>", desc = "Go to references", nowait = true, remap = false },
+
+	{ "<leader>a", group = "Copilot", nowait = true, remap = false },
+	{ "<leader>ap", "<cmd>Copilot panel<cr>", desc = "Open Copilot panel", nowait = true, remap = false },
+	{ "<leader>a]", "<cmd>Copilot panel next<cr>", desc = "Next suggestion", nowait = true, remap = false },
+	{ "<leader>a[", "<cmd>Copilot panel prev<cr>", desc = "Previous suggestion", nowait = true, remap = false },
+	{ "<leader>a<cr>", "<cmd>Copilot panel accept<cr>", desc = "Accept suggestion", nowait = true, remap = false },
 })
 
 

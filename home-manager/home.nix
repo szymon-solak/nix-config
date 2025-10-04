@@ -81,6 +81,7 @@
     pkgs.hyperhdr
     pkgs.gnome-disk-utility
     pkgs.wdisplays
+    pkgs.opencode
     # pkgs.temurin-jre-bin
     # pkgs.kicad
     # pkgs.arduino-ide

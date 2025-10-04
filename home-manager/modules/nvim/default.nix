@@ -45,10 +45,7 @@ in {
 
       # completion
       blink-cmp
-      blink-cmp-avante
-      avante-nvim
       copilot-lua
-      blink-copilot
 
       # lsp
       nvim-lspconfig
