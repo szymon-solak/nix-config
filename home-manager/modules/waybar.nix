@@ -17,11 +17,11 @@
 
     settings = [
       {
-        height = 34;
+        # height = 34;
         output = "DP-3";
-        margin = "0 8 10 8";
+        margin = "0 0 0 0";
         layer = "top";
-        position = "bottom";
+        position = "top";
         spacing = 0;
 
         # TODO: Warning states for high usage?
@@ -179,7 +179,7 @@
         };
 
         "temperature#cpu" = {
-          hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
+          hwmon-path = "/sys/class/hwmon/hwmon3/temp1_input";
           format = "@ {temperatureC}°C";
           tooltip = false;
         };

@@ -53,7 +53,7 @@
         # take_over_control = false;
         prefer_rgb_color = true;
         sleep_brightness = 1;
-        sleep_rgb_color = [255 140 0];
+        sleep_rgb_color = [0 0 0];
         transition_until_sleep = false;
         sleep_transition = 60;
         sleep_color_temp = 2100;

@@ -46,6 +46,9 @@ in {
       # completion
       blink-cmp
       copilot-lua
+      ((fromGitHub "folke/sidekick.nvim" "main" "0ab6a23b779e208c3733c48a380bf35e3ec1d49d").overrideAttrs {
+        nvimSkipModules = ["sidekick.docs"];
+      })
 
       # lsp
       nvim-lspconfig

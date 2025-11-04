@@ -1,8 +1,10 @@
 {
   lib,
   pkgs,
+  config,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
     ./stylix.nix
@@ -23,10 +25,11 @@
   };
 
   nixpkgs = {
-    overlays = [];
+    overlays = [ ];
 
     config = {
-      allowUnfreePredicate = pkg:
+      allowUnfreePredicate =
+        pkg:
         builtins.elem (lib.getName pkg) [
           "obsidian"
           "terraform"
@@ -34,11 +37,11 @@
           "steam-original"
           "steam-run"
         ];
-      permittedInsecurePackages = [];
+      permittedInsecurePackages = [ ];
     };
   };
 
-  environment.systemPackages = [pkgs.sbctl];
+  environment.systemPackages = [ pkgs.sbctl ];
   boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.timeout = 2;
@@ -68,11 +71,8 @@
 
   services.resolved = {
     enable = true;
-    domains = ["~."];
-    fallbackDns = [
-      "1.1.1.1#one.one.one.one"
-      "1.0.0.1#one.one.one.one"
-    ];
+    domains = [ "~." ];
+    fallbackDns = config.networking.nameservers;
     dnsovertls = "true";
   };
 
@@ -99,7 +99,7 @@
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    videoDrivers = ["amdgpu"];
+    videoDrivers = [ "amdgpu" ];
     xkb = {
       variant = "";
       layout = "pl,us";
@@ -124,6 +124,44 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    extraConfig = {
+      pipewire."10-combined-sink.conf" = {
+        "context.modules" = [
+          {
+            name = "libpipewire-module-combine-stream";
+            args = {
+              "node.name" = "combine_sink";
+              "combine.mode" = "sink";
+              "combine.latency-compensate" = false;
+              "combine.props" = {
+                "audio.position" = [
+                  "FL"
+                  "FR"
+                ];
+              };
+
+              "stream.props" = {
+                "stream.dont-remix" = true;
+              };
+
+              "stream.rules" = [
+                {
+                  matches = [
+                    {
+                      "media.class" = "Audio/Sink";
+											# "node.name" = "~!blue.*";
+                    }
+                  ];
+                  actions = {
+                    create-stream = {};
+                  };
+                }
+              ];
+            };
+          }
+        ];
+      };
+    };
   };
 
   programs.zsh.enable = true;
@@ -131,9 +169,9 @@
   programs.nm-applet.enable = true;
   programs.xwayland.enable = true;
   programs.niri.enable = true;
-  services.displayManager.sessionPackages = [pkgs.niri];
+  services.displayManager.sessionPackages = [ pkgs.niri ];
   services.fwupd.enable = true;
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
   xdg.portal.wlr.enable = true;
 
   programs.uwsm = {

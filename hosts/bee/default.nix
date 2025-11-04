@@ -9,11 +9,12 @@
     ../modules/glance.nix
     ../modules/jellyfin.nix
     ../modules/mdns.nix
-    ../modules/samba.nix
+    ./network-share.nix
     ./caddy.nix
     ./monitoring.nix
     ./lms.nix
     ./home-assistant
+    ./dns.nix
   ];
 
   nix.settings.trusted-users = ["bee"];
@@ -36,21 +37,10 @@
 
   networking.hostName = "bee";
   networking.networkmanager.enable = true;
-  networking.networkmanager.dns = "systemd-resolved";
   networking.nameservers = [
     "1.1.1.1#one.one.one.one"
     "1.0.0.1#one.one.one.one"
   ];
-
-  services.resolved = {
-    enable = true;
-    domains = ["~."];
-    fallbackDns = [
-      "1.1.1.1#one.one.one.one"
-      "1.0.0.1#one.one.one.one"
-    ];
-    dnsovertls = "true";
-  };
 
   systemd.services."restart-system" = {
     startAt = ["*-*-* 03:00:00"];

@@ -74,10 +74,27 @@ whichkey.setup {}
 	{ "gr", "<cmd>Telescope lsp_references<cr>", desc = "Go to references", nowait = true, remap = false },
 
 	{ "<leader>a", group = "Copilot", nowait = true, remap = false },
-	{ "<leader>ap", "<cmd>Copilot panel<cr>", desc = "Open Copilot panel", nowait = true, remap = false },
+	-- { "<leader>ap", "<cmd>Copilot panel<cr>", desc = "Open Copilot panel", nowait = true, remap = false },
 	{ "<leader>a]", "<cmd>Copilot panel next<cr>", desc = "Next suggestion", nowait = true, remap = false },
 	{ "<leader>a[", "<cmd>Copilot panel prev<cr>", desc = "Previous suggestion", nowait = true, remap = false },
 	{ "<leader>a<cr>", "<cmd>Copilot panel accept<cr>", desc = "Accept suggestion", nowait = true, remap = false },
+	{ "<leader>as", "<cmd>Sidekick cli toggle<cr>", desc = "Toggle Sidekick", nowait = true, remap = false },
+	{ "<leader>an", "<cmd>Sidekick nes toggle<cr>", desc = "Toggle NES", nowait = true, remap = false },
+	{ "<leader>at", function() require("sidekick.cli").send({ msg = "{this}" }) end, desc = "Send this", nowait = true, remap = false },
+	{ "<leader>av", function() require("sidekick.cli").send({ msg = "{selection}" }) end, desc = "Send selection", nowait = true, remap = false },
+	{ "<leader>ap", function() require("sidekick.cli").prompt() end, desc = "Send selection", nowait = true, remap = false },
+	{
+		"<tab>",
+		function()
+			-- if there is a next edit, jump to it, otherwise apply it if any
+			if not require("sidekick").nes_jump_or_apply() then
+				return "<Tab>" -- fallback to normal tab
+			end
+		end,
+		desc = "Send selection",
+		nowait = true,
+		remap = false,
+	},
 })
 
 

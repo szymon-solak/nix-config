@@ -43,6 +43,14 @@ in {
       reverse_proxy http://localhost:${toString config.services.home-assistant.config.http.server_port}
     '';
 
+    virtualHosts."dns.bee.local".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.blocky.settings.ports.dns}
+    '';
+
+    virtualHosts."dns-api.bee.local".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.blocky.settings.ports.http}
+    '';
+
     virtualHosts."pszczola.party".extraConfig = ''
       reverse_proxy http://localhost:8778
 
@@ -77,6 +85,22 @@ in {
 
     virtualHosts."home.pszczola.party".extraConfig = ''
       reverse_proxy http://localhost:${toString config.services.home-assistant.config.http.server_port}
+
+      tls ${certs}/cert.pem ${certs}/key.pem {
+      	protocols tls1.3
+      }
+    '';
+		
+    virtualHosts."dns.pszczola.party".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.blocky.settings.ports.dns}
+
+      tls ${certs}/cert.pem ${certs}/key.pem {
+      	protocols tls1.3
+      }
+    '';
+    
+    virtualHosts."dns-api.pszczola.party".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.blocky.settings.ports.http}
 
       tls ${certs}/cert.pem ${certs}/key.pem {
       	protocols tls1.3

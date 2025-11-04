@@ -17,5 +17,11 @@ if vim.fn.executable('node') == 1 then
 				vim.b.copilot_suggestion_hidden = false
 			end,
 		})
+
+		vim.lsp.enable('copilot')
 	end
+
+	local sidekick = require("sidekick")
+
+	sidekick.setup()
 end
