@@ -3,8 +3,7 @@
   pkgs,
   config,
   ...
-}:
-{
+}: {
   imports = [
     ./hardware-configuration.nix
     ./stylix.nix
@@ -25,11 +24,10 @@
   };
 
   nixpkgs = {
-    overlays = [ ];
+    overlays = [];
 
     config = {
-      allowUnfreePredicate =
-        pkg:
+      allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) [
           "obsidian"
           "terraform"
@@ -37,11 +35,11 @@
           "steam-original"
           "steam-run"
         ];
-      permittedInsecurePackages = [ ];
+      permittedInsecurePackages = [];
     };
   };
 
-  environment.systemPackages = [ pkgs.sbctl ];
+  environment.systemPackages = [pkgs.sbctl];
   boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.timeout = 2;
@@ -71,7 +69,7 @@
 
   services.resolved = {
     enable = true;
-    domains = [ "~." ];
+    domains = ["~."];
     fallbackDns = config.networking.nameservers;
     dnsovertls = "true";
   };
@@ -99,7 +97,7 @@
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    videoDrivers = [ "amdgpu" ];
+    videoDrivers = ["amdgpu"];
     xkb = {
       variant = "";
       layout = "pl,us";
@@ -149,7 +147,7 @@
                   matches = [
                     {
                       "media.class" = "Audio/Sink";
-											# "node.name" = "~!blue.*";
+                      # "node.name" = "~!blue.*";
                     }
                   ];
                   actions = {
@@ -169,9 +167,9 @@
   programs.nm-applet.enable = true;
   programs.xwayland.enable = true;
   programs.niri.enable = true;
-  services.displayManager.sessionPackages = [ pkgs.niri ];
+  services.displayManager.sessionPackages = [pkgs.niri];
   services.fwupd.enable = true;
-  security.pam.services.swaylock = { };
+  security.pam.services.swaylock = {};
   xdg.portal.wlr.enable = true;
 
   programs.uwsm = {

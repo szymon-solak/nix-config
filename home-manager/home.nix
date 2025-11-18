@@ -69,7 +69,7 @@
     pkgs.pavucontrol
     pkgs.vlc
     pkgs.lm_sensors
-    pkgs.rpi-imager
+    # pkgs.rpi-imager
     pkgs.dfu-util
     pkgs.glxinfo
     pkgs.qbittorrent-nox

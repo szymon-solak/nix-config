@@ -90,7 +90,7 @@ in {
       	protocols tls1.3
       }
     '';
-		
+
     virtualHosts."dns.pszczola.party".extraConfig = ''
       reverse_proxy http://localhost:${toString config.services.blocky.settings.ports.dns}
 
@@ -98,7 +98,7 @@ in {
       	protocols tls1.3
       }
     '';
-    
+
     virtualHosts."dns-api.pszczola.party".extraConfig = ''
       reverse_proxy http://localhost:${toString config.services.blocky.settings.ports.http}
 

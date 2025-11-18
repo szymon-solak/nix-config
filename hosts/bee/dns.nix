@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{config, ...}: {
   services.blocky = {
     enable = true;
 
@@ -20,10 +19,10 @@
 
       blocking = {
         blackLists = {
-          ads = [ "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts" ];
+          ads = ["https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"];
         };
         clientGroupsBlock = {
-          default = [ "ads" ];
+          default = ["ads"];
         };
       };
 
@@ -37,7 +36,7 @@
         job_name = "blocky";
         static_configs = [
           {
-            targets = [ "127.0.0.1:${toString config.services.blocky.settings.ports.http}" ];
+            targets = ["127.0.0.1:${toString config.services.blocky.settings.ports.http}"];
           }
         ];
       }

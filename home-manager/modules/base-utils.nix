@@ -11,6 +11,7 @@
     pkgs.fx
     pkgs.jq
     pkgs.zenith
+    pkgs.lazygit
   ];
 
   fonts.fontconfig.enable = true;

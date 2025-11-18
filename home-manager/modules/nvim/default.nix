@@ -32,12 +32,13 @@ in {
       nvim-tree-lua
       tabby-nvim
       render-markdown-nvim
+      snacks-nvim
 
       # telescope
-      telescope-nvim
-      telescope-ui-select-nvim
-      telescope-undo-nvim
-      telescope-fzf-native-nvim
+      # telescope-nvim
+      # telescope-ui-select-nvim
+      # telescope-undo-nvim
+      # telescope-fzf-native-nvim
 
       # theme
       # nightfox-nvim
@@ -46,9 +47,10 @@ in {
       # completion
       blink-cmp
       copilot-lua
-      ((fromGitHub "folke/sidekick.nvim" "main" "0ab6a23b779e208c3733c48a380bf35e3ec1d49d").overrideAttrs {
-        nvimSkipModules = ["sidekick.docs"];
-      })
+      sidekick-nvim
+      # ((fromGitHub "folke/sidekick.nvim" "main" "0ab6a23b779e208c3733c48a380bf35e3ec1d49d").overrideAttrs {
+      #   nvimSkipModules = ["sidekick.docs"];
+      # })
 
       # lsp
       nvim-lspconfig
