@@ -21,7 +21,7 @@ in {
         else linux-firefox;
 
       # pipewire = unstable.pipewire;
-      vimPlugins = unstable.vimPlugins;
+      # vimPlugins = unstable.vimPlugins;
     })
   ];
 }

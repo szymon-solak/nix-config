@@ -27,6 +27,7 @@
           pkgs.nodePackages.typescript-language-server
           pkgs.nodePackages.vscode-langservers-extracted
           pkgs.biome
+          pkgs.gh
         ];
 
         shellHook = ''

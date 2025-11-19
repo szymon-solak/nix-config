@@ -44,6 +44,7 @@ in {
       catppuccin-nvim
 
       # completion
+      nvim-cmp
       blink-cmp
       blink-cmp-avante
       avante-nvim
@@ -75,4 +76,9 @@ in {
     source = ./config;
     recursive = true;
   };
+
+  # home.file.".config/nvim" = {
+  #    source = ./config;
+  #    recursive = true;
+  # };
 }

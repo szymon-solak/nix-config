@@ -10,8 +10,9 @@
   ];
 
   system.stateVersion = 5;
-
-  services.nix-daemon.enable = true;
+  system.primaryUser = "szymonsolak";
+  services.nix-daemon.tempDir = "/private/tmp";
+  ids.gids.nixbld = 30000;
 
   nix.gc = {
     automatic = true;
