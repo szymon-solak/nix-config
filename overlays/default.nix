@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   inputs,
   ...
@@ -11,6 +12,12 @@
 
   unstable = import inputs.nixpkgs-unstable {
     system = "x86_64-linux";
+    config = {
+      allowUnfreePredicate = pkg:
+        builtins.elem (lib.getName pkg) [
+          "copilot-language-server"
+        ];
+    };
   };
 in {
   nixpkgs.overlays = [
@@ -21,7 +28,8 @@ in {
         else linux-firefox;
 
       # pipewire = unstable.pipewire;
-      # vimPlugins = unstable.vimPlugins;
+      vimPlugins = unstable.vimPlugins;
+      lact = unstable.lact;
     })
   ];
 }

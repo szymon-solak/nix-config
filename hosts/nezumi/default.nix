@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  config,
   ...
 }: {
   imports = [
@@ -11,7 +12,9 @@
     ../modules/ssh.nix
     ../modules/steam.nix
     ../modules/sddm.nix
-    # ../modules/lact.nix
+    ../modules/polkit.nix
+    ../modules/lact.nix
+    ../modules/podman.nix
   ];
 
   nix.gc = {
@@ -67,10 +70,7 @@
   services.resolved = {
     enable = true;
     domains = ["~."];
-    fallbackDns = [
-      "1.1.1.1#one.one.one.one"
-      "1.0.0.1#one.one.one.one"
-    ];
+    fallbackDns = config.networking.nameservers;
     dnsovertls = "true";
   };
 
@@ -122,6 +122,44 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    extraConfig = {
+      pipewire."10-combined-sink.conf" = {
+        "context.modules" = [
+          {
+            name = "libpipewire-module-combine-stream";
+            args = {
+              "node.name" = "combine_sink";
+              "combine.mode" = "sink";
+              "combine.latency-compensate" = false;
+              "combine.props" = {
+                "audio.position" = [
+                  "FL"
+                  "FR"
+                ];
+              };
+
+              "stream.props" = {
+                "stream.dont-remix" = true;
+              };
+
+              "stream.rules" = [
+                {
+                  matches = [
+                    {
+                      "media.class" = "Audio/Sink";
+                      # "node.name" = "~!blue.*";
+                    }
+                  ];
+                  actions = {
+                    create-stream = {};
+                  };
+                }
+              ];
+            };
+          }
+        ];
+      };
+    };
   };
 
   programs.zsh.enable = true;
@@ -157,6 +195,8 @@
       "adbusers"
       "i2c"
       "plugdev"
+      "podman"
+      "docker"
     ];
     shell = pkgs.zsh;
     packages = with pkgs; [

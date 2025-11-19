@@ -1,8 +1,19 @@
 local blink = require("blink.cmp")
-require("blink-cmp-avante")
 
 blink.setup({
-	keymap = { preset = "default" },
+	keymap = {
+		preset = "default",
+		["<Tab>"] = {
+			"snippet_forward",
+			function()
+				return require("sidekick").nes_jump_or_apply()
+			end,
+			-- function()
+			-- 	return vim.lsp.inline_completion.get()
+			-- end,
+			"fallback",
+		},
+	},
 	appearance = {
 		nerd_font_variant = 'mono'
 	},
@@ -18,20 +29,7 @@ blink.setup({
 		},
 	},
 	sources = {
-		default = { 'copilot', 'avante', 'lsp', 'path', 'snippets', 'buffer' },
-		providers = {
-			avante = {
-				module = 'blink-cmp-avante',
-				name = 'avante',
-				opts = {},
-			},
-			copilot = {
-				name = 'copilot',
-				module = 'blink-copilot',
-				score_offset = 100,
-				async = true,
-			}
-		},
+		default = { 'lsp', 'path', 'snippets', 'buffer' },
 	},
 	signature = { enabled = true },
 })

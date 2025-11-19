@@ -26,7 +26,14 @@
         "path" = "/mnt/Shares/Public";
         "browseable" = "yes";
         "read only" = "no";
-        "guest ok" = "yes";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+      };
+
+      "notes" = {
+        "path" = "/mnt/Shares/Notes";
+        "browseable" = "yes";
+        "read only" = "no";
         "create mask" = "0644";
         "directory mask" = "0755";
       };

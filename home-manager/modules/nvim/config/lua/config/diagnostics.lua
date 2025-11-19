@@ -1,8 +1,8 @@
 local signs = {
 	{ name = "DiagnosticSignError", text = "" },
-	{ name = "DiagnosticSignWarn", text = "" },
-	{ name = "DiagnosticSignHint", text = "" },
-	{ name = "DiagnosticSignInfo", text = "" },
+	{ name = "DiagnosticSignWarn",  text = "" },
+	{ name = "DiagnosticSignHint",  text = "" },
+	{ name = "DiagnosticSignInfo",  text = "" },
 }
 
 vim.diagnostic.config({
@@ -41,17 +41,11 @@ vim.diagnostic.config({
 	},
 })
 
-local status_ok, trouble = pcall(require, "trouble")
-if not status_ok then
-	return
-end
+local trouble = require("trouble")
 
 trouble.setup {}
 
-local status_ok, tiny_inline_diagnostic = pcall(require, "tiny-inline-diagnostic")
-if not status_ok then
-	return
-end
+local tiny_inline_diagnostic = require("tiny-inline-diagnostic")
 
 tiny_inline_diagnostic.setup {
 	preset = "simple"

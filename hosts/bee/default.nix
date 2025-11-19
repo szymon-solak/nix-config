@@ -9,11 +9,12 @@
     ../modules/glance.nix
     ../modules/jellyfin.nix
     ../modules/mdns.nix
-    ../modules/samba.nix
+    ./network-share.nix
     ./caddy.nix
     ./monitoring.nix
     ./lms.nix
-    ./home-assistant.nix
+    ./home-assistant
+    ./dns.nix
   ];
 
   nix.settings.trusted-users = ["bee"];
@@ -36,20 +37,17 @@
 
   networking.hostName = "bee";
   networking.networkmanager.enable = true;
-  networking.networkmanager.dns = "systemd-resolved";
   networking.nameservers = [
     "1.1.1.1#one.one.one.one"
     "1.0.0.1#one.one.one.one"
   ];
 
-  services.resolved = {
-    enable = true;
-    domains = ["~."];
-    fallbackDns = [
-      "1.1.1.1#one.one.one.one"
-      "1.0.0.1#one.one.one.one"
-    ];
-    dnsovertls = "true";
+  systemd.services."restart-system" = {
+    startAt = ["*-*-* 03:00:00"];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "/run/current-system/sw/bin/reboot";
+    };
   };
 
   time.timeZone = "Europe/Warsaw";
@@ -76,7 +74,10 @@
   users.users.bee = {
     isNormalUser = true;
     description = "bee";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIK4RbXhptAXWkKJ9YZbsI5q69MTcH0WATzsVBEML53z szymon"
     ];
@@ -95,7 +96,11 @@
     };
   };
 
-  networking.firewall.allowedTCPPorts = [80 443 22];
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+    22
+  ];
 
   system.stateVersion = "24.11"; # Did you read the comment?
 }

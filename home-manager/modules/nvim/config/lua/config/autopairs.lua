@@ -9,7 +9,6 @@ npairs.setup {
 		lua = { "string", "source" },
 		javascript = { "string", "template_string" },
 	},
-	disable_filetype = { "TelescopePrompt" },
 	fast_wrap = {
 		map = "<C-e>",
 		chars = { "{", "[", "(", '"', "'" },

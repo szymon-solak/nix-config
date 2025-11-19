@@ -66,6 +66,15 @@ vim.lsp.config('eslint', {
 })
 vim.lsp.enable('eslint')
 
+vim.lsp.config('jsonls', {
+	settings = {
+		json = {
+			validate = { enable = true },
+		}
+	}
+})
+vim.lsp.enable('jsonls')
+
 -- Linters
 local lint = require('lint')
 

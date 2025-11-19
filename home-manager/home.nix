@@ -40,6 +40,8 @@
     tray = "always";
   };
 
+  services.mpris-proxy.enable = true;
+
   xdg.enable = true;
   xdg.mime.enable = true;
   targets.genericLinux.enable = true;
@@ -67,7 +69,7 @@
     pkgs.pavucontrol
     pkgs.vlc
     pkgs.lm_sensors
-    pkgs.rpi-imager
+    # pkgs.rpi-imager
     pkgs.dfu-util
     pkgs.glxinfo
     pkgs.qbittorrent-nox
@@ -77,6 +79,9 @@
     pkgs.awscli2
     pkgs.nautilus
     pkgs.hyperhdr
+    pkgs.gnome-disk-utility
+    pkgs.wdisplays
+    pkgs.opencode
     # pkgs.temurin-jre-bin
     # pkgs.kicad
     # pkgs.arduino-ide
