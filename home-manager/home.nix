@@ -65,6 +65,7 @@
     pkgs.appimage-run
     pkgs.amdgpu_top
     pkgs.via
+    pkgs.vial
     pkgs.vulkan-tools
     pkgs.pavucontrol
     pkgs.vlc

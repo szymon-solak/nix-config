@@ -2,18 +2,18 @@ local Snacks = require("snacks");
 
 Snacks.setup({
 	bigfile = { enabled = true },
-	-- indent = { enabled = true, animate = { duration = { total = 100 } } },
 	input = { enabled = true },
 	lazygit = { enabled = true },
 	statuscolumn = { enabled = true },
 	picker = {
 		enabled = true,
+		prompt = "❯ ",
+		auto_close = true,
 		sources = {
 			explorer = {
+				auto_close = true,
 				layout = {
-					layout = {
-						position = "right"
-					}
+					preset = "default",
 				}
 			}
 		}
