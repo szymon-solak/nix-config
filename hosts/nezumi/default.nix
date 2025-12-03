@@ -11,7 +11,7 @@
     ../modules/bluetooth.nix
     ../modules/ssh.nix
     ../modules/steam.nix
-    ../modules/sddm.nix
+    # ../modules/sddm.nix
     ../modules/polkit.nix
     ../modules/lact.nix
     ../modules/podman.nix
@@ -95,14 +95,14 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    videoDrivers = ["amdgpu"];
-    xkb = {
-      variant = "";
-      layout = "pl,us";
-    };
-  };
+  # services.xserver = {
+  #   enable = true;
+  #   videoDrivers = [ "amdgpu" ];
+  #   xkb = {
+  #     variant = "";
+  #     layout = "pl,us";
+  #   };
+  # };
 
   services.devmon.enable = true;
   services.gvfs.enable = true;
@@ -162,16 +162,6 @@
     };
   };
 
-  programs.zsh.enable = true;
-  programs.adb.enable = true;
-  programs.nm-applet.enable = true;
-  programs.xwayland.enable = true;
-  programs.niri.enable = true;
-  services.displayManager.sessionPackages = [pkgs.niri];
-  services.fwupd.enable = true;
-  security.pam.services.swaylock = {};
-  xdg.portal.wlr.enable = true;
-
   programs.uwsm = {
     enable = true;
     waylandCompositors = {
@@ -182,6 +172,20 @@
       };
     };
   };
+
+  programs.zsh.enable = true;
+  programs.zsh.loginShellInit = ''
+    if ${pkgs.uwsm}/bin/uwsm check may-start && ${pkgs.uwsm}/bin/uwsm select; then
+    	${pkgs.uwsm}/bin/uwsm start default
+    fi
+  '';
+
+  programs.adb.enable = true;
+  programs.nm-applet.enable = true;
+  programs.niri.enable = true;
+  services.displayManager.sessionPackages = [pkgs.niri];
+  services.fwupd.enable = true;
+  xdg.portal.wlr.enable = true;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 

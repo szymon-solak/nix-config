@@ -7,7 +7,7 @@
       url = "https://github.com/SoftFever/OrcaSlicer/releases/download/v${version}/OrcaSlicer_Linux_AppImage_V${version}.AppImage";
       sha256 = "sha256-cwediOw28GFdt5GdAKom/jAeNIum4FGGKnz8QEAVDAM=";
     };
-    extraPkgs = pkgs: with pkgs; [webkitgtk_4_0];
+    # extraPkgs = pkgs: with pkgs; [webkitgtk_4_1];
   };
 
   orcaslicer-desktop =

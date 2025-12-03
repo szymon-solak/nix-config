@@ -1,5 +1,6 @@
 vim.lsp.enable('rust_analyzer')
 vim.lsp.enable('biome')
+vim.lsp.enable('gopls')
 
 vim.lsp.config('luals', {
 	cmd = { 'lua-language-server' },
