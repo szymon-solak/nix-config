@@ -9,7 +9,7 @@
   stylix.targets.waybar.enable = false;
 
   programs.waybar = {
-    enable = true;
+    enable = false;
     systemd.enable = true;
     systemd.target = "graphical-session.target";
 
@@ -18,26 +18,27 @@
     settings = [
       {
         # height = 34;
-        output = "DP-3";
+        # width = 40;
+        # output = "DP-3";
         margin = "0 0 0 0";
         layer = "top";
-        position = "top";
-        spacing = 0;
+        position = "left";
+        spacing = 5;
 
         # TODO: Warning states for high usage?
-        modules-left = ["group/workspace"];
+        modules-left = ["niri/window"];
         modules-center = ["group/center"];
-        modules-right = [
-          "group/cpu-usage"
-          "group/gpu-usage"
-          "group/memory-usage"
-          "group/bt"
-          "group/audio"
-          "group/net"
-          "tray"
-          "group/time"
-          "custom/power-button"
-        ];
+        # modules-right = [
+        #   "group/cpu-usage"
+        #   "group/gpu-usage"
+        #   "group/memory-usage"
+        #   "group/bt"
+        #   "group/audio"
+        #   "group/net"
+        #   "tray"
+        #   "group/time"
+        #   "custom/power-button"
+        # ];
 
         "group/time" = {
           orientation = "inherit";
@@ -67,7 +68,6 @@
           orientation = "inherit";
           modules = [
             "custom/workspace-icon"
-            "hyprland/window"
             "niri/window"
           ];
         };
@@ -75,7 +75,6 @@
         "group/center" = {
           orientation = "inherit";
           modules = [
-            "hyprland/workspaces"
             "niri/workspaces"
           ];
         };
@@ -160,13 +159,13 @@
           tooltip = false;
         };
 
-        "hyprland/window" = {
-          format = "{}";
-          separate-outputs = true;
-        };
-
         "niri/window" = {
           separate-outputs = true;
+          # icon = true;
+          rotate = 90;
+          rewrite = {
+            "^(.*) — Mozilla Firefox$" = "$1";
+          };
         };
 
         "custom/cpu-icon" = {

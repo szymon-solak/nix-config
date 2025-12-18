@@ -8,15 +8,17 @@
     #   display = "inline";
     # };
 
-    userName = "Szymon Solak";
-    userEmail = "16944591+szymon-solak@users.noreply.github.com";
+    settings = {
+      alias = {
+        unstage = "reset HEAD --";
+        cp = "cherry-pick";
+      };
 
-    aliases = {
-      unstage = "reset HEAD --";
-      cp = "cherry-pick";
-    };
+      user = {
+        name = "Szymon Solak";
+        email = "16944591+szymon-solak@users.noreply.github.com";
+      };
 
-    extraConfig = {
       rerere = {enabled = 1;};
       commit = {template = "${./gitmessage}";};
       init = {defaultBranch = "main";};

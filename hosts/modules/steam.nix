@@ -31,7 +31,7 @@
 
   environment.systemPackages = [
     pkgs.mangohud
-    pkgs.protonup
+    pkgs.protonup-ng
   ];
 
   environment.sessionVariables = {
