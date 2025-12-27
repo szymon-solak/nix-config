@@ -35,6 +35,11 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    gwt = {
+      url = "github:szymon-solak/gwt";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -47,6 +52,7 @@
     nur,
     lanzaboote,
     agenix,
+    gwt,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -72,6 +78,7 @@
           lanzaboote.nixosModules.lanzaboote
           agenix.nixosModules.default
           {environment.systemPackages = [agenix.packages."x86_64-linux".default];}
+          {environment.systemPackages = [gwt.packages."x86_64-linux".default];}
           ./hosts/nezumi
           nur.modules.nixos.default
           {nixpkgs.overlays = [nur.overlays.default];}
