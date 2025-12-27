@@ -22,6 +22,8 @@
     ./modules/xwayland.nix
     ./modules/waybar.nix
     ./modules/wlogout.nix
+    ./modules/audio.nix
+    ./modules/llms.nix
   ];
 
   programs.home-manager.enable = true;

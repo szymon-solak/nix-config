@@ -2,6 +2,14 @@ vim.lsp.enable('rust_analyzer')
 vim.lsp.enable('biome')
 vim.lsp.enable('gopls')
 
+vim.lsp.config('tinymist', {
+	cmd = { 'tinymist' },
+	filetypes = { 'typst' },
+})
+vim.lsp.enable('tinymist')
+
+vim.lsp.enable('harper_ls')
+
 vim.lsp.config('luals', {
 	cmd = { 'lua-language-server' },
 	filetypes = { 'lua' },

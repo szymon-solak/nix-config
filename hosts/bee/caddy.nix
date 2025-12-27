@@ -44,11 +44,7 @@ in {
     '';
 
     virtualHosts."dns.bee.local".extraConfig = ''
-      reverse_proxy http://localhost:${toString config.services.blocky.settings.ports.dns}
-    '';
-
-    virtualHosts."dns-api.bee.local".extraConfig = ''
-      reverse_proxy http://localhost:${toString config.services.blocky.settings.ports.http}
+      reverse_proxy http://localhost:${toString config.services.pihole-web.ports}
     '';
 
     virtualHosts."pszczola.party".extraConfig = ''
@@ -92,15 +88,7 @@ in {
     '';
 
     virtualHosts."dns.pszczola.party".extraConfig = ''
-      reverse_proxy http://localhost:${toString config.services.blocky.settings.ports.dns}
-
-      tls ${certs}/cert.pem ${certs}/key.pem {
-      	protocols tls1.3
-      }
-    '';
-
-    virtualHosts."dns-api.pszczola.party".extraConfig = ''
-      reverse_proxy http://localhost:${toString config.services.blocky.settings.ports.http}
+      reverse_proxy http://localhost:${toString config.services.pihole-web.ports}
 
       tls ${certs}/cert.pem ${certs}/key.pem {
       	protocols tls1.3
