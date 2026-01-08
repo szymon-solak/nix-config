@@ -12,6 +12,9 @@
     pkgs.jq
     pkgs.zenith
     pkgs.lazygit
+    pkgs.nmap
+    pkgs.dig
+    pkgs.harper
   ];
 
   fonts.fontconfig.enable = true;

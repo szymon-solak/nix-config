@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  config,
   ...
 }: {
   imports = [
@@ -11,7 +10,6 @@
     ../modules/bluetooth.nix
     ../modules/ssh.nix
     ../modules/steam.nix
-    # ../modules/sddm.nix
     ../modules/polkit.nix
     ../modules/lact.nix
     ../modules/podman.nix
@@ -63,18 +61,24 @@
     };
   };
   networking.nameservers = [
-    "1.1.1.1#one.one.one.one"
-    "1.0.0.1#one.one.one.one"
+    "192.168.0.76#dns.pszczola.party"
   ];
 
   services.resolved = {
     enable = true;
     domains = ["~."];
-    fallbackDns = config.networking.nameservers;
-    dnsovertls = "true";
+    fallbackDns = [
+      "1.1.1.1#one.one.one.one"
+      "1.0.0.1#one.one.one.one"
+    ];
+    extraConfig = ''
+      DNSStubListener=no
+    '';
   };
 
   services.avahi.enable = true;
+  services.avahi.nssmdns4 = true;
+  services.avahi.openFirewall = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
@@ -94,16 +98,6 @@
     LC_TIME = "pl_PL.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  # services.xserver = {
-  #   enable = true;
-  #   videoDrivers = [ "amdgpu" ];
-  #   xkb = {
-  #     variant = "";
-  #     layout = "pl,us";
-  #   };
-  # };
-
   services.devmon.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
@@ -114,6 +108,11 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.printing.drivers = [
+    pkgs.cups-filters
+    pkgs.cups-browsed
+    pkgs.cnijfilter2
+  ];
 
   # Enable sound with pipewire.
   security.rtkit.enable = true;
@@ -173,11 +172,18 @@
     };
   };
 
+  # services.displayManager.ly = {
+  # 	enable = true;
+  # 	x11Support = false;
+  # };
+
   programs.zsh.enable = true;
   programs.zsh.loginShellInit = ''
-    if ${pkgs.uwsm}/bin/uwsm check may-start && ${pkgs.uwsm}/bin/uwsm select; then
-    	${pkgs.uwsm}/bin/uwsm start default
-    fi
+     if ${pkgs.uwsm}/bin/uwsm check may-start && ${pkgs.uwsm}/bin/uwsm select; then
+     	${pkgs.uwsm}/bin/uwsm start default
+
+    poweroff
+     fi
   '';
 
   programs.adb.enable = true;

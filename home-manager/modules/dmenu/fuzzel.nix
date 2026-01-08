@@ -9,6 +9,7 @@
         lines = 20;
         vertical-pad = 16;
         horizontal-pad = 16;
+        launch-prefix = "uwsm-app --";
       };
 
       border.width = 2;

@@ -1,49 +1,64 @@
 {config, ...}: {
-  services.blocky = {
+  services.pihole-ftl = {
     enable = true;
-
+    openFirewallDNS = true;
+    lists = [
+      {
+        url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
+      }
+    ];
     settings = {
-      ports.dns = 53;
-      ports.http = 4000;
-      upstreams.groups.default = [
-        "https://one.one.one.one/dns-query"
-      ];
-
-      bootstrapDns = {
-        upstream = "https://one.one.one.one/dns-query";
-        ips = [
+      dns = {
+        upstreams = [
           "1.1.1.1"
           "1.0.0.1"
+          "2606:4700:4700::1111"
+          "2606:4700:4700::1001"
         ];
       };
-
-      blocking = {
-        blackLists = {
-          ads = ["https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"];
-        };
-        clientGroupsBlock = {
-          default = ["ads"];
-        };
-      };
-
-      prometheus.enable = config.services.prometheus.enable;
     };
+  };
+
+  services.pihole-web = {
+    enable = true;
+    ports = [7777];
+  };
+
+  services.prometheus.exporters.pihole = {
+    enable = true;
+    piholeHostname = "127.0.0.1";
+    piholePort = 7777;
+    # @todo: password or api token
   };
 
   services.prometheus = {
     scrapeConfigs = [
       {
-        job_name = "blocky";
+        job_name = "pihole";
         static_configs = [
           {
-            targets = ["127.0.0.1:${toString config.services.blocky.settings.ports.http}"];
+            targets = ["127.0.0.1:${toString config.services.prometheus.exporters.pihole.port}"];
           }
         ];
       }
     ];
   };
 
-  networking.firewall.allowedTCPPorts = [
-    config.services.blocky.settings.ports.dns
-  ];
+  #
+  # services.prometheus = {
+  #   scrapeConfigs = [
+  #     {
+  #       job_name = "blocky";
+  #       static_configs = [
+  #         {
+  #           targets = [ "127.0.0.1:${toString config.services.blocky.settings.ports.http}" ];
+  #         }
+  #       ];
+  #     }
+  #   ];
+  # };
+  #
+  # networking.firewall.allowedTCPPorts = [
+  #   config.services.blocky.settings.ports.dns
+  # ];
 }
