@@ -1,13 +1,12 @@
-local configs = require("nvim-treesitter.configs")
+local treesitter = require("nvim-treesitter")
 
-configs.setup {
+treesitter.setup {
 	ensure_installed = {},
 	sync_install = false,
 	ignore_install = { "" },
 	highlight = {
 		enable = true,
 		disable = { "" },
-
 	},
 	indent = { enable = true, disable = { "yaml" } },
 	incremental_selection = {
@@ -20,3 +19,25 @@ configs.setup {
 		},
 	}
 }
+
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = {
+		'html',
+		'javascript',
+		'javascriptreact',
+		'typescript',
+		'typescriptreact',
+		'markdown',
+		'yaml',
+		'python',
+		'lua',
+		'go',
+		'rust',
+		'sql',
+		'typst',
+		'nix',
+	},
+	callback = function() vim.treesitter.start() end,
+})
+
+vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
