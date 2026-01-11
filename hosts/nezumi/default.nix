@@ -172,24 +172,16 @@
     };
   };
 
-  # services.displayManager.ly = {
-  # 	enable = true;
-  # 	x11Support = false;
-  # };
+  services.greetd = {
+    enable = true;
+    useTextGreeter = true;
+    settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --remember --remember-user-session --user-menu --user-menu-min-uid 1000 --asterisks --time";
+  };
 
   programs.zsh.enable = true;
-  programs.zsh.loginShellInit = ''
-     if ${pkgs.uwsm}/bin/uwsm check may-start && ${pkgs.uwsm}/bin/uwsm select; then
-     	${pkgs.uwsm}/bin/uwsm start default
-
-    poweroff
-     fi
-  '';
-
   programs.adb.enable = true;
   programs.nm-applet.enable = true;
   programs.niri.enable = true;
-  services.displayManager.sessionPackages = [pkgs.niri];
   services.fwupd.enable = true;
   xdg.portal.wlr.enable = true;
 
