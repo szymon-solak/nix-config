@@ -34,12 +34,6 @@ in {
       render-markdown-nvim
       snacks-nvim
 
-      # telescope
-      # telescope-nvim
-      # telescope-ui-select-nvim
-      # telescope-undo-nvim
-      # telescope-fzf-native-nvim
-
       # theme
       # nightfox-nvim
       catppuccin-nvim
@@ -56,12 +50,10 @@ in {
       nvim-lspconfig
       trouble-nvim
       tiny-inline-diagnostic-nvim
-      nvim-lint
       conform-nvim
 
       # treesitter
       nvim-treesitter.withAllGrammars
-      nvim-treesitter-context
 
       # git
       gitsigns-nvim

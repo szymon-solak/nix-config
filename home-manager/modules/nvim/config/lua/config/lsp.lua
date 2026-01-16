@@ -84,35 +84,17 @@ vim.lsp.config('jsonls', {
 })
 vim.lsp.enable('jsonls')
 
--- Linters
-local lint = require('lint')
-
-lint.linters_by_ft = {
-	bash = { "shellcheck" },
-	-- json = { "jsonlint" },
-	elixir = { "credo" },
-	typescript = { "biomejs" },
-	typescriptreact = { "biomejs" },
-}
-
-local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
-	group = lint_augroup,
-	callback = function()
-		lint.try_lint()
-	end,
-})
-
 -- Formatters
 local conform = require('conform')
 
+local js_formatters = { "prettierd", "prettier", "eslint_d", "biome", stop_after_first = true }
+
 conform.setup({
 	formatters_by_ft = {
-		javascript = { "eslint_d" },
-		typescript = { "biome" },
-		javascriptreact = { "eslint_d" },
-		typescriptreact = { "biome" },
+		javascript = js_formatters,
+		typescript = js_formatters,
+		javascriptreact = js_formatters,
+		typescriptreact = js_formatters,
 		rust = { "rustfmt" },
 		nix = { "nixfmt" },
 		elixir = { "mix" },

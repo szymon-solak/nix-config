@@ -80,10 +80,7 @@
   services.avahi.nssmdns4 = true;
   services.avahi.openFirewall = true;
 
-  # Set your time zone.
   time.timeZone = "Europe/Warsaw";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
