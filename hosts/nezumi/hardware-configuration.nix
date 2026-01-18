@@ -14,10 +14,12 @@
 
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = ["amdgpu"];
+  boot.initrd.verbose = false;
   boot.kernelModules = ["kvm-amd"];
-  boot.kernelParams = ["quiet" "splash"];
+  boot.kernelParams = ["quiet" "splash" "udev.log_level=3"];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.extraModulePackages = [];
+  boot.consoleLogLevel = 0;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/65a7609c-5c5c-4765-bbce-2230be19903c";
