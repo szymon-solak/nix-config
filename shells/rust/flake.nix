@@ -36,15 +36,6 @@
                 pkgs.nil
                 pkgs.rust-analyzer
                 pkgs.iconv
-              ]
-              ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
-                pkgs.darwin.apple_sdk.frameworks.CoreFoundation
-                pkgs.darwin.apple_sdk.frameworks.CoreServices
-                pkgs.darwin.apple_sdk.frameworks.CoreGraphics
-                pkgs.darwin.apple_sdk.frameworks.CoreVideo
-                pkgs.darwin.apple_sdk.frameworks.ApplicationServices
-                pkgs.darwin.apple_sdk.frameworks.Carbon
-                pkgs.darwin.apple_sdk.frameworks.AppKit
               ];
 
             shellHook = "

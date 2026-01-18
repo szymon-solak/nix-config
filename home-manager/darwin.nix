@@ -11,7 +11,7 @@
     ./modules/zsh.nix
     ./modules/kitty.nix
     ./modules/nvim
-    ./modules/darwin-application-activation.nix
+    # ./modules/darwin-application-activation.nix
     ./modules/zed.nix
   ];
 
@@ -27,10 +27,11 @@
     pkgs.obsidian
     pkgs.lazydocker
     pkgs.awscli2
-    pkgs.terraform
-    pkgs.terragrunt
-    pkgs.tart
-    pkgs.ollama
+    # pkgs.terraform
+    # pkgs.terragrunt
+    # pkgs.tart
+    # pkgs.ollama
     pkgs.google-cloud-sdk
+		# pkgs.ngrok
   ];
 }
