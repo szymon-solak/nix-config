@@ -27,10 +27,9 @@ in {
         then macos-firefox
         else linux-firefox;
 
-      # pipewire = unstable.pipewire;
       vimPlugins = unstable.vimPlugins;
-
       lact = unstable.lact;
+      noctalia-shell = unstable.noctalia-shell;
     })
   ];
 }

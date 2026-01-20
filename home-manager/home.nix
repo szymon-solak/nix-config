@@ -24,6 +24,7 @@
     ./modules/wlogout.nix
     ./modules/audio.nix
     ./modules/llms.nix
+    ./modules/shell.nix
   ];
 
   programs.home-manager.enable = true;

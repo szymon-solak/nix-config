@@ -73,3 +73,23 @@ end
 vim.opt.foldmethod = "expr"
 vim.opt.foldlevel = 20
 vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {
+		'html',
+		'javascript',
+		'javascriptreact',
+		'typescript',
+		'typescriptreact',
+		'markdown',
+		'yaml',
+		'python',
+		'lua',
+		'go',
+		'rust',
+		'sql',
+		'typst',
+		'nix',
+	},
+  callback = function() vim.treesitter.start() end,
+})

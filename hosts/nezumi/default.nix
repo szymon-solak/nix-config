@@ -181,6 +181,8 @@
   programs.niri.enable = true;
   services.fwupd.enable = true;
   xdg.portal.wlr.enable = true;
+  services.tuned.enable = true;
+  services.upower.enable = true;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
