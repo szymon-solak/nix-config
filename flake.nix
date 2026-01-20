@@ -8,7 +8,7 @@
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-25.05";
+    nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-25.11";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     firefox-addons = {
@@ -88,7 +88,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.users.szymon = import ./home-manager/home.nix;
             home-manager.extraSpecialArgs = {inherit inputs;};
-            home-manager.backupFileExtension = ".bak";
+            home-manager.backupFileExtension = "bak";
           }
         ];
       };
@@ -120,6 +120,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.szymonsolak = import ./home-manager/darwin.nix;
             home-manager.extraSpecialArgs = {inherit inputs;};
+						home-manager.backupFileExtension = "bak";
           }
         ];
       };

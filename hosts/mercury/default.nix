@@ -10,8 +10,9 @@
   ];
 
   system.stateVersion = 5;
-
-  services.nix-daemon.enable = true;
+  system.primaryUser = "szymonsolak";
+  services.nix-daemon.tempDir = "/private/tmp";
+  ids.gids.nixbld = 30000;
 
   nix.gc = {
     automatic = true;
@@ -34,7 +35,7 @@
   };
 
   nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) ["obsidian" "terraform" "tart"];
+    builtins.elem (lib.getName pkg) ["obsidian" "terraform" "tart" "ngrok" "copilot-language-server"];
 
   system = {
     keyboard = {

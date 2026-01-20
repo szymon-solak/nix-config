@@ -39,6 +39,7 @@ in {
       catppuccin-nvim
 
       # completion
+      nvim-cmp
       blink-cmp
       copilot-lua
       sidekick-nvim
@@ -69,4 +70,9 @@ in {
     source = ./config;
     recursive = true;
   };
+
+  # home.file.".config/nvim" = {
+  #    source = ./config;
+  #    recursive = true;
+  # };
 }

@@ -4,6 +4,7 @@
   undmg,
   unzip,
   lib,
+  ...
 }: let
   version = "137.0";
 in
