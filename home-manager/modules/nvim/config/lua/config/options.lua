@@ -76,11 +76,11 @@ vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = {
-		'html',
 		'javascript',
 		'javascriptreact',
 		'typescript',
 		'typescriptreact',
+		'css',
 		'markdown',
 		'yaml',
 		'python',
