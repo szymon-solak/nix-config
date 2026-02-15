@@ -120,7 +120,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.szymonsolak = import ./home-manager/darwin.nix;
             home-manager.extraSpecialArgs = {inherit inputs;};
-						home-manager.backupFileExtension = "bak";
+            home-manager.backupFileExtension = "bak";
           }
         ];
       };

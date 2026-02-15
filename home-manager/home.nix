@@ -11,7 +11,7 @@
     ./modules/kitty.nix
     ./modules/nvim
     ./modules/git.nix
-    # ./modules/android-studio.nix
+    ./modules/android-studio.nix
     ./modules/orca-slicer.nix
     ./modules/zed.nix
     ./modules/dmenu
@@ -88,5 +88,6 @@
     # pkgs.kicad
     # pkgs.arduino-ide
     pkgs.reaper
+    pkgs.nix-output-monitor
   ];
 }
