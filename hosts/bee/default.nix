@@ -19,7 +19,6 @@
 
   nix.settings.trusted-users = ["bee"];
   security.pam.sshAgentAuth.enable = true;
-  nix.package = pkgs.nixVersions.nix_2_28;
   nixpkgs = {
     overlays = [];
 
@@ -27,6 +26,7 @@
       allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) [
           "intel-ocl"
+          "XiaoMi/xiaomi_home"
         ];
       permittedInsecurePackages = [];
     };

@@ -15,3 +15,4 @@ rebuild_macos flake=hostname:
 
 rebuild_remote target_host flake:
 	NIX_SSHOPTS="-tt" nixos-rebuild switch --target-host {{target_host}} --flake .#{{flake}} --sudo
+	# nixos-rebuild switch --target-host {{target_host}} --flake .#{{flake}} --sudo

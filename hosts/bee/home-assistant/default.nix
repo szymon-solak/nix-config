@@ -1,4 +1,9 @@
 {pkgs, ...}: {
+  networking.firewall.allowedTCPPorts = [
+    # config.services.home-assistant.config.http.server_port
+    8123
+  ];
+
   services.home-assistant = {
     enable = true;
 
@@ -12,16 +17,22 @@
       "analytics"
       "google_translate"
       "met"
-      "radio_browser"
+      # "radio_browser"
       "shopping_list"
       # Recommended for fast zlib compression
       # https://www.home-assistant.io/integrations/isal
       "isal"
 
+      "bluetooth"
+      "usb"
+      "homeassistant_connect_zbt2"
+
       "yeelight"
       "wled"
       "roborock"
       "xiaomi_miio"
+      "ffmpeg"
+      "zeroconf"
     ];
 
     config = {
@@ -32,7 +43,7 @@
       recorder.db_url = "postgresql://@/hass";
 
       http = {
-        server_host = "127.0.0.1";
+        # server_host = "127.0.0.1";
         trusted_proxies = [
           "127.0.0.1"
           "::1"
@@ -44,51 +55,43 @@
         name = "default";
         lights = [
           "light.kitchen_strip"
-          "light.monitor_backlight"
         ];
         min_color_temp = 3700;
         max_color_temp = 5500;
         max_sunrise_time = "05:00:00";
         min_sunset_time = "23:30:00";
-        # take_over_control = false;
-        prefer_rgb_color = true;
-        sleep_brightness = 1;
-        sleep_rgb_color = [0 0 0];
-        transition_until_sleep = false;
-        sleep_transition = 60;
-        sleep_color_temp = 2100;
       };
 
       schedule = {
-        adaptive_lighting_sleep_mode = {
-          name = "Adaptive Lighting Sleep Mode";
+        day_mode = {
+          name = "Day Mode";
           monday = {
-            from = "00:30";
-            to = "08:00";
+            from = "08:00";
+            to = "23:30";
           };
           tuesday = {
-            from = "00:30";
-            to = "08:00";
+            from = "08:00";
+            to = "23:30";
           };
           wednesday = {
-            from = "00:30";
-            to = "08:00";
+            from = "08:00";
+            to = "23:30";
           };
           thursday = {
-            from = "00:30";
-            to = "08:00";
+            from = "08:00";
+            to = "23:30";
           };
           friday = {
-            from = "00:30";
-            to = "08:00";
+            from = "08:00";
+            to = "23:30";
           };
           saturday = {
-            from = "00:30";
-            to = "08:00";
+            from = "08:00";
+            to = "23:30";
           };
           sunday = {
-            from = "00:30";
-            to = "08:00";
+            from = "08:00";
+            to = "23:30";
           };
         };
       };
@@ -138,13 +141,13 @@
         mode = "single";
       };
 
-      "automation enable_sleep_mode" = {
-        alias = "Enable Sleep Mode";
+      "automation enable_day_mode" = {
+        alias = "Enable Day Mode";
         description = "";
         triggers = [
           {
             trigger = "state";
-            entity_id = ["schedule.adaptive_lighting_sleep_mode"];
+            entity_id = ["schedule.day_mode"];
             to = "on";
           }
         ];
@@ -152,19 +155,25 @@
           {
             service = "switch.turn_on";
             data = {
-              entity_id = "switch.adaptive_lighting_sleep_mode_default";
+              entity_id = "switch.cuco_de_698951916_v2eur_on_p_2_1";
+            };
+          }
+          {
+            service = "light.turn_on";
+            data = {
+              entity_id = "light.kitchen_strip";
             };
           }
         ];
       };
 
-      "automation disabled_sleep_mode" = {
-        alias = "Disable Sleep Mode";
+      "automation disable_day_mode" = {
+        alias = "Disable Day Mode";
         description = "";
         triggers = [
           {
             trigger = "state";
-            entity_id = ["schedule.adaptive_lighting_sleep_mode"];
+            entity_id = ["schedule.day_mode"];
             to = "off";
           }
         ];
@@ -172,7 +181,13 @@
           {
             service = "switch.turn_off";
             data = {
-              entity_id = "switch.adaptive_lighting_sleep_mode_default";
+              entity_id = "switch.cuco_de_698951916_v2eur_on_p_2_1";
+            };
+          }
+          {
+            service = "light.turn_off";
+            data = {
+              entity_id = "light.kitchen_strip";
             };
           }
         ];
@@ -182,6 +197,7 @@
     customComponents = [
       pkgs.home-assistant-custom-components.adaptive_lighting
       (pkgs.callPackage ./components/roborock-custom-map.nix {})
+      pkgs.home-assistant-custom-components.xiaomi_home
     ];
 
     customLovelaceModules = [

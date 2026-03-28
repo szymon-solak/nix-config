@@ -16,6 +16,7 @@
       allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) [
           "copilot-language-server"
+          "XiaoMi/xiaomi_home"
         ];
     };
   };
@@ -30,6 +31,11 @@ in {
       vimPlugins = unstable.vimPlugins;
       lact = unstable.lact;
       noctalia-shell = unstable.noctalia-shell;
+      winetricks = unstable.winetricks;
+
+      home-assistant = unstable.home-assistant;
+      home-assistant-custom-components = unstable.home-assistant-custom-components;
+      home-assistant-custom-lovelace-modules = unstable.home-assistant-custom-lovelace-modules;
     })
   ];
 }

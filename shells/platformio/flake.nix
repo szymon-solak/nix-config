@@ -19,6 +19,7 @@
 
         buildInputs = [
           pkgs.python3
+          pkgs.python312Packages.pip
           pkgs.arduino-cli
           pkgs.avrdude
           pkgs.platformio

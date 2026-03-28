@@ -6,6 +6,8 @@
       pkgs.proton-ge-bin
     ];
 
+    protontricks.enable = true;
+
     gamescopeSession = {
       enable = true;
       args = [

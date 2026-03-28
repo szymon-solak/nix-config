@@ -6,6 +6,10 @@
         http_addr = "0.0.0.0";
         http_port = 2342;
       };
+      # security = {
+      # 	# @todo: Use file provider
+      # 	secret_key = "SW2YcwTIb9zpOOhoPsMm";
+      # };
     };
   };
 

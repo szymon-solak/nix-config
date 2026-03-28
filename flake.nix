@@ -93,7 +93,7 @@
         ];
       };
 
-      bee = nixpkgs-unstable.lib.nixosSystem {
+      bee = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
         };

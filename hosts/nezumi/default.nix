@@ -100,7 +100,7 @@
   services.udisks2.enable = true;
   services.udev.packages = [
     pkgs.via
-    pkgs.platformio-core
+    pkgs.platformio-core.udev
   ];
 
   # Enable CUPS to print documents.
