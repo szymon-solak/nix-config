@@ -25,7 +25,9 @@
 
       "bluetooth"
       "usb"
-      "homeassistant_connect_zbt2"
+      "matter"
+      "thread"
+      "otbr"
 
       "yeelight"
       "wled"

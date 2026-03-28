@@ -15,6 +15,7 @@
     ./lms.nix
     ./home-assistant
     ./dns.nix
+    ./otbr
   ];
 
   nix.settings.trusted-users = ["bee"];
