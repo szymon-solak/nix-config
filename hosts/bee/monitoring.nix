@@ -6,10 +6,10 @@
         http_addr = "0.0.0.0";
         http_port = 2342;
       };
-      # security = {
-      # 	# @todo: Use file provider
-      # 	secret_key = "SW2YcwTIb9zpOOhoPsMm";
-      # };
+      security = {
+        # @todo: Rotate and use file provider
+        secret_key = "SW2YcwTIb9zpOOhoPsMm";
+      };
     };
   };
 
@@ -81,39 +81,35 @@
     };
   };
 
-  services.promtail = {
-    enable = true;
-    configuration = {
-      server = {
-        http_listen_port = 28183;
-        grpc_listen_port = 0;
-      };
-      positions = {
-        filename = "/tmp/positions.yaml";
-      };
-      clients = [
-        {
-          url = "http://127.0.0.1:${toString config.services.loki.configuration.server.http_listen_port}/loki/api/v1/push";
-        }
-      ];
-      scrape_configs = [
-        {
-          job_name = "journal";
-          journal = {
-            max_age = "12h";
-            labels = {
-              job = "systemd-journal";
-              host = "${toString config.networking.hostName}";
-            };
-          };
-          relabel_configs = [
-            {
-              source_labels = ["__journal__systemd_unit"];
-              target_label = "unit";
-            }
-          ];
-        }
-      ];
-    };
+  environment.etc."alloy/config.alloy" = {
+    text = ''
+      discovery.relabel "journal" {
+      	targets = []
+
+      	rule {
+      		source_labels = ["__journal__systemd_unit"]
+      		target_label  = "unit"
+      	}
+      }
+
+      loki.source.journal "journal" {
+      	max_age       = "12h0m0s"
+      	relabel_rules = discovery.relabel.journal.rules
+      	forward_to    = [loki.write.default.receiver]
+      	labels        = {
+      		host = "${toString config.networking.hostName}",
+      		job  = "systemd-journal",
+      	}
+      }
+
+      loki.write "default" {
+      	endpoint {
+      		url = "http://127.0.0.1:${toString config.services.loki.configuration.server.http_listen_port}/loki/api/v1/push"
+      	}
+      	external_labels = {}
+      }
+    '';
   };
+
+  services.alloy.enable = true;
 }

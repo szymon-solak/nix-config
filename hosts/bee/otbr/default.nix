@@ -1,16 +1,16 @@
 {
-  pkgs,
+  # pkgs,
   config,
   ...
 }: {
-  imports = [
-    ./openthread-border-router.nix
-  ];
+  # imports = [
+  #   ./openthread-border-router.nix
+  # ];
 
   services.openthread-border-router = {
     enable = true;
-    package = pkgs.callPackage ./package.nix {};
-    backboneInterface = "wlo1";
+    # package = pkgs.callPackage ./package.nix {};
+    backboneInterfaces = ["wlo1"];
 
     radio = {
       device = "/dev/serial/by-id/usb-Nabu_Casa_ZBT-2_E072A1FB8288-if00";

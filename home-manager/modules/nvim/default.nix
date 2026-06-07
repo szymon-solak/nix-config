@@ -19,6 +19,9 @@ in {
     viAlias = true;
     vimAlias = true;
 
+    withRuby = false;
+    withPython3 = false;
+
     plugins = with pkgs.vimPlugins; [
       # base
       plenary-nvim
@@ -41,11 +44,8 @@ in {
       # completion
       nvim-cmp
       blink-cmp
-      copilot-lua
-      sidekick-nvim
-      # ((fromGitHub "folke/sidekick.nvim" "main" "0ab6a23b779e208c3733c48a380bf35e3ec1d49d").overrideAttrs {
-      #   nvimSkipModules = ["sidekick.docs"];
-      # })
+      # copilot-lua
+      # sidekick-nvim
 
       # lsp
       nvim-lspconfig
@@ -61,10 +61,6 @@ in {
       vim-fugitive
     ];
   };
-
-  home.packages = [
-    pkgs.nodejs_22 # Required for copilot
-  ];
 
   xdg.configFile.nvim = {
     source = ./config;

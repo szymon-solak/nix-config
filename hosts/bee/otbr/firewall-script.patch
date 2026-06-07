@@ -1,5 +1,4 @@
 diff --git a/script/otbr-firewall b/script/otbr-firewall
-index 52cef42dd0b..75840f8ae12 100644
 --- a/script/otbr-firewall
 +++ b/script/otbr-firewall
 @@ -38,12 +38,8 @@

@@ -10,10 +10,13 @@
   ];
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "usbhid" "sd_mod"];
-  boot.initrd.kernelModules = [];
+  boot.initrd.kernelModules = ["zfs"];
   boot.kernelModules = ["kvm-intel"];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.extraModulePackages = [];
+  boot.supportedFilesystems = ["zfs"];
+  boot.zfs.forceImportRoot = false;
+  networking.hostId = "0515fdfa";
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/52dead24-699c-4d38-ab32-435d956b508e";
@@ -24,6 +27,12 @@
     device = "/dev/disk/by-uuid/5404-D106";
     fsType = "vfat";
     options = ["fmask=0077" "dmask=0077"];
+  };
+
+  fileSystems."/data" = {
+    device = "zpool/data";
+    fsType = "zfs";
+    options = ["zfsutil"];
   };
 
   swapDevices = [

@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  config,
   ...
 }: {
   imports = [
@@ -66,14 +67,13 @@
 
   services.resolved = {
     enable = true;
-    domains = ["~."];
-    fallbackDns = [
-      "1.1.1.1#one.one.one.one"
-      "1.0.0.1#one.one.one.one"
-    ];
-    extraConfig = ''
-      DNSStubListener=no
-    '';
+    settings.Resolve = {
+      Domains = ["~."];
+      FallbackDNS = [
+        "1.1.1.1#one.one.one.one"
+        "1.0.0.1#one.one.one.one"
+      ];
+    };
   };
 
   services.avahi.enable = true;
@@ -172,11 +172,17 @@
   services.greetd = {
     enable = true;
     useTextGreeter = true;
-    settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --remember --remember-user-session --user-menu --user-menu-min-uid 1000 --asterisks --time";
+    settings = {
+      default_session = let
+        sessionsDir = "${config.services.displayManager.sessionData.desktops}";
+        waylandSessions = "${sessionsDir}/share/wayland-sessions";
+      in {
+        command = "${pkgs.tuigreet}/bin/tuigreet --sessions ${waylandSessions} --remember --remember-user-session --user-menu --user-menu-min-uid 1000 --asterisks --time";
+      };
+    };
   };
 
   programs.zsh.enable = true;
-  programs.adb.enable = true;
   programs.nm-applet.enable = true;
   programs.niri.enable = true;
   services.fwupd.enable = true;

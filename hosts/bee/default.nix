@@ -9,14 +9,22 @@
     ../modules/glance.nix
     ../modules/jellyfin.nix
     ../modules/mdns.nix
+    ../modules/bluetooth.nix
+    ../modules/matter-waker.nix
     ./network-share.nix
     ./caddy.nix
     ./monitoring.nix
     ./lms.nix
     ./home-assistant
     ./dns.nix
+    # @todo: Test & Cleanup, upstreamed in 26.05
     ./otbr
   ];
+
+  services.matter-waker = {
+    enable = true;
+    nodes = [3 8];
+  };
 
   nix.settings.trusted-users = ["bee"];
   security.pam.sshAgentAuth.enable = true;

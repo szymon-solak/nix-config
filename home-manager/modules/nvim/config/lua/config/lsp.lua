@@ -32,6 +32,16 @@ vim.lsp.config('luals', {
 })
 vim.lsp.enable('luals')
 
+vim.lsp.config('pyright', {
+	settings = {
+		python = {
+			venvPath = ".venv",
+			pythonPath = ".venv/bin/python",
+		}
+	}
+})
+vim.lsp.enable('pyright')
+
 local elixir_ls_path = vim.env.ELIXIR_LS_PATH
 
 if elixir_ls_path ~= nil then

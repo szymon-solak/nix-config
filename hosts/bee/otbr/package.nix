@@ -16,13 +16,13 @@
   buildNpmPackage,
 }: let
   pname = "ot-br-posix";
-  version = "0-unstable-2025-05-30";
+  version = "0-unstable-2025-06-12";
 
   src = fetchFromGitHub {
     owner = "openthread";
     repo = "ot-br-posix";
-    rev = "387fef65d3f89901175f4d8bb7f6aa7a66cf94c0";
-    hash = "sha256-sEOUCx9G9/NSk/m6FpF9DXHQzHpX+VKRfnpgnF4mO7g=";
+    rev = "thread-reference-20250612";
+    hash = "sha256-lPMMLtbPu9NpDcBCZE6XID7u1maCAhkZiSDEyFq7yvg=";
     fetchSubmodules = true;
   };
 

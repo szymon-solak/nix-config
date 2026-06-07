@@ -3,7 +3,7 @@
     pkgs.bluez
     pkgs.overskride
     pkgs.pavucontrol
-    pkgs.helvum
+    pkgs.crosspipe
   ];
 
   stylix.targets.waybar.enable = false;
@@ -253,7 +253,7 @@
           format = "{icon}  {volume}%";
           format-muted = "";
           on-click = "pavucontrol";
-          on-click-right = "helvum";
+          on-click-right = "crosspipe";
           format-icons = ["" "" ""];
         };
       }

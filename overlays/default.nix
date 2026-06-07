@@ -36,6 +36,8 @@ in {
       home-assistant = unstable.home-assistant;
       home-assistant-custom-components = unstable.home-assistant-custom-components;
       home-assistant-custom-lovelace-modules = unstable.home-assistant-custom-lovelace-modules;
+      # python-matter-server = unstable.python-matter-server;
+      rtk = unstable.rtk;
     })
   ];
 }
