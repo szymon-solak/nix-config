@@ -32,6 +32,16 @@ vim.lsp.config('luals', {
 })
 vim.lsp.enable('luals')
 
+vim.lsp.config('pyright', {
+	settings = {
+		python = {
+			venvPath = ".venv",
+			pythonPath = ".venv/bin/python",
+		}
+	}
+})
+vim.lsp.enable('pyright')
+
 local elixir_ls_path = vim.env.ELIXIR_LS_PATH
 
 if elixir_ls_path ~= nil then
@@ -58,6 +68,8 @@ vim.lsp.config('ts_ls', {
 	},
 })
 vim.lsp.enable('ts_ls')
+vim.lsp.enable('cssls')
+vim.lsp.enable('html')
 
 vim.lsp.config('eslint', {
 	filetypes = {

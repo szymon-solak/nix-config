@@ -14,16 +14,17 @@
     # ./modules/android-studio.nix
     ./modules/orca-slicer.nix
     ./modules/zed.nix
-    ./modules/dmenu
-    ./modules/wallpaper.nix
+    # ./modules/dmenu
+    # ./modules/wallpaper.nix
     ./modules/lock.nix
     ./modules/clipboard.nix
     ./modules/obs.nix
     ./modules/xwayland.nix
-    ./modules/waybar.nix
-    ./modules/wlogout.nix
+    # ./modules/waybar.nix
+    # ./modules/wlogout.nix
     ./modules/audio.nix
-    ./modules/llms.nix
+    ./modules/llms
+    ./modules/shell.nix
   ];
 
   programs.home-manager.enable = true;
@@ -76,16 +77,20 @@
     pkgs.dfu-util
     pkgs.qbittorrent-nox
     pkgs.heroic
-    pkgs.thunderbird
+    # pkgs.thunderbird
     pkgs.chromium
     pkgs.awscli2
     pkgs.nautilus
     pkgs.hyperhdr
     pkgs.gnome-disk-utility
     pkgs.wdisplays
-    # pkgs.temurin-jre-bin
-    # pkgs.kicad
+    pkgs.temurin-jre-bin
+    pkgs.kicad
     # pkgs.arduino-ide
     pkgs.reaper
+    pkgs.nix-output-monitor
+    pkgs.qimgv
+    pkgs.ntfs3g
+    pkgs.android-tools
   ];
 }

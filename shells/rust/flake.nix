@@ -24,22 +24,19 @@
           pkgs.mkShell {
             name = "rust";
 
-            buildInputs =
-              [
-                (fenix.packages.${system}.stable.withComponents [
-                  "cargo"
-                  "clippy"
-                  "rust-src"
-                  "rustc"
-                  "rustfmt"
-                ])
-                pkgs.nil
-                pkgs.rust-analyzer
-                pkgs.iconv
-              ];
+            buildInputs = [
+              (fenix.packages.${system}.stable.withComponents [
+                "cargo"
+                "clippy"
+                "rust-src"
+                "rustc"
+                "rustfmt"
+              ])
+              pkgs.rust-analyzer
+              pkgs.iconv
+            ];
 
             shellHook = "
-							export NIL_LS_PATH=${pkgs.nil}/bin/nil
 							export PATH=$HOME/.cargo/bin:$PATH
 					";
           };

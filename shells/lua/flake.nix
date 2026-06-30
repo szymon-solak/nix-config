@@ -17,7 +17,7 @@
       devShells.default = pkgs.mkShell {
         name = "lua";
 
-        buildInputs = [pkgs.lua pkgs.luajit pkgs.sumneko-lua-language-server];
+        buildInputs = [pkgs.lua pkgs.luajit pkgs.lua-language-server];
 
         shellHook = "";
       };

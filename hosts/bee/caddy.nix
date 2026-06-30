@@ -7,10 +7,7 @@ in {
     acceptTerms = true;
 
     certs."pszczola.party" = {
-      # Use age after https://github.com/NixOS/nixpkgs/issues/370825 is resolved
-      email = "";
       group = config.services.caddy.group;
-
       domain = "pszczola.party";
       extraDomainNames = ["*.pszczola.party"];
       dnsProvider = "cloudflare";
