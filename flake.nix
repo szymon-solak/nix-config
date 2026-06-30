@@ -115,6 +115,7 @@
           {nixpkgs.overlays = [nur.overlays.default];}
           home-manager.darwinModules.home-manager
           (import ./overlays)
+          {environment.systemPackages = [gwt.packages."aarch64-darwin".default];}
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

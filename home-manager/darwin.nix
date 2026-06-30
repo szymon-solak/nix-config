@@ -12,7 +12,7 @@
     ./modules/kitty.nix
     ./modules/nvim
     # ./modules/darwin-application-activation.nix
-    ./modules/zed.nix
+    # ./modules/zed.nix
   ];
 
   programs.home-manager.enable = true;
@@ -31,7 +31,7 @@
     # pkgs.terragrunt
     # pkgs.tart
     # pkgs.ollama
-    pkgs.google-cloud-sdk
+    # pkgs.google-cloud-sdk
 		# pkgs.ngrok
   ];
 }

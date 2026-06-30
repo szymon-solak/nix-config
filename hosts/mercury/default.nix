@@ -24,14 +24,14 @@
     options = "--delete-older-than 1w";
   };
 
-  programs.zsh = {
-    enable = true;
-    promptInit = "";
-  };
+  # programs.zsh = {
+  #   enable = true;
+  #   promptInit = "";
+  # };
 
   users.users.szymonsolak = {
     name = "szymonsolak";
-    home = "/Users/szymonsolak/";
+    home = "/Users/szymonsolak";
   };
 
   nixpkgs.config.allowUnfreePredicate = pkg:
