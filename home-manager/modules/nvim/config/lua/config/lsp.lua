@@ -60,14 +60,19 @@ if nil_ls_path ~= nil then
 	vim.lsp.enable('nil_ls')
 end
 
-vim.lsp.config('ts_ls', {
-	init_options = {
-		preferences = {
-			importModuleSpecifierPreference = 'relative'
-		}
-	},
-})
-vim.lsp.enable('ts_ls')
+if vim.fn.executable("tsgo") == 1 then
+	vim.lsp.enable('tsgo')
+elseif vim.fn.executable("typescript-language-server") then
+	vim.lsp.config('ts_ls', {
+		init_options = {
+			preferences = {
+				importModuleSpecifierPreference = 'relative'
+			}
+		},
+	})
+	vim.lsp.enable('ts_ls')
+end
+
 vim.lsp.enable('cssls')
 vim.lsp.enable('html')
 
