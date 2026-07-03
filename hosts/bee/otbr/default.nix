@@ -1,8 +1,10 @@
 {
-  # pkgs,
+  pkgs,
   config,
   ...
-}: {
+}: let
+  chip-ota-provider = pkgs.callPackage ../matter/chip-ota-provider.nix {};
+in {
   # imports = [
   #   ./openthread-border-router.nix
   # ];
@@ -36,5 +38,24 @@
   services.matter-server = {
     enable = true;
     openFirewall = true;
+    package = pkgs.python-matter-server.overrideAttrs (oldAttributes: {
+      nativeBuildInputs =
+        oldAttributes.nativeBuildInputs
+        ++ [
+          pkgs.makeWrapper
+        ];
+
+      buildInputs =
+        (oldAttributes.buildInputs or [])
+        ++ [
+          chip-ota-provider
+        ];
+
+      postFixup =
+        oldAttributes.postFixup
+        + ''
+          wrapProgram $out/bin/matter-server --prefix PATH : ${pkgs.lib.makeBinPath [chip-ota-provider]}
+        '';
+    });
   };
 }

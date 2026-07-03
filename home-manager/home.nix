@@ -92,5 +92,6 @@
     pkgs.qimgv
     pkgs.ntfs3g
     pkgs.android-tools
+    pkgs.gimp
   ];
 }
