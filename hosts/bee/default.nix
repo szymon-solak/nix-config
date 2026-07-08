@@ -23,7 +23,10 @@
 
   services.matter-waker = {
     enable = true;
-    nodes = [3 8];
+    nodes = [
+      3
+      8
+    ];
   };
 
   nix.settings.trusted-users = ["bee"];
@@ -94,7 +97,9 @@
 
   services.getty.autologinUser = "bee";
 
-  environment.systemPackages = with pkgs; [neovim];
+  environment.systemPackages = with pkgs; [
+    neovim
+  ];
 
   services.openssh = {
     enable = true;

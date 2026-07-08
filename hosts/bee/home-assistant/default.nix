@@ -11,6 +11,7 @@
     ./scenes/evening.nix
     ./scenes/night.nix
     ./templates/temperature-forecast.nix
+    ./templates/heat-index.nix
     ./integrations/adaptive-lighting.nix
   ];
 

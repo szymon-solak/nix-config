@@ -38,6 +38,7 @@ in {
       home-assistant-custom-lovelace-modules = unstable.home-assistant-custom-lovelace-modules;
       # python-matter-server = unstable.python-matter-server;
       rtk = unstable.rtk;
+      gimp = unstable.gimp;
     })
   ];
 }
