@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
     ../modules/nix-settings.nix
@@ -11,36 +12,28 @@
     ../modules/mdns.nix
     ../modules/bluetooth.nix
     ../modules/matter-waker.nix
+    ../modules/matterjs-server.nix
     ./network-share.nix
     ./caddy.nix
     ./monitoring.nix
     ./lms.nix
     ./home-assistant
     ./dns.nix
-    # @todo: Test & Cleanup, upstreamed in 26.05
-    ./otbr
   ];
 
-  services.matter-waker = {
-    enable = true;
-    nodes = [
-      3
-      8
-    ];
-  };
-
-  nix.settings.trusted-users = ["bee"];
+  nix.settings.trusted-users = [ "bee" ];
   security.pam.sshAgentAuth.enable = true;
   nixpkgs = {
-    overlays = [];
+    overlays = [ ];
 
     config = {
-      allowUnfreePredicate = pkg:
+      allowUnfreePredicate =
+        pkg:
         builtins.elem (lib.getName pkg) [
           "intel-ocl"
           "XiaoMi/xiaomi_home"
         ];
-      permittedInsecurePackages = [];
+      permittedInsecurePackages = [ ];
     };
   };
 
@@ -55,7 +48,7 @@
   ];
 
   systemd.services."restart-system" = {
-    startAt = ["*-*-* 03:00:00"];
+    startAt = [ "*-*-* 03:00:00" ];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "/run/current-system/sw/bin/reboot";
@@ -103,7 +96,7 @@
 
   services.openssh = {
     enable = true;
-    ports = [22];
+    ports = [ 22 ];
     settings = {
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;

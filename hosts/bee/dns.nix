@@ -43,22 +43,4 @@
       }
     ];
   };
-
-  #
-  # services.prometheus = {
-  #   scrapeConfigs = [
-  #     {
-  #       job_name = "blocky";
-  #       static_configs = [
-  #         {
-  #           targets = [ "127.0.0.1:${toString config.services.blocky.settings.ports.http}" ];
-  #         }
-  #       ];
-  #     }
-  #   ];
-  # };
-  #
-  # networking.firewall.allowedTCPPorts = [
-  #   config.services.blocky.settings.ports.dns
-  # ];
 }

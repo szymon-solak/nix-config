@@ -13,10 +13,10 @@
   ];
 
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = ["amdgpu"];
+  boot.initrd.kernelModules = [];
   boot.initrd.verbose = false;
   boot.kernelModules = ["kvm-amd"];
-  boot.kernelParams = ["quiet" "splash" "udev.log_level=3"];
+  boot.kernelParams = ["quiet" "udev.log_level=3"];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.extraModulePackages = [];
   boot.consoleLogLevel = 0;
@@ -59,6 +59,6 @@
 
   hardware.amdgpu = {
     overdrive.enable = true;
-    initrd.enable = true;
+    initrd.enable = false;
   };
 }

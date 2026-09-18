@@ -1,5 +1,7 @@
 {pkgs, ...}: {
   imports = [
+		./matter.nix
+		./otbr.nix
     ./automations/dual-button-remote.nix
     ./automations/scroll-remote.nix
     ./automations/vacuum.nix

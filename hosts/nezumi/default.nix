@@ -33,6 +33,7 @@
           "steam"
           "steam-original"
           "steam-run"
+					"spotify"
         ];
       permittedInsecurePackages = [];
     };
@@ -182,7 +183,20 @@
     };
   };
 
+  systemd.services.greetd = {
+    after = lib.mkForce [
+      "sysinit.target"
+      "basic.target"
+      "dbus-broker.service"
+      "getty@tty1.service"
+    ];
+    wants = lib.mkForce ["getty@tty1.service"];
+  };
+
+  boot.initrd.systemd.services.systemd-udevd.serviceConfig.TimeoutStopSec = lib.mkForce "500ms";
+
   programs.zsh.enable = true;
+	environment.pathsToLink = [ "/share/zsh" ];
   programs.nm-applet.enable = true;
   programs.niri.enable = true;
   services.fwupd.enable = true;
