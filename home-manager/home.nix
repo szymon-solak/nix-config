@@ -93,5 +93,6 @@
     pkgs.ntfs3g
     pkgs.android-tools
     pkgs.gimp
+		pkgs.spotify
   ];
 }

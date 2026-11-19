@@ -26,6 +26,7 @@
           min_brightness = 50;
           min_color_temp = 1800;
           max_color_temp = 4500;
+          prefer_rgb_color = true;
           detect_non_ha_changes = true;
           skip_redundant_commands = true;
         }

@@ -4,17 +4,23 @@
   modulesPath,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "usbhid" "sd_mod"];
-  boot.initrd.kernelModules = ["zfs"];
-  boot.kernelModules = ["kvm-intel"];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.extraModulePackages = [];
-  boot.supportedFilesystems = ["zfs"];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "ahci"
+    "usbhid"
+    "sd_mod"
+  ];
+  boot.initrd.kernelModules = [ "zfs" ];
+  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelPackages = pkgs.linuxPackages_7_2;
+  boot.extraModulePackages = [ ];
+  boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.forceImportRoot = false;
   networking.hostId = "0515fdfa";
 
@@ -26,18 +32,23 @@
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/5404-D106";
     fsType = "vfat";
-    options = ["fmask=0077" "dmask=0077"];
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
   };
 
   fileSystems."/data" = {
     device = "zpool/data";
     fsType = "zfs";
-    options = ["zfsutil"];
+    options = [ "zfsutil" ];
   };
 
   swapDevices = [
-    {device = "/dev/disk/by-uuid/95301f06-8076-49c1-9e75-e9823937197e";}
+    { device = "/dev/disk/by-uuid/95301f06-8076-49c1-9e75-e9823937197e"; }
   ];
+
+  services.zfs.autoScrub.enable = true;
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -52,7 +63,9 @@
 
   # Enable hardware transcoding
   systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "iHD";
-  environment.sessionVariables = {LIBVA_DRIVER_NAME = "iHD";};
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+  };
 
   hardware.graphics = {
     enable = true;

@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.claude-code = {
     enable = true;
 
@@ -6,6 +7,10 @@
 
     skills = {
       caveman = ./skills/caveman;
+      grill-me = ./skills/grill-me;
+      grilling = ./skills/grilling;
+      code-review = ./skills/code-review;
+      handoff = ./skills/handoff;
     };
 
     settings = {
@@ -21,26 +26,11 @@
       includeCoAuthoredBy = false;
       disableBypassPermissionsMode = "disable";
       theme = "dark";
-
-      hooks = {
-        PreToolUse = [
-          {
-            matcher = "Bash";
-            hooks = [
-              {
-                type = "command";
-                command = ./rtk-rewrite.sh;
-              }
-            ];
-          }
-        ];
-      };
     };
   };
 
   home.packages = [
     pkgs.opencode
-    pkgs.rtk
     pkgs.jq
   ];
 }
