@@ -11,6 +11,7 @@
     ./modules/zsh.nix
     ./modules/kitty.nix
     ./modules/nvim
+    ./modules/llms
     # ./modules/darwin-application-activation.nix
     # ./modules/zed.nix
   ];
@@ -24,7 +25,7 @@
     pkgs.coreutils
     pkgs.gcc
     pkgs.python3
-    pkgs.obsidian
+    # pkgs.obsidian
     pkgs.lazydocker
     pkgs.awscli2
     # pkgs.terraform

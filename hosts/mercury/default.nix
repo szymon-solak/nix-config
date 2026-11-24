@@ -35,7 +35,7 @@
   };
 
   nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) ["obsidian" "terraform" "tart" "ngrok" "copilot-language-server"];
+    builtins.elem (lib.getName pkg) ["obsidian" "terraform" "tart" "ngrok" "copilot-language-server" "claude-code"];
 
   system = {
     keyboard = {

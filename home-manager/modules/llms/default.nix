@@ -30,7 +30,6 @@
   };
 
   home.packages = [
-    pkgs.opencode
     pkgs.jq
   ];
 }
