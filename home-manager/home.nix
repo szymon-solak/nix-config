@@ -93,6 +93,7 @@
     pkgs.ntfs3g
     pkgs.android-tools
     pkgs.gimp
-		pkgs.spotify
+    pkgs.spotify
+    pkgs.zotero
   ];
 }

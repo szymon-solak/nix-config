@@ -38,6 +38,7 @@
         pkgs.nur.repos.rycee.firefox-addons.reduxdevtools
         pkgs.nur.repos.rycee.firefox-addons.sidebery
         pkgs.nur.repos.rycee.firefox-addons.adaptive-tab-bar-colour
+        pkgs.nur.repos.rycee.firefox-addons.zotero-connector
       ];
 
       settings = {
