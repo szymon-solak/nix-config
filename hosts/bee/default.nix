@@ -19,6 +19,7 @@
     ./lms.nix
     ./home-assistant
     ./dns.nix
+		./immich.nix
   ];
 
   nix.settings.trusted-users = [ "bee" ];

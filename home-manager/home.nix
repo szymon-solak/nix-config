@@ -94,5 +94,6 @@
     pkgs.android-tools
     pkgs.gimp
     pkgs.spotify
+    pkgs.zotero
   ];
 }

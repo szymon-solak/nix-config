@@ -9,6 +9,7 @@
             "light.bedroom_accent_lights" = "on";
             "light.kitchen_lights" = "on";
             "switch.alpstuga_air_quality_monitor" = "on";
+						"switch.neon" = "on";
           };
         }
       ];

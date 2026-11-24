@@ -44,6 +44,10 @@ in {
       reverse_proxy http://localhost:${toString config.services.pihole-web.ports}
     '';
 
+    virtualHosts."photos.bee.local".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.immich.port}
+    '';
+
     virtualHosts."pszczola.party".extraConfig = ''
       reverse_proxy http://localhost:8778
 
@@ -86,6 +90,14 @@ in {
 
     virtualHosts."dns.pszczola.party".extraConfig = ''
       reverse_proxy http://localhost:${toString config.services.pihole-web.ports}
+
+      tls ${certs}/cert.pem ${certs}/key.pem {
+      	protocols tls1.3
+      }
+    '';
+
+    virtualHosts."photos.pszczola.party".extraConfig = ''
+      reverse_proxy http://localhost:${toString config.services.immich.port}
 
       tls ${certs}/cert.pem ${certs}/key.pem {
       	protocols tls1.3
